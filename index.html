@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7roast – Specialty Coffee</title>
+  <style>
+    :root {
+      --brown: #3b1f0a;
+      --cream: #f5efe6;
+      --gold: #c8963e;
+      --light: #fdf8f2;
+      --text: #2d1a0e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: var(--light);
+      color: var(--text);
+    }
+    header {
+      background: var(--brown);
+      color: var(--cream);
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header h1 { font-size: 2rem; letter-spacing: 2px; }
+    header p { font-size: 0.9rem; opacity: 0.8; }
+    nav a {
+      color: var(--gold);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-size: 0.95rem;
+    }
+    nav a:hover { text-decoration: underline; }
+    .hero {
+      background: linear-gradient(135deg, var(--brown) 0%, #6b3a1f 100%);
+      color: var(--cream);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto 2rem; }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      padding: 0.8rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #e0a84a; }
+    section { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
+    section h2 { font-size: 1.8rem; margin-bottom: 2rem; color: var(--brown); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(59,31,10,0.1);
+      border-top: 4px solid var(--gold);
+    }
+    .card h3 { font-size: 1.3rem; color: var(--brown); margin-bottom: 0.5rem; }
+    .card .origin { font-size: 0.85rem; color: #888; margin-bottom: 0.8rem; font-style: italic; }
+    .card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
+    .card .price { font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 1rem; }
+    .card .stock { font-size: 0.85rem; color: #555; }
+    .card .stock.low { color: #c0392b; }
+    form { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 10px rgba(59,31,10,0.1); max-width: 600px; margin: 0 auto; }
+    .form-group { margin-bottom: 1.2rem; }
+    label { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: bold; color: var(--brown); }
+    input, select, textarea {
+      width: 100%;
+      padding: 0.7rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    textarea { height: 80px; resize: vertical; }
+    .submit-btn { width: 100%; padding: 1rem; font-size: 1.1rem; }
+    #result { margin-top: 1rem; padding: 1rem; border-radius: 4px; display: none; }
+    #result.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+    #result.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    footer {
+      background: var(--brown);
+      color: var(--cream);
+      text-align: center;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
+    footer a { color: var(--gold); }
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 1rem; text-align: center; }
+      .hero h2 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>7roast</h1>
+    <p>Specialty Coffee</p>
+  </div>
+  <nav>
+    <a href="#produkte">Kaffees</a>
+    <a href="#bestellen">Bestellen</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h2>Kaffee, wie er sein sollte.</h2>
+  <p>Handgeroestete Specialty Coffees – direkt zu dir nach Hause. Sorgfaeltig ausgewaehlt, schonend geroestet.</p>
+  <a href="#bestellen" class="btn">Jetzt bestellen</a>
+</div>
+
+<section id="produkte">
+  <h2>Unsere Kaffees</h2>
+  <div class="products" id="produktliste">
+    <!-- Produkte werden hier angezeigt -->
+    <div class="card">
+      <h3>Ethiopia Yirgacheffe</h3>
+      <div class="origin">Herkunft: Yirgacheffe, Aethiopien</div>
+      <p>Blumige Aromen von Jasmin und Bergamotte, mit einer leichten Zitrusnote und einem seidigen Abgang. Ideal fuer Filter und Aeropress.</p>
+      <div class="price">14,90 € / 250g</div>
+      <div class="stock">✓ Auf Lager</div>
+    </div>
+    <div class="card">
+      <h3>Colombia Huila</h3>
+      <div class="origin">Herkunft: Huila, Kolumbien</div>
+      <p>Vollmundig mit Noten von rotem Apfel, Karamell und dunkler Schokolade. Vielseitig einsetzbar – perfekt als Espresso oder Milchkaffee.</p>
+      <div class="price">13,50 € / 250g</div>
+      <div class="stock">✓ Auf Lager</div>
+    </div>
+    <div class="card">
+      <h3>Kenya AA</h3>
+      <div class="origin">Herkunft: Nyeri, Kenia</div>
+      <p>Lebendige Saeurestruktur mit Aromen von schwarzer Johannisbeere, Tomate und braunem Zucker. Ein klassischer kenianischer Filterkaffee.</p>
+      <div class="price">15,90 € / 250g</div>
+      <div class="stock stock low">⚠ Geringe Stueckzahl</div>
+    </div>
+    <div class="card">
+      <h3>Guatemala Antigua</h3>
+      <div class="origin">Herkunft: Antigua, Guatemala</div>
+      <p>Ausgewogener Koerper mit Noten von Walnuss, Schokolade und einer dezenten Wuerzigkeit. Ideal fuer den morgendlichen Espresso.</p>
+      <div class="price">12,90 € / 250g</div>
+      <div class="stock">✓ Auf Lager</div>
+    </div>
+  </div>
+</section>
+
+<section id="bestellen">
+  <h2>Bestellen</h2>
+  <form id="bestellformular">
+    <div class="form-group">
+      <label for="name">Dein Name *</label>
+      <input type="text" id="name" name="name" required placeholder="Max Mustermann" />
+    </div>
+    <div class="form-group">
+      <label for="email">E-Mail Adresse *</label>
+      <input type="email" id="email" name="email" required placeholder="max@beispiel.de" />
+    </div>
+    <div class="form-group">
+      <label for="produkt">Produkt *</label>
+      <select id="produkt" name="produkt" required>
+        <option value="">-- Bitte waehlen --</option>
+        <option value="Ethiopia Yirgacheffe 250g – 14,90 €">Ethiopia Yirgacheffe 250g – 14,90 €</option>
+        <option value="Colombia Huila 250g – 13,50 €">Colombia Huila 250g – 13,50 €</option>
+        <option value="Kenya AA 250g – 15,90 €">Kenya AA 250g – 15,90 €</option>
+        <option value="Guatemala Antigua 250g – 12,90 €">Guatemala Antigua 250g – 12,90 €</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="menge">Menge *</label>
+      <select id="menge" name="menge" required>
+        <option value="1">1 Packung</option>
+        <option value="2">2 Packungen</option>
+        <option value="3">3 Packungen</option>
+        <option value="4">4 Packungen</option>
+        <option value="5">5+ Packungen</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="mahlung">Mahlung</label>
+      <select id="mahlung" name="mahlung">
+        <option value="ganze Bohne">Ganze Bohne</option>
+        <option value="filter">Filter (grob)</option>
+        <option value="aeropress">Aeropress (mittel)</option>
+        <option value="espresso">Espresso (fein)</option>
+        <option value="mokka">Mokka (sehr fein)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="adresse">Lieferadresse *</label>
+      <textarea id="adresse" name="adresse" required placeholder="Strasse Nr., PLZ Ort"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="nachricht">Anmerkungen</label>
+      <textarea id="nachricht" name="nachricht" placeholder="Sonderwuensche, Fragen ..."></textarea>
+    </div>
+    <button type="submit" class="btn submit-btn">Bestellung absenden</button>
+    <div id="result"></div>
+  </form>
+</section>
+
+<footer id="kontakt">
+  <p>7roast Specialty Coffee &nbsp;|&nbsp; <a href="mailto:hallo@7roast.coffee">hallo@7roast.coffee</a></p>
+  <p style="margin-top:0.5rem; font-size:0.85rem; opacity:0.7;">© 2025 7roast – Alle Rechte vorbehalten</p>
+</footer>
+
+<script>
+  // ============================================================
+  // WICHTIG: Trage hier deine Google Apps Script Web App URL ein
+  // Nach dem Deploy in Apps Script bekommst du eine URL wie:
+  // https://script.google.com/macros/s/DEINE_ID_HIER/exec
+  // ============================================================
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNpxl7GJ47-T9f9Br_mgxZCnKqNLscoFYUIXD3UfjbROUYu8xgaNr_tHdg3LaDb9Iy/exec';
+
+  document.getElementById('bestellformular').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = this.querySelector('button[type="submit"]');
+    const resultDiv = document.getElementById('result');
+    
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet...';
+    resultDiv.style.display = 'none';
+    resultDiv.className = '';
+
+    const formData = {
+      name:     document.getElementById('name').value,
+      email:    document.getElementById('email').value,
+      produkt:  document.getElementById('produkt').value,
+      menge:    document.getElementById('menge').value,
+      mahlung:  document.getElementById('mahlung').value,
+      adresse:  document.getElementById('adresse').value,
+      nachricht:document.getElementById('nachricht').value,
+      datum:    new Date().toLocaleString('de-DE')
+    };
+
+    try {
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      // no-cors gibt keinen Body zurueck – wir gehen von Erfolg aus
+      resultDiv.className = 'success';
+      resultDiv.textContent = '✓ Deine Bestellung wurde erfolgreich gesendet! Wir melden uns in Kuerze bei dir.';
+      resultDiv.style.display = 'block';
+      document.getElementById('bestellformular').reset();
+    } catch (err) {
+      resultDiv.className = 'error';
+      resultDiv.textContent = '✗ Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an hallo@7roast.coffee';
+      resultDiv.style.display = 'block';
+    }
+
+    btn.disabled = false;
+    btn.textContent = 'Bestellung absenden';
+  });
+</script>
+
+</body>
+</html>
