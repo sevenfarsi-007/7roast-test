@@ -2,278 +2,665 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>7roast – Specialty Coffee</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --brown: #3b1f0a;
-      --cream: #f5efe6;
-      --gold: #c8963e;
-      --light: #fdf8f2;
-      --text: #2d1a0e;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Georgia', serif;
-      background: var(--light);
-      color: var(--text);
-    }
-    header {
-      background: var(--brown);
-      color: var(--cream);
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    header h1 { font-size: 2rem; letter-spacing: 2px; }
-    header p { font-size: 0.9rem; opacity: 0.8; }
-    nav a {
-      color: var(--gold);
-      text-decoration: none;
-      margin-left: 1.5rem;
-      font-size: 0.95rem;
-    }
-    nav a:hover { text-decoration: underline; }
-    .hero {
-      background: linear-gradient(135deg, var(--brown) 0%, #6b3a1f 100%);
-      color: var(--cream);
-      text-align: center;
-      padding: 4rem 2rem;
-    }
-    .hero h2 { font-size: 2.5rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto 2rem; }
-    .btn {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--brown);
-      padding: 0.8rem 2rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .btn:hover { background: #e0a84a; }
-    section { padding: 3rem 2rem; max-width: 1100px; margin: 0 auto; }
-    section h2 { font-size: 1.8rem; margin-bottom: 2rem; color: var(--brown); border-bottom: 2px solid var(--gold); padding-bottom: 0.5rem; }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(59,31,10,0.1);
-      border-top: 4px solid var(--gold);
-    }
-    .card h3 { font-size: 1.3rem; color: var(--brown); margin-bottom: 0.5rem; }
-    .card .origin { font-size: 0.85rem; color: #888; margin-bottom: 0.8rem; font-style: italic; }
-    .card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem; }
-    .card .price { font-size: 1.2rem; font-weight: bold; color: var(--gold); margin-bottom: 1rem; }
-    .card .stock { font-size: 0.85rem; color: #555; }
-    .card .stock.low { color: #c0392b; }
-    form { background: white; border-radius: 8px; padding: 2rem; box-shadow: 0 2px 10px rgba(59,31,10,0.1); max-width: 600px; margin: 0 auto; }
-    .form-group { margin-bottom: 1.2rem; }
-    label { display: block; font-size: 0.9rem; margin-bottom: 0.3rem; font-weight: bold; color: var(--brown); }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.7rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 0.95rem;
-      font-family: inherit;
-    }
-    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); }
-    textarea { height: 80px; resize: vertical; }
-    .submit-btn { width: 100%; padding: 1rem; font-size: 1.1rem; }
-    #result { margin-top: 1rem; padding: 1rem; border-radius: 4px; display: none; }
-    #result.success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
-    #result.error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
-    footer {
-      background: var(--brown);
-      color: var(--cream);
-      text-align: center;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    footer a { color: var(--gold); }
+    :root { --primary: #4e342e; --secondary: #9e7144; --accent: #d35400; --bg: #fcfaf8; --card: #ffffff; --text: #2c3e50; --radius: 12px; --transition: all 0.3s ease; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+    /* HEADER */
+    .site-header { background: var(--primary); color: #f5efe6; padding: 1.2rem 2rem; display: flex; align-items: center; justify-content: space-between; }
+    .site-header h1 { font-size: 1.8rem; letter-spacing: 3px; font-weight: 700; }
+    .site-header p { font-size: 0.85rem; opacity: 0.75; }
+    .lang-bar { display: flex; gap: 0.3rem; }
+    .lang-bar button { background: transparent; border: 1.5px solid rgba(255,255,255,0.4); color: #f5efe6; padding: 5px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: var(--transition); }
+    .lang-bar button.active { background: var(--secondary); border-color: var(--secondary); }
+    /* HERO */
+    .hero { background: linear-gradient(135deg, var(--primary) 0%, #6b3a1f 100%); color: #f5efe6; text-align: center; padding: 3.5rem 2rem; }
+    .hero h2 { font-size: 2.2rem; margin-bottom: 0.8rem; }
+    .hero p { font-size: 1rem; opacity: 0.85; max-width: 550px; margin: 0 auto 1.5rem; }
+    .btn-hero { display: inline-block; background: var(--secondary); color: white; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: var(--transition); }
+    .btn-hero:hover { background: var(--accent); }
+    /* SECTIONS */
+    .section { padding: 2.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: 1.6rem; color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 0.4rem; margin-bottom: 1.5rem; font-weight: 700; }
+    /* COFFEE CARDS */
+    .coffee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
+    .coffee-card { background: var(--card); border-radius: var(--radius); padding: 1.4rem; box-shadow: 0 4px 16px rgba(78,52,46,0.1); border-top: 4px solid var(--secondary); }
+    .coffee-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.3rem; }
+    .coffee-card .coffee-id { font-size: 0.75rem; color: #aaa; margin-bottom: 0.6rem; font-style: italic; }
+    .coffee-card .stock-bar { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.8rem; font-size: 0.8rem; }
+    .stock-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .stock-dot.ok { background: #27ae60; }
+    .stock-dot.low { background: #e67e22; }
+    .coffee-card[data-stock="0"] { display: none; }
+    /* PRICES */
+    .price-table { background: var(--card); border-radius: var(--radius); padding: 1.2rem; box-shadow: 0 4px 16px rgba(78,52,46,0.08); overflow-x: auto; margin-bottom: 1rem; }
+    .price-table table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .price-table th { background: var(--primary); color: white; padding: 8px 12px; text-align: left; }
+    .price-table td { padding: 7px 12px; border-bottom: 1px solid #eee; }
+    .price-table tr:last-child td { border-bottom: none; }
+    /* ORDER FORM */
+    .order-wrapper { max-width: 580px; margin: 0 auto; }
+    .card-box { background: var(--card); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 8px 24px rgba(78,52,46,0.08); margin-bottom: 1rem; }
+    .form-label { display: block; margin-bottom: 6px; font-weight: 600; color: var(--primary); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .form-input { width: 100%; padding: 12px 14px; border: 1.5px solid #e0d8d0; border-radius: 8px; font-size: 15px; font-family: inherit; background: #faf8f6; transition: var(--transition); margin-bottom: 14px; }
+    .form-input:focus { outline: none; border-color: var(--secondary); background: white; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-add { background: white; color: var(--primary); border: 2px solid var(--primary); padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: 700; font-size: 14px; transition: var(--transition); }
+    .btn-add:hover { background: var(--primary); color: white; }
+    .basket-item { display: flex; justify-content: space-between; align-items: center; background: #faf8f6; padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-size: 13px; }
+    .remove-btn { color: #e74c3c; cursor: pointer; font-weight: bold; font-size: 18px; line-height: 1; }
+    .price-display { text-align: right; padding: 14px 0; border-top: 1.5px solid #eee; margin-top: 8px; }
+    .price-amount { font-size: 26px; font-weight: 700; color: var(--primary); }
+    .discount-note { display: block; font-size: 12px; font-weight: 600; }
+    .btn-submit { background: var(--secondary); color: white; padding: 16px; border: none; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; font-weight: 700; transition: var(--transition); }
+    .btn-submit:hover { background: var(--accent); }
+    .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+    .msg-box { padding: 14px; border-radius: 8px; text-align: center; margin-top: 12px; font-weight: 600; display: none; }
+    .msg-box.success { background: #e8f5e9; color: #2e7d32; }
+    .msg-box.error { background: #ffebee; color: #c62828; }
+    /* INFO ACCORDION */
+    .accordion { background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 16px rgba(78,52,46,0.08); overflow: hidden; margin-bottom: 0.8rem; }
+    .accordion-header { width: 100%; background: none; border: none; padding: 1rem 1.4rem; text-align: left; font-size: 1rem; font-weight: 700; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: inherit; }
+    .accordion-header:hover { background: #faf6f2; }
+    .accordion-body { display: none; padding: 0 1.4rem 1.2rem; }
+    .accordion-body.open { display: block; }
+    .brew-section h4 { color: var(--primary); font-size: 1rem; margin: 1rem 0 0.4rem; }
+    .brew-section ul { list-style: disc; padding-left: 1.2rem; }
+    .brew-section ul li { margin-bottom: 0.3rem; font-size: 0.9rem; line-height: 1.5; }
+    /* ABOUT */
+    .about-box { background: var(--card); border-radius: var(--radius); padding: 1.5rem; box-shadow: 0 4px 16px rgba(78,52,46,0.08); }
+    .about-box p { margin-bottom: 0.6rem; }
+    /* FOOTER */
+    footer { background: var(--primary); color: #f5efe6; text-align: center; padding: 1.5rem; margin-top: 2rem; font-size: 0.9rem; }
+    footer a { color: var(--secondary); }
+    /* RTL */
+    [dir="rtl"] { direction: rtl; }
     @media (max-width: 600px) {
-      header { flex-direction: column; gap: 1rem; text-align: center; }
-      .hero h2 { font-size: 1.8rem; }
+      .site-header { flex-direction: column; gap: 0.8rem; text-align: center; }
+      .hero h2 { font-size: 1.6rem; }
+      .form-row { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-<header>
+<header class="site-header">
   <div>
     <h1>7roast</h1>
-    <p>Specialty Coffee</p>
+    <p id="site-tagline">Specialty Coffee – from friends for friends</p>
   </div>
-  <nav>
-    <a href="#produkte">Kaffees</a>
-    <a href="#bestellen">Bestellen</a>
-    <a href="#kontakt">Kontakt</a>
-  </nav>
+  <div class="lang-bar">
+    <button data-lang="de" class="active" onclick="setLang('de')">DE</button>
+    <button data-lang="en" onclick="setLang('en')">EN</button>
+    <button data-lang="ru" onclick="setLang('ru')">RU</button>
+    <button data-lang="ka" onclick="setLang('ka')">KA</button>
+    <button data-lang="fa" onclick="setLang('fa')">FA</button>
+  </div>
 </header>
 
 <div class="hero">
-  <h2>Kaffee, wie er sein sollte.</h2>
-  <p>Handgeroestete Specialty Coffees – direkt zu dir nach Hause. Sorgfaeltig ausgewaehlt, schonend geroestet.</p>
-  <a href="#bestellen" class="btn">Jetzt bestellen</a>
+  <h2 id="hero-title">Kaffee, wie er sein sollte.</h2>
+  <p id="hero-sub">Handgeroestete Specialty Coffees – direkt zu dir nach Hause.</p>
+  <a href="#bestellen" class="btn-hero" id="hero-btn">Jetzt bestellen</a>
 </div>
 
-<section id="produkte">
-  <h2>Unsere Kaffees</h2>
-  <div class="products" id="produktliste">
-    <!-- Produkte werden hier angezeigt -->
-    <div class="card">
-      <h3>Ethiopia Yirgacheffe</h3>
-      <div class="origin">Herkunft: Yirgacheffe, Aethiopien</div>
-      <p>Blumige Aromen von Jasmin und Bergamotte, mit einer leichten Zitrusnote und einem seidigen Abgang. Ideal fuer Filter und Aeropress.</p>
-      <div class="price">14,90 € / 250g</div>
-      <div class="stock">✓ Auf Lager</div>
+<!-- KAFFEE SORTEN -->
+<div class="section" id="produkte">
+  <h2 class="section-title" id="title-coffees">Unsere Kaffees</h2>
+  <div class="coffee-grid" id="coffee-grid">
+    <!-- Karten werden per JS gerendert basierend auf Bestand -->
+    <div class="coffee-card" data-id="BRA-01" data-stock="3850">
+      <h3>Brasil Cerrado</h3>
+      <div class="coffee-id">BRA-01</div>
+      <p id="desc-bra">Vollmundiger Koerper, Noten von Haselnuss, dunkler Schokolade und leichter Suesse. Ideal fuer Espresso und Milchgetraenke.</p>
+      <div class="stock-bar"><span class="stock-dot ok"></span><span id="stock-bra">3850g verfuegbar</span></div>
     </div>
-    <div class="card">
-      <h3>Colombia Huila</h3>
-      <div class="origin">Herkunft: Huila, Kolumbien</div>
-      <p>Vollmundig mit Noten von rotem Apfel, Karamell und dunkler Schokolade. Vielseitig einsetzbar – perfekt als Espresso oder Milchkaffee.</p>
-      <div class="price">13,50 € / 250g</div>
-      <div class="stock">✓ Auf Lager</div>
+    <div class="coffee-card" data-id="COL-01" data-stock="4125">
+      <h3>Colombia</h3>
+      <div class="coffee-id">COL-01</div>
+      <p id="desc-col">Ausgewogener Kaffee mit Noten von Karamell, rotem Apfel und milder Saeurestruktur. Vielseitig fuer alle Zubereitungen.</p>
+      <div class="stock-bar"><span class="stock-dot ok"></span><span id="stock-col">4125g verfuegbar</span></div>
     </div>
-    <div class="card">
-      <h3>Kenya AA</h3>
-      <div class="origin">Herkunft: Nyeri, Kenia</div>
-      <p>Lebendige Saeurestruktur mit Aromen von schwarzer Johannisbeere, Tomate und braunem Zucker. Ein klassischer kenianischer Filterkaffee.</p>
-      <div class="price">15,90 € / 250g</div>
-      <div class="stock stock low">⚠ Geringe Stueckzahl</div>
+    <div class="coffee-card" data-id="RWA-01" data-stock="375">
+      <h3>Rwanda</h3>
+      <div class="coffee-id">RWA-01</div>
+      <p id="desc-rwa">Fruchtig und lebendig mit Noten von Zitrus, Pfirsich und braunem Zucker. Perfekt als Filterkaffee.</p>
+      <div class="stock-bar"><span class="stock-dot low"></span><span id="stock-rwa">375g verfuegbar – bald vergriffen!</span></div>
     </div>
-    <div class="card">
-      <h3>Guatemala Antigua</h3>
-      <div class="origin">Herkunft: Antigua, Guatemala</div>
-      <p>Ausgewogener Koerper mit Noten von Walnuss, Schokolade und einer dezenten Wuerzigkeit. Ideal fuer den morgendlichen Espresso.</p>
-      <div class="price">12,90 € / 250g</div>
-      <div class="stock">✓ Auf Lager</div>
+    <div class="coffee-card" data-id="IND-01" data-stock="0">
+      <h3>India Yerewan</h3>
+      <div class="coffee-id">IND-01</div>
+      <p>Wuerzige Noten, kraeftiger Koerper. Derzeit nicht vorraeting.</p>
+      <div class="stock-bar"><span class="stock-dot" style="background:#ccc"></span><span>Nicht vorraeting</span></div>
+    </div>
+    <div class="coffee-card" data-id="Eth-01" data-stock="25">
+      <h3>Ethiopia Limmu washed</h3>
+      <div class="coffee-id">Eth-01</div>
+      <p id="desc-eth">Blumige Aromen von Jasmin und Bergamotte, feine Zitrusnote, seidiger Abgang. Nur noch wenige Gramm!</p>
+      <div class="stock-bar"><span class="stock-dot low"></span><span id="stock-eth">25g verfuegbar – letzte Reste!</span></div>
+    </div>
+    <div class="coffee-card" data-id="Pan-01" data-stock="500">
+      <h3>Panama</h3>
+      <div class="coffee-id">Pan-01</div>
+      <p id="desc-pan">Eleganter, komplexer Kaffee mit floralen Noten und feiner Fruchtsueße. Premium Qualitaet.</p>
+      <div class="stock-bar"><span class="stock-dot ok"></span><span id="stock-pan">500g verfuegbar</span></div>
+    </div>
+    <div class="coffee-card" data-id="Nic-01" data-stock="0">
+      <h3>Nicaragua</h3>
+      <div class="coffee-id">Nic-01</div>
+      <p>Sanfte Saeurestruktur, Noten von Haselnuss. Derzeit nicht vorraeting.</p>
+      <div class="stock-bar"><span class="stock-dot" style="background:#ccc"></span><span>Nicht vorraeting</span></div>
+    </div>
+    <div class="coffee-card" data-id="Decaf-01" data-stock="0">
+      <h3>Decaf Coffee</h3>
+      <div class="coffee-id">Decaf-01</div>
+      <p>Koffeinfreie Option. Derzeit nicht vorraeting.</p>
+      <div class="stock-bar"><span class="stock-dot" style="background:#ccc"></span><span>Nicht vorraeting</span></div>
     </div>
   </div>
-</section>
+</div>
 
-<section id="bestellen">
-  <h2>Bestellen</h2>
-  <form id="bestellformular">
-    <div class="form-group">
-      <label for="name">Dein Name *</label>
-      <input type="text" id="name" name="name" required placeholder="Max Mustermann" />
-    </div>
-    <div class="form-group">
-      <label for="email">E-Mail Adresse *</label>
-      <input type="email" id="email" name="email" required placeholder="max@beispiel.de" />
-    </div>
-    <div class="form-group">
-      <label for="produkt">Produkt *</label>
-      <select id="produkt" name="produkt" required>
-        <option value="">-- Bitte waehlen --</option>
-        <option value="Ethiopia Yirgacheffe 250g – 14,90 €">Ethiopia Yirgacheffe 250g – 14,90 €</option>
-        <option value="Colombia Huila 250g – 13,50 €">Colombia Huila 250g – 13,50 €</option>
-        <option value="Kenya AA 250g – 15,90 €">Kenya AA 250g – 15,90 €</option>
-        <option value="Guatemala Antigua 250g – 12,90 €">Guatemala Antigua 250g – 12,90 €</option>
+<!-- PREISE -->
+<div class="section" id="preise">
+  <h2 class="section-title" id="title-prices">Preise (GEL)</h2>
+  <div class="price-table">
+    <table>
+      <thead><tr><th id="th-tier">Kundenkategorie</th><th>125g</th><th>250g</th><th>500g</th><th>1000g</th><th id="th-ground">+Gemahlen</th></tr></thead>
+      <tbody>
+        <tr><td id="tier-normal">Normal</td><td>12</td><td>22</td><td>40</td><td>80</td><td>+2</td></tr>
+        <tr><td id="tier-friend">Friend</td><td>9</td><td>18</td><td>35</td><td>70</td><td>+1,50</td></tr>
+        <tr><td id="tier-cofounder">Co-Founder</td><td>7,50</td><td>15</td><td>30</td><td>60</td><td>+1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85rem;color:#888;" id="price-note">Preise in GEL. Mahlzuschlag nur bei gewahlter Option "Gemahlen".</p>
+</div>
+<!-- BESTELLFORMULAR -->
+<div class="section" id="bestellen">
+  <h2 class="section-title" id="title-order">Bestellen</h2>
+  <div class="order-wrapper">
+    <div class="card-box" id="configurator">
+      <label class="form-label" id="lbl-product">SORTE:</label>
+      <select id="product" class="form-input">
+        <option value="" disabled selected id="opt-select-coffee">Kaffee waehlen</option>
+        <option value="BRA-01" data-stock="3850">Brasil Cerrado (BRA-01)</option>
+        <option value="COL-01" data-stock="4125">Colombia (COL-01)</option>
+        <option value="RWA-01" data-stock="375">Rwanda (RWA-01)</option>
+        <option value="Eth-01" data-stock="25">Ethiopia Limmu washed (Eth-01)</option>
+        <option value="Pan-01" data-stock="500">Panama (Pan-01)</option>
       </select>
-    </div>
-    <div class="form-group">
-      <label for="menge">Menge *</label>
-      <select id="menge" name="menge" required>
-        <option value="1">1 Packung</option>
-        <option value="2">2 Packungen</option>
-        <option value="3">3 Packungen</option>
-        <option value="4">4 Packungen</option>
-        <option value="5">5+ Packungen</option>
+      <div class="form-row">
+        <div>
+          <label class="form-label" id="lbl-quantity">MENGE:</label>
+          <select id="quantity" class="form-input">
+            <option value="" disabled selected id="opt-select-qty">Waehlen</option>
+            <option value="125">125g</option>
+            <option value="250">250g</option>
+            <option value="500">500g</option>
+            <option value="1000">1000g</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label" id="lbl-grind">ART:</label>
+          <select id="grind_type" class="form-input">
+            <option value="Ganze Bohne" id="opt-whole">Ganze Bohne</option>
+            <option value="Gemahlen" id="opt-ground">Gemahlen</option>
+          </select>
+        </div>
+      </div>
+      <label class="form-label" id="lbl-style">ZUBEREITUNG:</label>
+      <select id="style" class="form-input">
+        <option value="" disabled selected id="opt-select-style">Zubereitung waehlen</option>
+        <option value="Espresso" id="opt-espresso">Espresso</option>
+        <option value="Filterkaffee" id="opt-filter">Filterkaffee</option>
+        <option value="French Press" id="opt-french">French Press</option>
       </select>
+      <button type="button" class="btn-add" id="btn-add">+ Hinzufuegen</button>
     </div>
-    <div class="form-group">
-      <label for="mahlung">Mahlung</label>
-      <select id="mahlung" name="mahlung">
-        <option value="ganze Bohne">Ganze Bohne</option>
-        <option value="filter">Filter (grob)</option>
-        <option value="aeropress">Aeropress (mittel)</option>
-        <option value="espresso">Espresso (fein)</option>
-        <option value="mokka">Mokka (sehr fein)</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="adresse">Lieferadresse *</label>
-      <textarea id="adresse" name="adresse" required placeholder="Strasse Nr., PLZ Ort"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="nachricht">Anmerkungen</label>
-      <textarea id="nachricht" name="nachricht" placeholder="Sonderwuensche, Fragen ..."></textarea>
-    </div>
-    <button type="submit" class="btn submit-btn">Bestellung absenden</button>
-    <div id="result"></div>
-  </form>
-</section>
 
-<footer id="kontakt">
-  <p>7roast Specialty Coffee &nbsp;|&nbsp; <a href="mailto:hallo@7roast.coffee">hallo@7roast.coffee</a></p>
-  <p style="margin-top:0.5rem; font-size:0.85rem; opacity:0.7;">© 2025 7roast – Alle Rechte vorbehalten</p>
+    <div class="card-box" id="basket-box" style="display:none;">
+      <div id="basket-items"></div>
+      <div class="price-display" id="price-display" style="display:none;">
+        <div class="price-amount" id="price-amount"></div>
+        <span class="discount-note" id="discount-note"></span>
+      </div>
+    </div>
+
+    <form class="card-box" id="order-form">
+      <label class="form-label" id="lbl-name">DEIN NAME:</label>
+      <input type="text" id="customerName" name="customerName" class="form-input" placeholder="Name eintragen..." required>
+      <label class="form-label" id="lbl-email">E-MAIL:</label>
+      <input type="email" id="customerEmail" name="customerEmail" class="form-input" placeholder="email@beispiel.de" required>
+      <label class="form-label" id="lbl-notes">ANMERKUNGEN:</label>
+      <textarea id="notes" name="notes" class="form-input" rows="3" placeholder="Besondere Wuensche..."></textarea>
+      <button type="submit" class="btn-submit" id="btn-submit" disabled id="lbl-submit">Bestellung abschicken</button>
+      <div class="msg-box" id="msg-box"></div>
+    </form>
+  </div>
+</div>
+
+<!-- INFOS / BREWING -->
+<div class="section" id="infos">
+  <h2 class="section-title" id="title-info">Brewing Informations</h2>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span id="acc-en-title">Brewing Recommendations (EN)</span><span>&#9660;</span>
+    </button>
+    <div class="accordion-body">
+      <div class="brew-section">
+        <h4>Espresso</h4>
+        <ul>
+          <li>Dose: 18g (Double Shot)</li>
+          <li>Yield: 36g Espresso</li>
+          <li>Time: 25–30 seconds</li>
+          <li>Temperature: 93–94°C</li>
+          <li>Pro Tip: If it tastes too sour, grind finer.</li>
+        </ul>
+        <h4>Filter Coffee (V60 / Chemex)</h4>
+        <ul>
+          <li>Ratio: 15g coffee to 250ml water</li>
+          <li>Grind Size: Medium (like table salt)</li>
+          <li>Brew Time: ~3:00 minutes</li>
+          <li>Temperature: 92–96°C</li>
+        </ul>
+        <h4>French Press</h4>
+        <ul>
+          <li>Ratio: 20g coffee to 300ml water</li>
+          <li>Grind Size: Coarse (like sea salt)</li>
+          <li>Important: First, pour a small amount of water over the grounds and stir briefly to ensure they are completely saturated. Then add the remaining water.</li>
+          <li>Steep Time: 4 minutes total.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span>მომზადების რეკომენდაციები (KA)</span><span>&#9660;</span>
+    </button>
+    <div class="accordion-body">
+      <div class="brew-section">
+        <h4>ესპრესო</h4>
+        <ul>
+          <li>დოზა: 18გ (მრმაგი შოტი)</li>
+          <li>გამოსავალი: 36გ ესპრესო</li>
+          <li>დრო: 25–30 წამი</li>
+          <li>ტემპერატურა: 93–94°C</li>
+          <li>რჩევა: თუ ყავა ძალიან მჟავეა, დაფქვით უფრო წვრილად.</li>
+        </ul>
+        <h4>ფილტრი (V60 / Chemex)</h4>
+        <ul>
+          <li>პროპორცია: 15გ ყავა 250მლ წყალზე</li>
+          <li>დაფქვა: საშუალო (როგორც სუფრის მარილი)</li>
+          <li>დრო: დაახლოებით 3:00 წუთი</li>
+          <li>ტემპერატურა: 92–96°C</li>
+        </ul>
+        <h4>ფრენჩ პრესი</h4>
+        <ul>
+          <li>პროპორცია: 20გ ყავა 300მლ წყალზე</li>
+          <li>დაფქვა: უხეში (როგორც ზღვის მარილი)</li>
+          <li>მნიშვნელოვანია: ჯერ დაასხით ცოტა წყალი, მოურიეთ, შემდეგ დაამატეთ დანარჩენი.</li>
+          <li>დაყოვნება: 4 წუთი სულ.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggleAcc(this)">
+      <span>Рекомендации по приготовлению (RU)</span><span>&#9660;</span>
+    </button>
+    <div class="accordion-body">
+      <div class="brew-section">
+        <h4>Эспрессо</h4>
+        <ul>
+          <li>Доза: 18г (двойной шот)</li>
+          <li>Выход: 36г эспрессо</li>
+          <li>Время: 25–30 секунд</li>
+          <li>Температура: 93–94°C</li>
+          <li>Совет: если вкус слишком кислый – смелите мельче.</li>
+        </ul>
+        <h4>Фильтр-кофе (V60 / Chemex)</h4>
+        <ul>
+          <li>Пропорция: 15г кофе на 250мл воды</li>
+          <li>Помол: средний (как поваренная соль)</li>
+          <li>Время заваривания: ~3:00 минуты</li>
+          <li>Температура: 92–96°C</li>
+        </ul>
+        <h4>Френч-пресс</h4>
+        <ul>
+          <li>Пропорция: 20г кофе на 300мл воды</li>
+          <li>Помол: крупный (как морская соль)</li>
+          <li>Важно: сначала залейте немного воды и перемешайте, затем долейте остаток.</li>
+          <li>Время настаивания: 4 минуты.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="accordion" dir="rtl">
+    <button class="accordion-header" onclick="toggleAcc(this)" style="direction:rtl;text-align:right;">
+      <span>&#9660;</span><span>توصیه‌های دم‌آوری (FA)</span>
+    </button>
+    <div class="accordion-body" style="direction:rtl;text-align:right;">
+      <div class="brew-section">
+        <h4>اسپرسو</h4>
+        <ul>
+          <li>دوز: ۱۸ گرم (دوبل شات)</li>
+          <li>خروجی: ۳۶ گرم اسپرسو</li>
+          <li>زمان: ۲۵–۳۰ ثانیه</li>
+          <li>دما: ۹۳–۹۴°C</li>
+          <li>نکته: اگر طعم خیلی ترش بود، آسیاب را ریزتر کنید.</li>
+        </ul>
+        <h4>فیلتر (V60 / Chemex)</h4>
+        <ul>
+          <li>نسبت: ۱۵ گرم قهوه به ۲۵۰ میلی‌لیتر آب</li>
+          <li>اندازه آسیاب: متوسط (مثل نمک معمولی)</li>
+          <li>زمان دم‌آوری: حدود ۳ دقیقه</li>
+          <li>دما: ۹۲–۹۶°C</li>
+        </ul>
+        <h4>فرنچ پرس</h4>
+        <ul>
+          <li>نسبت: ۲۰ گرم قهوه به ۳۰۰ میلی‌لیتر آب</li>
+          <li>اندازه آسیاب: درشت (مثل نمک دریا)</li>
+          <li>مهم: ابتدا کمی آب بریزید و هم بزنید، سپس بقیه آب را اضافه کنید.</li>
+          <li>زمان دم: ۴ دقیقه.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ABOUT -->
+<div class="section" id="about">
+  <h2 class="section-title" id="title-about">About Us / ჩვენს შესახებ / О нас / درباره ما</h2>
+  <div class="about-box">
+    <p id="about-text">7roast ist ein kleines, leidenschaftliches Kaffeeprojekt – from friends for friends. Wir roesten handverlesen ausgewaehlte Specialty Coffees aus aller Welt und liefern sie direkt zu euch. Qualitaet, Transparenz und Freundschaft stehen bei uns im Mittelpunkt.</p>
+    <p style="margin-top:1rem;color:#888;font-size:0.9rem;">📧 seven.farsi(at)gmail.com &nbsp;|&nbsp; 📱 551 171 164</p>
+  </div>
+</div>
+
+<footer>
+  <p>7roast Specialty Coffee &nbsp;|&nbsp; <a href="mailto:seven.farsi@gmail.com">seven.farsi@gmail.com</a> &nbsp;|&nbsp; 551 171 164</p>
+  <p style="margin-top:0.4rem;font-size:0.8rem;opacity:0.7;">© 2026 7roast – All rights reserved</p>
 </footer>
 
 <script>
-  // ============================================================
-  // WICHTIG: Trage hier deine Google Apps Script Web App URL ein
-  // Nach dem Deploy in Apps Script bekommst du eine URL wie:
-  // https://script.google.com/macros/s/DEINE_ID_HIER/exec
-  // ============================================================
-  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNpxl7GJ47-T9f9Br_mgxZCnKqNLscoFYUIXD3UfjbROUYu8xgaNr_tHdg3LaDb9Iy/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNpxl7GJ47-T9f9Br_mgxZCnKqNLscoFYUIXD3UfjbROUYu8xgaNr_tHdg3LaDb9Iy/exec';
 
-  document.getElementById('bestellformular').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const btn = this.querySelector('button[type="submit"]');
-    const resultDiv = document.getElementById('result');
-    
-    btn.disabled = true;
-    btn.textContent = 'Wird gesendet...';
-    resultDiv.style.display = 'none';
-    resultDiv.className = '';
+const T = {
+  de: {
+    tagline:'Specialty Coffee – from friends for friends',
+    heroTitle:'Kaffee, wie er sein sollte.',
+    heroSub:'Handgeroestete Specialty Coffees – direkt zu dir nach Hause.',
+    heroBtn:'Jetzt bestellen',
+    titleCoffees:'Unsere Kaffees', titlePrices:'Preise (GEL)', titleOrder:'Bestellen',
+    titleInfo:'Bruehinformationen', titleAbout:'Ueber uns',
+    thTier:'Kundenkategorie', thGround:'+Gemahlen',
+    tierNormal:'Normal', tierFriend:'Friend', tierCofounder:'Co-Founder',
+    priceNote:'Preise in GEL. Mahlzuschlag nur bei "Gemahlen".',
+    lblProduct:'SORTE:', lblQty:'MENGE:', lblGrind:'ART:', lblStyle:'ZUBEREITUNG:',
+    lblName:'DEIN NAME:', lblEmail:'E-MAIL:', lblNotes:'ANMERKUNGEN:',
+    optCoffee:'Kaffee waehlen', optQty:'Waehlen', optStyle:'Zubereitung waehlen',
+    optWhole:'Ganze Bohne', optGround:'Gemahlen',
+    optEspresso:'Espresso', optFilter:'Filterkaffee', optFrench:'French Press',
+    btnAdd:'+ Hinzufuegen', btnSubmit:'Bestellung abschicken',
+    loading:'Wird gesendet...', accEn:'Brewing Recommendations (EN)',
+    aboutText:'7roast ist ein kleines, leidenschaftliches Kaffeeprojekt – from friends for friends. Wir roesten handverlesen ausgewaehlte Specialty Coffees aus aller Welt und liefern sie direkt zu euch.',
+    stockError:'Nicht genug Lagerbestand! Nur noch {stock}g verfuegbar.',
+    basketEmpty:'Warenkorb ist leer!', success:'✓ Bestellung erfolgreich! Wir melden uns bald.',
+    discountFriend:'Friend-Rabatt', discountCofounder:'Co-Founder-Preis',
+  },
+  en: {
+    tagline:'Specialty Coffee – from friends for friends',
+    heroTitle:'Coffee, the way it should be.',
+    heroSub:'Hand-roasted specialty coffees – delivered to your door.',
+    heroBtn:'Order now',
+    titleCoffees:'Our Coffees', titlePrices:'Prices (GEL)', titleOrder:'Order',
+    titleInfo:'Brewing Informations', titleAbout:'About Us',
+    thTier:'Customer Tier', thGround:'+Ground',
+    tierNormal:'Normal', tierFriend:'Friend', tierCofounder:'Co-Founder',
+    priceNote:'Prices in GEL. Grinding surcharge applies for "Ground" option.',
+    lblProduct:'VARIETY:', lblQty:'QUANTITY:', lblGrind:'TYPE:', lblStyle:'METHOD:',
+    lblName:'YOUR NAME:', lblEmail:'EMAIL:', lblNotes:'NOTES:',
+    optCoffee:'Select coffee', optQty:'Select', optStyle:'Select method',
+    optWhole:'Whole Bean', optGround:'Ground',
+    optEspresso:'Espresso', optFilter:'Filter Coffee', optFrench:'French Press',
+    btnAdd:'+ Add Coffee', btnSubmit:'Submit Order',
+    loading:'Processing...', accEn:'Brewing Recommendations (EN)',
+    aboutText:'7roast is a small, passionate coffee project – from friends for friends. We hand-select and roast specialty coffees from around the world and deliver them directly to you.',
+    stockError:'Not enough stock! Only {stock}g left.',
+    basketEmpty:'Basket is empty!', success:'✓ Order submitted! We will get back to you shortly.',
+    discountFriend:'Friend discount', discountCofounder:'Co-Founder price',
+  },
+  ru: {
+    tagline:'Specialty Coffee – от друзей для друзей',
+    heroTitle:'Кофе таким, каким он должен быть.',
+    heroSub:'Обжаренный вручную специальный кофе – прямо к вашей двери.',
+    heroBtn:'Заказать',
+    titleCoffees:'Наш кофе', titlePrices:'Цены (GEL)', titleOrder:'Заказ',
+    titleInfo:'Рекомендации', titleAbout:'О нас',
+    thTier:'Категория', thGround:'+Молотый',
+    tierNormal:'Обычный', tierFriend:'Друг', tierCofounder:'Со-основатель',
+    priceNote:'Цены в GEL. Доплата за помол только при выборе "Молотый".',
+    lblProduct:'СОРТ:', lblQty:'КОЛ-ВО:', lblGrind:'ТИП:', lblStyle:'СПОСОБ:',
+    lblName:'ВАШЕ ИМЯ:', lblEmail:'E-MAIL:', lblNotes:'ЗАМЕТКИ:',
+    optCoffee:'Выбрать кофе', optQty:'Выбрать', optStyle:'Выбрать способ',
+    optWhole:'В зёрнах', optGround:'Молотый',
+    optEspresso:'Эспрессо', optFilter:'Фильтр', optFrench:'Френч-пресс',
+    btnAdd:'+ Добавить', btnSubmit:'Отправить заказ',
+    loading:'Отправка...', accEn:'Brewing Recommendations (EN)',
+    aboutText:'7roast – небольшой проект о кофе с душой. Мы отбираем и обжариваем specialty кофе со всего мира и доставляем прямо к вам.',
+    stockError:'Недостаточно запасов! Осталось {stock}г.',
+    basketEmpty:'Корзина пуста!', success:'✓ Заказ принят! Мы скоро свяжемся с вами.',
+    discountFriend:'Скидка друга', discountCofounder:'Цена со-основателя',
+  },
+  ka: {
+    tagline:'Specialty Coffee – მეგობრებისგან მეგობრებისთვის',
+    heroTitle:'ყავა, როგორი უნდა იყოს.',
+    heroSub:'ხელნაჩვევი specialty coffees – პირდაპირ შენამდე.',
+    heroBtn:'შეკვეთა',
+    titleCoffees:'ჩვენი ყავები', titlePrices:'ფასები (GEL)', titleOrder:'შეკვეთა',
+    titleInfo:'მომზადების ინფო', titleAbout:'ჩვენს შესახებ',
+    thTier:'კატეგორია', thGround:'+დაფქვა',
+    tierNormal:'ჩვეულებრივი', tierFriend:'მეგობარი', tierCofounder:'თანადამფუძნებელი',
+    priceNote:'ფასები GEL-ში. დაფქვის დანამატი მოქმედებს "დაფქვილი" ვარიანტისთვის.',
+    lblProduct:'ჯიში:', lblQty:'რაოდენობა:', lblGrind:'ტიპი:', lblStyle:'მომზადება:',
+    lblName:'შენი სახელი:', lblEmail:'ელ.ფოსტა:', lblNotes:'შენიშვნა:',
+    optCoffee:'აირჩიეთ ყავა', optQty:'აირჩიეთ', optStyle:'აირჩიეთ მომზადება',
+    optWhole:'მარცვალი', optGround:'დაფქვილი',
+    optEspresso:'ესპრესო', optFilter:'ფილტრი', optFrench:'ფრენჩ პრესი',
+    btnAdd:'+ დამატება', btnSubmit:'გაგზავნა',
+    loading:'იგზავნება...', accEn:'Brewing Recommendations (EN)',
+    aboutText:'7roast არის პატარა, ვნებიანი ყავის პროექტი – მეგობრებისგან მეგობრებისთვის.',
+    stockError:'არ არის საკმარისი! დარჩა {stock}გ.',
+    basketEmpty:'კალათა ცარიელია!', success:'✓ შეკვეთა გაგზავნილია! მალე დაგიკავშირდებით.',
+    discountFriend:'მეგობრის ფასდაკლება', discountCofounder:'თანადამფუძნებლის ფასი',
+  },
+  fa: {
+    tagline:'Specialty Coffee – از دوستان برای دوستان',
+    heroTitle:'قهوه، آن‌طور که باید باشد.',
+    heroSub:'قهوه‌های تخصصی برشته‌شده با دست – مستقیم به خانه شما.',
+    heroBtn:'سفارش دهید',
+    titleCoffees:'قهوه‌های ما', titlePrices:'قیمت‌ها (GEL)', titleOrder:'سفارش',
+    titleInfo:'اطلاعات دم‌آوری', titleAbout:'درباره ما',
+    thTier:'دسته مشتری', thGround:'+آسیاب',
+    tierNormal:'عادی', tierFriend:'دوست', tierCofounder:'هم‌بنیان‌گذار',
+    priceNote:'قیمت‌ها به GEL. اضافه‌بهای آسیاب فقط برای گزینه "آسیاب شده".',
+    lblProduct:'نوع:', lblQty:'مقدار:', lblGrind:'نوع:', lblStyle:'روش دم:',
+    lblName:'نام شما:', lblEmail:'ایمیل:', lblNotes:'توضیحات:',
+    optCoffee:'انتخاب قهوه', optQty:'انتخاب', optStyle:'انتخاب روش',
+    optWhole:'دانه', optGround:'آسیاب شده',
+    optEspresso:'اسپرسو', optFilter:'فیلتر', optFrench:'فرنچ پرس',
+    btnAdd:'+ افزودن', btnSubmit:'ارسال سفارش',
+    loading:'در حال ارسال...', accEn:'Brewing Recommendations (EN)',
+    aboutText:'7roast یک پروژه قهوه کوچک و پرشور است – از دوستان برای دوستان.',
+    stockError:'موجودی کافی نیست! فقط {stock}گرم مانده.',
+    basketEmpty:'سبد خرید خالی است!', success:'✓ سفارش ثبت شد! به زودی با شما تماس می‌گیریم.',
+    discountFriend:'تخفیف دوست', discountCofounder:'قیمت هم‌بنیان‌گذار',
+  }
+};
 
-    const formData = {
-      name:     document.getElementById('name').value,
-      email:    document.getElementById('email').value,
-      produkt:  document.getElementById('produkt').value,
-      menge:    document.getElementById('menge').value,
-      mahlung:  document.getElementById('mahlung').value,
-      adresse:  document.getElementById('adresse').value,
-      nachricht:document.getElementById('nachricht').value,
-      datum:    new Date().toLocaleString('de-DE')
-    };
+let lang = 'de';
+let basket = [];
 
-    try {
-      const response = await fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
+function setLang(l) {
+  lang = l;
+  const t = T[l];
+  const isRtl = l === 'fa';
+  document.body.dir = isRtl ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-bar button').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  document.getElementById('site-tagline').textContent = t.tagline;
+  document.getElementById('hero-title').textContent = t.heroTitle;
+  document.getElementById('hero-sub').textContent = t.heroSub;
+  document.getElementById('hero-btn').textContent = t.heroBtn;
+  document.getElementById('title-coffees').textContent = t.titleCoffees;
+  document.getElementById('title-prices').textContent = t.titlePrices;
+  document.getElementById('title-order').textContent = t.titleOrder;
+  document.getElementById('title-info').textContent = t.titleInfo;
+  document.getElementById('title-about').textContent = t.titleAbout;
+  document.getElementById('th-tier').textContent = t.thTier;
+  document.getElementById('th-ground').textContent = t.thGround;
+  document.getElementById('tier-normal').textContent = t.tierNormal;
+  document.getElementById('tier-friend').textContent = t.tierFriend;
+  document.getElementById('tier-cofounder').textContent = t.tierCofounder;
+  document.getElementById('price-note').textContent = t.priceNote;
+  document.getElementById('lbl-product').textContent = t.lblProduct;
+  document.getElementById('lbl-quantity').textContent = t.lblQty;
+  document.getElementById('lbl-grind').textContent = t.lblGrind;
+  document.getElementById('lbl-style').textContent = t.lblStyle;
+  document.getElementById('lbl-name').textContent = t.lblName;
+  document.getElementById('lbl-email').textContent = t.lblEmail;
+  document.getElementById('lbl-notes').textContent = t.lblNotes;
+  document.getElementById('opt-select-coffee').textContent = t.optCoffee;
+  document.getElementById('opt-select-qty').textContent = t.optQty;
+  document.getElementById('opt-select-style').textContent = t.optStyle;
+  document.getElementById('opt-whole').textContent = t.optWhole;
+  document.getElementById('opt-ground').textContent = t.optGround;
+  document.getElementById('opt-espresso').textContent = t.optEspresso;
+  document.getElementById('opt-filter').textContent = t.optFilter;
+  document.getElementById('opt-french').textContent = t.optFrench;
+  document.getElementById('btn-add').textContent = t.btnAdd;
+  document.getElementById('btn-submit').textContent = t.btnSubmit;
+  document.getElementById('acc-en-title').textContent = t.accEn;
+  document.getElementById('about-text').textContent = t.aboutText;
+}
 
-      // no-cors gibt keinen Body zurueck – wir gehen von Erfolg aus
-      resultDiv.className = 'success';
-      resultDiv.textContent = '✓ Deine Bestellung wurde erfolgreich gesendet! Wir melden uns in Kuerze bei dir.';
-      resultDiv.style.display = 'block';
-      document.getElementById('bestellformular').reset();
-    } catch (err) {
-      resultDiv.className = 'error';
-      resultDiv.textContent = '✗ Fehler beim Senden. Bitte versuche es erneut oder schreib uns direkt an hallo@7roast.coffee';
-      resultDiv.style.display = 'block';
-    }
+// Hide coffee cards with stock=0, update qty options on product change
+document.querySelectorAll('.coffee-card').forEach(card => {
+  if (parseInt(card.dataset.stock) <= 0) card.style.display = 'none';
+});
 
-    btn.disabled = false;
-    btn.textContent = 'Bestellung absenden';
+document.getElementById('product').addEventListener('change', function() {
+  const opt = this.options[this.selectedIndex];
+  const stock = parseFloat(opt.dataset.stock || 9999);
+  const qty = document.getElementById('quantity');
+  Array.from(qty.options).forEach(o => {
+    if (!o.value) return;
+    const v = parseInt(o.value);
+    o.disabled = v > stock;
+    o.textContent = v + 'g' + (v > stock ? ' (ausverkauft)' : '');
   });
-</script>
+  if (qty.selectedOptions[0] && qty.selectedOptions[0].disabled) qty.selectedIndex = 0;
+});
 
+document.getElementById('btn-add').addEventListener('click', () => {
+  const p = document.getElementById('product');
+  const q = document.getElementById('quantity');
+  const s = document.getElementById('style');
+  const g = document.getElementById('grind_type');
+  if (!p.value || !q.value || !s.value) { alert(T[lang].optCoffee + '!'); return; }
+  const opt = p.options[p.selectedIndex];
+  const stock = parseFloat(opt.dataset.stock || 0);
+  const qty = parseInt(q.value);
+  if (qty > stock) { alert(T[lang].stockError.replace('{stock}', stock)); return; }
+  basket.push({ id: p.value, name: opt.text, quantity: qty, style: s.value, grindType: g.value });
+  opt.dataset.stock = stock - qty;
+  renderBasket();
+  updatePrice();
+  document.getElementById('btn-submit').disabled = false;
+});
+
+function removeItem(i) {
+  const item = basket[i];
+  const p = document.getElementById('product');
+  for (let o of p.options) {
+    if (o.value === item.id) { o.dataset.stock = (parseFloat(o.dataset.stock||0)) + item.quantity; break; }
+  }
+  basket.splice(i, 1);
+  renderBasket();
+  updatePrice();
+  if (basket.length === 0) document.getElementById('btn-submit').disabled = true;
+}
+
+function renderBasket() {
+  const box = document.getElementById('basket-box');
+  const items = document.getElementById('basket-items');
+  box.style.display = basket.length ? 'block' : 'none';
+  items.innerHTML = basket.map((it, i) =>
+    `<div class="basket-item"><div><strong>${it.name}</strong><br><small>${it.quantity}g, ${it.style}, ${it.grindType}</small></div><span class="remove-btn" onclick="removeItem(${i})">✕</span></div>`
+  ).join('');
+}
+
+function updatePrice() {
+  if (basket.length === 0) { document.getElementById('price-display').style.display = 'none'; return; }
+  const data = {
+    customerName: document.getElementById('customerName').value,
+    customerEmail: document.getElementById('customerEmail').value,
+    items: basket
+  };
+  fetch(APPS_SCRIPT_URL + '?action=quote', {
+    method: 'POST', mode: 'no-cors',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(data)
+  }).catch(() => {});
+}
+
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  body.classList.toggle('open');
+}
+
+document.getElementById('order-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  if (basket.length === 0) { alert(T[lang].basketEmpty); return; }
+  const btn = document.getElementById('btn-submit');
+  const msg = document.getElementById('msg-box');
+  btn.disabled = true;
+  btn.textContent = T[lang].loading;
+  const data = {
+    customerName: document.getElementById('customerName').value,
+    customerEmail: document.getElementById('customerEmail').value,
+    notes: document.getElementById('notes').value,
+    items: basket,
+    language: lang
+  };
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    msg.className = 'msg-box success';
+    msg.textContent = T[lang].success;
+    msg.style.display = 'block';
+    basket = [];
+    renderBasket();
+    this.reset();
+    document.getElementById('btn-submit').disabled = true;
+  } catch(err) {
+    msg.className = 'msg-box error';
+    msg.textContent = '✗ Fehler. Bitte schreibe uns direkt: seven.farsi@gmail.com';
+    msg.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = T[lang].btnSubmit;
+  }
+});
+
+setLang('de');
+</script>
 </body>
 </html>
