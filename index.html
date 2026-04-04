@@ -794,7 +794,7 @@ const T = {
   }
 };
 
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzNpxl7GJ47-T9f9Br_mgxZCnKqNLscoFYUIXD3UfjbROUYu8xgaNr_tHdg3LaDb9Iy/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw60UseW-T1jRPmaLIax-mz6vPlk0XG77wUCa4u3CuetxIawCWoZr0r5kX1fE-Gp0e7/exec';
 let lang = 'en';
 let basket = [];
 
@@ -978,9 +978,10 @@ document.getElementById('order-form').addEventListener('submit', function(e) {
   });
 });
 
-// ── Neue Funktion: Holt Live-Bestaende beim Laden der Seite ──
+// ── Holt Live-Bestaende beim Laden der Seite ──
 function fetchLiveInventory() {
-  fetch(APPS_SCRIPT_URL)
+  // Wir hängen '?api=stock' an die URL an, damit das Apps Script weiß, was wir wollen
+  fetch(APPS_SCRIPT_URL + '?api=stock')
     .then(response => response.json())
     .then(stockData => {
       const p = document.getElementById('product');
