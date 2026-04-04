@@ -930,7 +930,7 @@ function renderBasket() {
   ).join('');
 }
 
-// ── SUBMIT – uses no-cors POST so it reaches Apps Script ──
+// ── SUBMIT KORRIGIERT (Ohne no-cors) ──
 document.getElementById('order-form').addEventListener('submit', function(e) {
   e.preventDefault();
   if (basket.length === 0) { alert(T[lang].basketEmpty); return; }
@@ -948,23 +948,28 @@ document.getElementById('order-form').addEventListener('submit', function(e) {
     language: lang
   };
 
-  // Use no-cors POST to send to Apps Script (opaque response – cannot read result)
   fetch(APPS_SCRIPT_URL, {
     method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    // 'mode' weglassen, um normalen CORS-Request zu machen!
+    headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, // Apps Script benoetigt text/plain
     body: JSON.stringify(data)
   })
-  .then(() => {
-    msg.className = 'msg-box success';
-    msg.textContent = T[lang].success;
-    msg.style.display = 'block';
-    basket = [];
-    renderBasket();
-    this.reset();
-    btn.disabled = true;
+  .then(response => response.json()) // Jetzt koennen wir die Antwort auswerten
+  .then(result => {
+    if (result.status === "success") {
+      msg.className = 'msg-box success';
+      msg.textContent = T[lang].success;
+      msg.style.display = 'block';
+      basket = [];
+      renderBasket();
+      this.reset();
+      btn.disabled = true;
+    } else {
+      throw new Error(result.message || "Unbekannter Fehler");
+    }
   })
-  .catch(() => {
+  .catch((err) => {
+    console.error(err);
     msg.className = 'msg-box error';
     msg.textContent = T[lang].error;
     msg.style.display = 'block';
@@ -973,8 +978,26 @@ document.getElementById('order-form').addEventListener('submit', function(e) {
   });
 });
 
+// ── Neue Funktion: Holt Live-Bestaende beim Laden der Seite ──
+function fetchLiveInventory() {
+  fetch(APPS_SCRIPT_URL)
+    .then(response => response.json())
+    .then(stockData => {
+      const p = document.getElementById('product');
+      // Optionen aktualisieren
+      Array.from(p.options).forEach(opt => {
+        if (opt.value && stockData[opt.value] !== undefined) {
+          opt.dataset.stock = stockData[opt.value];
+        }
+      });
+      console.log("Live-Lagerbestand geladen!", stockData);
+    })
+    .catch(err => console.error("Fehler beim Laden der Bestaende:", err));
+}
+
 // ── INIT ──
 setLang('en');
+fetchLiveInventory();
 </script>
 </body>
 </html>
