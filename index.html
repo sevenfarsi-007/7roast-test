@@ -24,8 +24,6 @@
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 h1, h2, h3 { font-family: 'Playfair Display', serif; }
-
-/* ── LANGUAGE DROPDOWN ── */
 .lang-wrapper { position: relative; }
 .lang-btn {
   background: rgba(255,255,255,0.15);
@@ -68,9 +66,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .lang-option:hover { background: #f5f0ea; }
 .lang-option.active { background: #f0e8dc; color: var(--primary); font-weight: 600; }
 .lang-flag { font-size: 18px; }
-.lang-name { flex: 1; }
-
-/* ── HEADER ── */
 .site-header {
   background: var(--primary);
   color: #f5efe6;
@@ -87,8 +82,6 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   color: #f5efe6;
 }
 .header-brand p { font-size: 0.75rem; opacity: 0.65; letter-spacing: 1px; margin-top: 2px; }
-
-/* ── HERO ── */
 .hero {
   position: relative;
   min-height: 480px;
@@ -123,23 +116,9 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   letter-spacing: 0.3px;
 }
 .btn-hero:hover { background: var(--accent); transform: translateY(-1px); }
-
-/* ── SECTIONS ── */
 .section { padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-.section-title {
-  font-size: 1.9rem;
-  color: var(--primary);
-  margin-bottom: 0.3rem;
-  font-weight: 700;
-}
-.section-line {
-  width: 50px; height: 3px;
-  background: var(--secondary);
-  border-radius: 2px;
-  margin-bottom: 2rem;
-}
-
-/* ── COFFEE GRID ── */
+.section-title { font-size: 1.9rem; color: var(--primary); margin-bottom: 0.3rem; font-weight: 700; }
+.section-line { width: 50px; height: 3px; background: var(--secondary); border-radius: 2px; margin-bottom: 2rem; }
 .coffee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.3rem; }
 .coffee-card {
   background: var(--card);
@@ -150,11 +129,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   border: 1px solid var(--border);
 }
 .coffee-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(59,35,20,0.15); }
-.coffee-card-img {
-  width: 100%; height: 180px;
-  object-fit: cover;
-  background: #e8ddd0;
-}
+.coffee-card-img { width: 100%; height: 180px; object-fit: cover; background: #e8ddd0; }
 .coffee-card-img-placeholder {
   width: 100%; height: 180px;
   background: linear-gradient(135deg, #8B5E3C 0%, #5C3317 100%);
@@ -168,11 +143,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .coffee-price { font-size: 0.9rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.6rem; }
 .stock-bar { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--text-light); }
 .stock-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.dot-ok { background: #27ae60; }
-.dot-low { background: #e67e22; }
-.dot-out { background: #ccc; }
-
-/* ── PRICE TABLE ── */
+.dot-ok { background: #27ae60; } .dot-low { background: #e67e22; } .dot-out { background: #ccc; }
 .price-table-wrap {
   background: var(--card);
   border-radius: var(--radius);
@@ -182,90 +153,60 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 .price-table { width: 100%; border-collapse: collapse; }
 .price-table th {
-  background: var(--primary);
-  color: white;
-  padding: 12px 16px;
-  text-align: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
+  background: var(--primary); color: white;
+  padding: 12px 16px; text-align: center;
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px;
 }
-.price-table th:first-child { text-align: left; }
 .price-table td { padding: 11px 16px; border-bottom: 1px solid #f0ebe4; text-align: center; font-size: 0.9rem; }
-.price-table td:first-child { text-align: left; color: var(--text-light); font-size: 0.85rem; }
 .price-table tr:last-child td { border-bottom: none; }
 .price-table tr:hover td { background: #fdfaf7; }
 .price-note { margin-top: 0.8rem; font-size: 0.82rem; color: var(--text-light); }
-
-/* ── ORDER FORM ── */
 .order-wrapper { max-width: 600px; margin: 0 auto; }
 .card-box {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 1.6rem;
-  box-shadow: 0 6px 24px rgba(59,35,20,0.08);
-  margin-bottom: 1rem;
+  background: var(--card); border-radius: var(--radius); padding: 1.6rem;
+  box-shadow: 0 6px 24px rgba(59,35,20,0.08); margin-bottom: 1rem;
   border: 1px solid var(--border);
 }
 .form-label {
-  display: block; margin-bottom: 6px;
-  font-weight: 600; font-size: 11px;
-  color: var(--primary);
-  text-transform: uppercase; letter-spacing: 1px;
+  display: block; margin-bottom: 6px; font-weight: 600; font-size: 11px;
+  color: var(--primary); text-transform: uppercase; letter-spacing: 1px;
 }
 .form-input {
-  width: 100%; padding: 12px 14px;
-  border: 1.5px solid var(--border);
-  border-radius: 10px;
-  font-size: 15px; font-family: 'Inter', sans-serif;
-  background: #fdfaf7; color: var(--text);
-  transition: var(--transition); margin-bottom: 14px;
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+  border-radius: 10px; font-size: 15px; font-family: 'Inter', sans-serif;
+  background: #fdfaf7; color: var(--text); transition: var(--transition); margin-bottom: 14px;
   appearance: none;
 }
 .form-input:focus { outline: none; border-color: var(--secondary); background: white; box-shadow: 0 0 0 3px rgba(158,113,68,0.1); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .btn-add {
-  background: transparent; color: var(--primary);
-  border: 2px solid var(--primary);
-  padding: 12px; border-radius: 10px;
-  width: 100%; cursor: pointer;
-  font-weight: 700; font-size: 14px;
-  font-family: 'Inter', sans-serif;
-  transition: var(--transition);
+  background: transparent; color: var(--primary); border: 2px solid var(--primary);
+  padding: 12px; border-radius: 10px; width: 100%; cursor: pointer;
+  font-weight: 700; font-size: 14px; font-family: 'Inter', sans-serif; transition: var(--transition);
 }
 .btn-add:hover { background: var(--primary); color: white; }
 .basket-item {
   display: flex; justify-content: space-between; align-items: center;
-  background: #faf7f3; padding: 10px 14px; border-radius: 10px;
-  margin-bottom: 8px; font-size: 13px;
+  background: #faf7f3; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; font-size: 13px;
 }
 .remove-btn { color: #e74c3c; cursor: pointer; font-size: 18px; line-height: 1; font-weight: bold; flex-shrink: 0; }
-.price-display { text-align: right; padding: 14px 0 4px; border-top: 1px solid var(--border); margin-top: 8px; }
-.price-amount { font-size: 28px; font-weight: 700; font-family: 'Playfair Display', serif; color: var(--primary); }
 .btn-submit {
-  background: var(--secondary); color: white;
-  padding: 15px; border: none; border-radius: 10px;
+  background: var(--secondary); color: white; padding: 15px; border: none; border-radius: 10px;
   cursor: pointer; width: 100%; font-size: 16px; font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  transition: var(--transition); letter-spacing: 0.3px;
+  font-family: 'Inter', sans-serif; transition: var(--transition); letter-spacing: 0.3px;
 }
 .btn-submit:hover:not(:disabled) { background: var(--accent); }
 .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
 .msg-box { padding: 14px; border-radius: 10px; text-align: center; margin-top: 12px; font-weight: 600; display: none; }
 .msg-box.success { background: #e8f5e9; color: #2e7d32; }
 .msg-box.error { background: #ffebee; color: #c62828; }
-
-/* ── BREWING ACCORDION ── */
 .brew-accordion {
   background: var(--card); border-radius: var(--radius);
   box-shadow: 0 4px 20px rgba(59,35,20,0.08);
-  border: 1px solid var(--border);
-  margin-bottom: 0.8rem; overflow: hidden;
+  border: 1px solid var(--border); margin-bottom: 0.8rem; overflow: hidden;
 }
 .brew-acc-header {
-  width: 100%; background: none; border: none;
-  padding: 1.1rem 1.5rem;
+  width: 100%; background: none; border: none; padding: 1.1rem 1.5rem;
   text-align: left; font-size: 0.95rem; font-weight: 600;
   color: var(--primary); cursor: pointer;
   display: flex; justify-content: space-between; align-items: center;
@@ -282,20 +223,14 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .brew-method ul { list-style: none; padding: 0; }
 .brew-method ul li { font-size: 0.88rem; padding: 3px 0; color: var(--text-light); display: flex; gap: 8px; }
 .brew-method ul li::before { content: '·'; color: var(--secondary); font-weight: bold; flex-shrink: 0; }
-
-/* ── IMAGE STRIP ── */
 .img-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
 .img-strip img { width: 100%; height: 200px; object-fit: cover; border-radius: var(--radius); }
-
-/* ── ABOUT ── */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
 .about-img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius); }
 .about-text h3 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1rem; }
 .about-text p { color: var(--text-light); margin-bottom: 0.8rem; font-size: 0.95rem; }
 .contact-info { margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-light); }
 .contact-info a { color: var(--secondary); text-decoration: none; }
-
-/* ── FOOTER ── */
 footer {
   background: var(--primary); color: rgba(245,239,230,0.85);
   text-align: center; padding: 2rem 1.5rem;
@@ -303,14 +238,10 @@ footer {
 }
 footer a { color: var(--secondary); text-decoration: none; }
 footer .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #f5efe6; margin-bottom: 0.6rem; letter-spacing: 3px; }
-
-/* ── RTL ── */
 body.rtl { direction: rtl; }
 body.rtl .lang-dropdown { right: auto; left: 0; }
 body.rtl .brew-acc-header { text-align: right; }
 body.rtl .brew-method ul li { flex-direction: row-reverse; }
-
-/* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   .hero-content h2 { font-size: 2rem; }
   .about-grid { grid-template-columns: 1fr; }
@@ -324,7 +255,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
 </style>
 </head>
 <body>
-<!-- ── HEADER ── -->
 <header class="site-header">
   <div class="header-brand">
     <h1>7roast</h1>
@@ -345,7 +275,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
   </div>
 </header>
 
-<!-- ── HERO ── -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
@@ -356,12 +285,10 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
   </div>
 </div>
 
-<!-- ── OUR COFFEES ── -->
 <div class="section" id="coffees">
   <h2 class="section-title" id="title-coffees">Our Coffees</h2>
   <div class="section-line"></div>
   <div class="coffee-grid">
-
     <div class="coffee-card" data-stock="3850">
       <div class="coffee-card-img-placeholder">☕</div>
       <div class="coffee-card-body">
@@ -372,7 +299,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-bra">3850g available</span></div>
       </div>
     </div>
-
     <div class="coffee-card" data-stock="4125">
       <div class="coffee-card-img-placeholder">☕</div>
       <div class="coffee-card-body">
@@ -383,7 +309,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-col">4125g available</span></div>
       </div>
     </div>
-
     <div class="coffee-card" data-stock="375">
       <img src="https://lh3.googleusercontent.com/sitesv/APaQ0STaeTmEEESPmgQEAK-0GmqZpdbO6di-yrc9hZUmNRYjLGwgxtb19JpaSjl5hfBPOUEqP2HkrBAbypAusxorlhYjjf7lG-JaGaCNkW4nWqfCKZv3YnEBtY7jSWJhc0AH2-0u8oZEsFVD2cuySKHAoogUBBFiH9NtmDAfPwDqbkYMMjXYwwTHWOvit_HiKe0NYs-mc0S8CC7vrXUMwCL7Ra5Cf6cGR4hTQ-BB=w1280" class="coffee-card-img" alt="Rwanda" loading="lazy" />
       <div class="coffee-card-body">
@@ -394,7 +319,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-rwa">375g available – almost gone!</span></div>
       </div>
     </div>
-
     <div class="coffee-card" data-stock="25">
       <div class="coffee-card-img-placeholder">☕</div>
       <div class="coffee-card-body">
@@ -405,7 +329,6 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-eth">25g available – last stock!</span></div>
       </div>
     </div>
-
     <div class="coffee-card" data-stock="500">
       <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRAN6iWCkLM4mJMlRau7FdRopbjtc2QCROUimpsDYHjwLcG8QmzerXug-sVLfWVUghZyv2pfP1oqnEI3Qi8nSyF3olFY2sh-F0stYSzVedH_12RhFLl0FtaEsKxdMIcKv6Xal914oF0zz7MT1jCIWkt9PFJ-RoFPHKlrAIMQF-TDyzA3kZQ1VRrkudYq5IHJUgjwS8HURfMb5D8PQwSVG4eoRWPpPoz9FlqLIo=w1280" class="coffee-card-img" alt="Panama" loading="lazy" />
       <div class="coffee-card-body">
@@ -416,17 +339,14 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-pan">500g available</span></div>
       </div>
     </div>
-
   </div>
-
   <div class="img-strip" style="margin-top:2rem;">
-    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" alt="Coffee beans" loading="lazy" />
-    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SS1XcAzCXHE2BYVCG7klpl79Ml5L0HTM02KkgkRQ-dbJXbor1ngKaQEM13C1yciKQGO183piOi3Aj8FAzZg9ny4I5D9oEOLvqMJpVGTwOGyxOjXzAPoRMmU6u7YDUFSQmUhlqoI78PoSPlBb7lsrd4wdxEikvukHr5iKiW214NzbrSQ-i6q9XssJuNGuGQeWD62kK51uwVIINHxWGHMNJ-NDo0b_Dha-AqqM5Q=w1280" alt="Coffee farm" loading="lazy" />
-    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRax7YIxcgD0iOvwBkE3UZKtJWgAERySQ-W4uBXn62fhTy1LWoNrf5wyH3e_-V62s6I2h1hupZDQLTIlCV0AalQs_N0NaSw8aQ-nojSKtNEE-hyiNBsC2Z0vSK5y-h8S6WEp2rZHmma5ke5oV-86dHKXsC-WMpO5M9NW4tteiakDlLMoSYnl5N80KY98Aj2zs4NYtvzPai3NIjhIvFyM9GxmAcdl8g2y-hY=w1280" alt="Coffee cherries" loading="lazy" />
+    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" alt="Coffee farm" loading="lazy" />
+    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SS1XcAzCXHE2BYVCG7klpl79Ml5L0HTM02KkgkRQ-dbJXbor1ngKaQEM13C1yciKQGO183piOi3Aj8FAzZg9ny4I5D9oEOLvqMJpVGTwOGyxOjXzAPoRMmU6u7YDUFSQmUhlqoI78PoSPlBb7lsrd4wdxEikvukHr5iKiW214NzbrSQ-i6q9XssJuNGuGQeWD62kK51uwVIINHxWGHMNJ-NDo0b_Dha-AqqM5Q=w1280" alt="Coffee picker" loading="lazy" />
+    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRax7YIxcgD0iOvwBkE3UZKtJWgAERySQ-W4uBXn62fhTy1LWoNrf5wyH3e_-V62s6I2h1hupZDQLTIlCV0AalQs_N0NaSw8aQ-nojSKtNEE-hyiNBsC2Z0vSK5y-h8S6WEp2rZHmma5ke5oV-86dHKXsC-WMpO5M9NW4tteiakDlLMoSYnl5N80KY98Aj2zs4NYtvzPai3NIjhIvFyM9GxmAcdl8g2y-hY=w1280" alt="Coffee mountains" loading="lazy" />
   </div>
 </div>
 
-<!-- ── PRICES ── -->
 <div style="background:#f5f0ea; padding:0.1px 0;">
 <div class="section" id="prices">
   <h2 class="section-title" id="title-prices">Prices (GEL)</h2>
@@ -434,29 +354,16 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
   <div class="price-table-wrap">
     <table class="price-table">
       <thead>
-        <tr>
-          <th>125g</th>
-          <th>250g</th>
-          <th>500g</th>
-          <th>1000g</th>
-          <th id="th-ground">+ Ground</th>
-        </tr>
+        <tr><th>125g</th><th>250g</th><th>500g</th><th>1000g</th><th id="th-ground">+ Ground</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td>12</td>
-          <td>22</td>
-          <td>40</td>
-          <td>80</td>
-          <td>+2</td>
-        </tr>
+        <tr><td>12</td><td>22</td><td>40</td><td>80</td><td>+2</td></tr>
       </tbody>
     </table>
   </div>
   <p class="price-note" id="price-note">Prices in GEL. Grinding surcharge applies only when "Ground" is selected.</p>
 </div>
 </div>
-<!-- ── ORDER FORM ── -->
 <div class="section" id="order">
   <h2 class="section-title" id="title-order">Order</h2>
   <div class="section-line"></div>
@@ -499,14 +406,9 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
       </select>
       <button type="button" class="btn-add" id="btn-add">+ Add Coffee</button>
     </div>
-
     <div class="card-box" id="basket-box" style="display:none;">
       <div id="basket-items"></div>
-      <div class="price-display" id="price-display" style="display:none;">
-        <div class="price-amount" id="price-amount"></div>
-      </div>
     </div>
-
     <form class="card-box" id="order-form">
       <label class="form-label" id="lbl-name">YOUR NAME:</label>
       <input type="text" id="customerName" name="customerName" class="form-input" placeholder="Enter your name..." required>
@@ -520,206 +422,118 @@ body.rtl .brew-method ul li { flex-direction: row-reverse; }
   </div>
 </div>
 
-<!-- ── BREWING INFO ── -->
 <div style="background:#f5f0ea; padding:0.1px 0;">
 <div class="section" id="brewing">
   <h2 class="section-title" id="title-info">Brewing Recommendations</h2>
   <div class="section-line"></div>
-
-  <!-- GERMAN -->
   <div class="brew-accordion" id="brew-de">
     <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇩🇪 Zubereitungsempfehlungen</span>
-      <span class="brew-acc-icon">▾</span>
+      <span>🇩🇪 Zubereitungsempfehlungen</span><span class="brew-acc-icon">▾</span>
     </button>
     <div class="brew-acc-body">
-      <div class="brew-method">
-        <h4>Espresso</h4>
-        <ul>
-          <li>Dosis: 18g (Doppelshot)</li>
-          <li>Ausbeute: 36g Espresso</li>
-          <li>Zeit: 25–30 Sekunden</li>
-          <li>Temperatur: 93–94°C</li>
-          <li>Tipp: Schmeckt zu sauer? Feiner mahlen.</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>Filterkaffee (V60 / Chemex)</h4>
-        <ul>
-          <li>Verhältnis: 15g Kaffee auf 250ml Wasser</li>
-          <li>Mahlgrad: Mittel (wie Tafelsalz)</li>
-          <li>Brühzeit: ca. 3:00 Minuten</li>
-          <li>Temperatur: 92–96°C</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>French Press</h4>
-        <ul>
-          <li>Verhältnis: 20g Kaffee auf 300ml Wasser</li>
-          <li>Mahlgrad: Grob (wie Meersalz)</li>
-          <li>Wichtig: Erst wenig Wasser zugeben und kurz rühren, dann den Rest auffüllen.</li>
-          <li>Ziehzeit: 4 Minuten.</li>
-        </ul>
-      </div>
+      <div class="brew-method"><h4>Espresso</h4><ul>
+        <li>Dosis: 18g (Doppelshot)</li><li>Ausbeute: 36g Espresso</li>
+        <li>Zeit: 25–30 Sekunden</li><li>Temperatur: 93–94°C</li>
+        <li>Tipp: Schmeckt zu sauer? Feiner mahlen.</li>
+      </ul></div>
+      <div class="brew-method"><h4>Filterkaffee (V60 / Chemex)</h4><ul>
+        <li>Verhältnis: 15g Kaffee auf 250ml Wasser</li><li>Mahlgrad: Mittel (wie Tafelsalz)</li>
+        <li>Brühzeit: ca. 3:00 Minuten</li><li>Temperatur: 92–96°C</li>
+      </ul></div>
+      <div class="brew-method"><h4>French Press</h4><ul>
+        <li>Verhältnis: 20g Kaffee auf 300ml Wasser</li><li>Mahlgrad: Grob (wie Meersalz)</li>
+        <li>Wichtig: Erst wenig Wasser zugeben und kurz rühren, dann den Rest auffüllen.</li>
+        <li>Ziehzeit: 4 Minuten.</li>
+      </ul></div>
     </div>
   </div>
-
-  <!-- ENGLISH -->
   <div class="brew-accordion" id="brew-en">
     <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇬🇧 Brewing Recommendations</span>
-      <span class="brew-acc-icon">▾</span>
+      <span>🇬🇧 Brewing Recommendations</span><span class="brew-acc-icon">▾</span>
     </button>
     <div class="brew-acc-body">
-      <div class="brew-method">
-        <h4>Espresso</h4>
-        <ul>
-          <li>Dose: 18g (Double Shot)</li>
-          <li>Yield: 36g Espresso</li>
-          <li>Time: 25–30 seconds</li>
-          <li>Temperature: 93–94°C</li>
-          <li>Pro Tip: If it tastes too sour, grind finer.</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>Filter Coffee (V60 / Chemex)</h4>
-        <ul>
-          <li>Ratio: 15g coffee to 250ml water</li>
-          <li>Grind Size: Medium (like table salt)</li>
-          <li>Brew Time: ~3:00 minutes</li>
-          <li>Temperature: 92–96°C</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>French Press</h4>
-        <ul>
-          <li>Ratio: 20g coffee to 300ml water</li>
-          <li>Grind Size: Coarse (like sea salt)</li>
-          <li>Important: First pour a small amount of water and stir briefly, then add the rest.</li>
-          <li>Steep Time: 4 minutes.</li>
-        </ul>
-      </div>
+      <div class="brew-method"><h4>Espresso</h4><ul>
+        <li>Dose: 18g (Double Shot)</li><li>Yield: 36g Espresso</li>
+        <li>Time: 25–30 seconds</li><li>Temperature: 93–94°C</li>
+        <li>Pro Tip: If it tastes too sour, grind finer.</li>
+      </ul></div>
+      <div class="brew-method"><h4>Filter Coffee (V60 / Chemex)</h4><ul>
+        <li>Ratio: 15g coffee to 250ml water</li><li>Grind Size: Medium (like table salt)</li>
+        <li>Brew Time: ~3:00 minutes</li><li>Temperature: 92–96°C</li>
+      </ul></div>
+      <div class="brew-method"><h4>French Press</h4><ul>
+        <li>Ratio: 20g coffee to 300ml water</li><li>Grind Size: Coarse (like sea salt)</li>
+        <li>Important: First pour a small amount of water and stir briefly, then add the rest.</li>
+        <li>Steep Time: 4 minutes.</li>
+      </ul></div>
     </div>
   </div>
-
-  <!-- GEORGIAN -->
   <div class="brew-accordion" id="brew-ka">
     <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇬🇪 მომზადების რეკომენდაციები</span>
-      <span class="brew-acc-icon">▾</span>
+      <span>🇬🇪 მომზადების რეკომენდაციები</span><span class="brew-acc-icon">▾</span>
     </button>
     <div class="brew-acc-body">
-      <div class="brew-method">
-        <h4>ესპრესო</h4>
-        <ul>
-          <li>დოზა: 18გ (ორმაგი შოტი)</li>
-          <li>გამოსავალი: 36გ ესპრესო</li>
-          <li>დრო: 25–30 წამი</li>
-          <li>ტემპერატურა: 93–94°C</li>
-          <li>რჩევა: ძალიან მჟავეა? დაფქვით უფრო წვრილად.</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>ფილტრი (V60 / Chemex)</h4>
-        <ul>
-          <li>პროპორცია: 15გ ყავა 250მლ წყალზე</li>
-          <li>დაფქვა: საშუალო (სუფრის მარილის მსგავსი)</li>
-          <li>დრო: დაახლოებით 3:00 წუთი</li>
-          <li>ტემპერატურა: 92–96°C</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>ფრენჩ პრესი</h4>
-        <ul>
-          <li>პროპორცია: 20გ ყავა 300მლ წყალზე</li>
-          <li>დაფქვა: უხეში (ზღვის მარილის მსგავსი)</li>
-          <li>მნიშვნელოვანია: ჯერ ცოტა წყალი დაასხით და მოურიეთ, შემდეგ დანარჩენი დაამატეთ.</li>
-          <li>ინფუზიის დრო: 4 წუთი.</li>
-        </ul>
-      </div>
+      <div class="brew-method"><h4>ესპრესო</h4><ul>
+        <li>დოზა: 18გ (ორმაგი შოტი)</li><li>გამოსავალი: 36გ ესპრესო</li>
+        <li>დრო: 25–30 წამი</li><li>ტემპერატურა: 93–94°C</li>
+        <li>რჩევა: ძალიან მჟავეა? დაფქვით უფრო წვრილად.</li>
+      </ul></div>
+      <div class="brew-method"><h4>ფილტრი (V60 / Chemex)</h4><ul>
+        <li>პროპორცია: 15გ ყავა 250მლ წყალზე</li><li>დაფქვა: საშუალო</li>
+        <li>დრო: დაახლოებით 3:00 წუთი</li><li>ტემპერატურა: 92–96°C</li>
+      </ul></div>
+      <div class="brew-method"><h4>ფრენჩ პრესი</h4><ul>
+        <li>პროპორცია: 20გ ყავა 300მლ წყალზე</li><li>დაფქვა: უხეში</li>
+        <li>მნიშვნელოვანია: ჯერ ცოტა წყალი დაასხით, შემდეგ დანარჩენი.</li>
+        <li>ინფუზიის დრო: 4 წუთი.</li>
+      </ul></div>
     </div>
   </div>
-
-  <!-- RUSSIAN -->
   <div class="brew-accordion" id="brew-ru">
     <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇷🇺 Рекомендации по приготовлению</span>
-      <span class="brew-acc-icon">▾</span>
+      <span>🇷🇺 Рекомендации по приготовлению</span><span class="brew-acc-icon">▾</span>
     </button>
     <div class="brew-acc-body">
-      <div class="brew-method">
-        <h4>Эспрессо</h4>
-        <ul>
-          <li>Доза: 18г (двойной шот)</li>
-          <li>Выход: 36г эспрессо</li>
-          <li>Время: 25–30 секунд</li>
-          <li>Температура: 93–94°C</li>
-          <li>Совет: слишком кислый? Смелите мельче.</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>Фильтр-кофе (V60 / Chemex)</h4>
-        <ul>
-          <li>Пропорция: 15г кофе на 250мл воды</li>
-          <li>Помол: средний (как поваренная соль)</li>
-          <li>Время заваривания: ~3:00 минуты</li>
-          <li>Температура: 92–96°C</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>Френч-пресс</h4>
-        <ul>
-          <li>Пропорция: 20г кофе на 300мл воды</li>
-          <li>Помол: крупный (как морская соль)</li>
-          <li>Важно: сначала залейте немного воды и перемешайте, затем добавьте остаток.</li>
-          <li>Время настаивания: 4 минуты.</li>
-        </ul>
-      </div>
+      <div class="brew-method"><h4>Эспрессо</h4><ul>
+        <li>Доза: 18г (двойной шот)</li><li>Выход: 36г эспрессо</li>
+        <li>Время: 25–30 секунд</li><li>Температура: 93–94°C</li>
+        <li>Совет: слишком кислый? Смелите мельче.</li>
+      </ul></div>
+      <div class="brew-method"><h4>Фильтр-кофе (V60 / Chemex)</h4><ul>
+        <li>Пропорция: 15г кофе на 250мл воды</li><li>Помол: средний</li>
+        <li>Время: ~3:00 минуты</li><li>Температура: 92–96°C</li>
+      </ul></div>
+      <div class="brew-method"><h4>Френч-пресс</h4><ul>
+        <li>Пропорция: 20г кофе на 300мл воды</li><li>Помол: крупный</li>
+        <li>Важно: сначала залейте немного воды и перемешайте, затем добавьте остаток.</li>
+        <li>Время: 4 минуты.</li>
+      </ul></div>
     </div>
   </div>
-
-  <!-- FARSI -->
   <div class="brew-accordion" id="brew-fa" dir="rtl">
     <button class="brew-acc-header" onclick="toggleBrew(this)" style="direction:rtl;">
-      <span>🇮🇷 توصیه‌های دم‌آوری</span>
-      <span class="brew-acc-icon">▾</span>
+      <span>🇮🇷 توصیه‌های دم‌آوری</span><span class="brew-acc-icon">▾</span>
     </button>
     <div class="brew-acc-body" style="direction:rtl;">
-      <div class="brew-method">
-        <h4>اسپرسو</h4>
-        <ul>
-          <li>دوز: ۱۸ گرم (دوبل شات)</li>
-          <li>خروجی: ۳۶ گرم اسپرسو</li>
-          <li>زمان: ۲۵–۳۰ ثانیه</li>
-          <li>دما: ۹۳–۹۴°C</li>
-          <li>نکته: طعم خیلی ترش؟ آسیاب را ریزتر کنید.</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>فیلتر (V60 / Chemex)</h4>
-        <ul>
-          <li>نسبت: ۱۵ گرم قهوه به ۲۵۰ میلی‌لیتر آب</li>
-          <li>اندازه آسیاب: متوسط (مثل نمک معمولی)</li>
-          <li>زمان دم‌آوری: حدود ۳ دقیقه</li>
-          <li>دما: ۹۲–۹۶°C</li>
-        </ul>
-      </div>
-      <div class="brew-method">
-        <h4>فرنچ پرس</h4>
-        <ul>
-          <li>نسبت: ۲۰ گرم قهوه به ۳۰۰ میلی‌لیتر آب</li>
-          <li>اندازه آسیاب: درشت (مثل نمک دریا)</li>
-          <li>مهم: ابتدا کمی آب بریزید و هم بزنید، سپس بقیه آب را اضافه کنید.</li>
-          <li>زمان دم: ۴ دقیقه.</li>
-        </ul>
-      </div>
+      <div class="brew-method"><h4>اسپرسو</h4><ul>
+        <li>دوز: ۱۸ گرم (دوبل شات)</li><li>خروجی: ۳۶ گرم اسپرسو</li>
+        <li>زمان: ۲۵–۳۰ ثانیه</li><li>دما: ۹۳–۹۴°C</li>
+        <li>نکته: طعم خیلی ترش؟ آسیاب را ریزتر کنید.</li>
+      </ul></div>
+      <div class="brew-method"><h4>فیلتر (V60 / Chemex)</h4><ul>
+        <li>نسبت: ۱۵ گرم قهوه به ۲۵۰ میلی‌لیتر آب</li><li>اندازه آسیاب: متوسط</li>
+        <li>زمان: حدود ۳ دقیقه</li><li>دما: ۹۲–۹۶°C</li>
+      </ul></div>
+      <div class="brew-method"><h4>فرنچ پرس</h4><ul>
+        <li>نسبت: ۲۰ گرم قهوه به ۳۰۰ میلی‌لیتر آب</li><li>آسیاب: درشت</li>
+        <li>مهم: ابتدا کمی آب بریزید و هم بزنید، سپس بقیه آب را اضافه کنید.</li>
+        <li>زمان دم: ۴ دقیقه.</li>
+      </ul></div>
     </div>
   </div>
-
 </div>
 </div>
 
-<!-- ── ABOUT ── -->
 <div class="section" id="about">
   <h2 class="section-title" id="title-about">About Us</h2>
   <div class="section-line"></div>
@@ -1008,13 +822,11 @@ function setLang(l) {
   document.getElementById('lang-current-name').textContent = t.langName;
   document.getElementById('lang-dropdown').classList.remove('open');
 
-  // Update active state in dropdown
   document.querySelectorAll('.lang-option').forEach((opt, i) => {
     const langs = ['en','de','ru','ka','fa'];
     opt.classList.toggle('active', langs[i] === l);
   });
 
-  // Update all text
   document.getElementById('site-tagline').textContent = t.tagline;
   document.getElementById('hero-title').textContent = t.heroTitle;
   document.getElementById('hero-sub').textContent = t.heroSub;
@@ -1045,7 +857,6 @@ function setLang(l) {
   document.getElementById('btn-submit').textContent = t.btnSubmit;
   document.getElementById('about-title').textContent = t.aboutTitle;
   document.getElementById('about-text').textContent = t.aboutText;
-  // Coffee descriptions & stock
   document.getElementById('desc-bra').textContent = t.descBra;
   document.getElementById('desc-col').textContent = t.descCol;
   document.getElementById('desc-rwa').textContent = t.descRwa;
@@ -1057,7 +868,6 @@ function setLang(l) {
   document.getElementById('stock-eth').textContent = t.stockEth;
   document.getElementById('stock-pan').textContent = t.stockPan;
 
-  // Show/hide brewing accordions based on language
   const showMap = { en: ['brew-en'], de: ['brew-de'], ru: ['brew-ru'], ka: ['brew-ka'], fa: ['brew-fa'] };
   ['brew-de','brew-en','brew-ru','brew-ka','brew-fa'].forEach(id => {
     const el = document.getElementById(id);
@@ -1105,7 +915,6 @@ document.getElementById('btn-add').addEventListener('click', () => {
   p.selectedIndex = 0; q.selectedIndex = 0; s.selectedIndex = 0;
   renderBasket();
   document.getElementById('btn-submit').disabled = false;
-  fetchPrice();
 });
 
 function removeItem(i) {
@@ -1115,7 +924,6 @@ function removeItem(i) {
   basket.splice(i, 1);
   renderBasket();
   if (basket.length === 0) document.getElementById('btn-submit').disabled = true;
-  fetchPrice();
 }
 
 function renderBasket() {
@@ -1127,36 +935,15 @@ function renderBasket() {
   ).join('');
 }
 
-function fetchPrice() {
-  if (basket.length === 0) { document.getElementById('price-display').style.display = 'none'; return; }
-  const data = {
-    action: 'quote',
-    customerName: document.getElementById('customerName').value,
-    customerEmail: document.getElementById('customerEmail').value,
-    items: basket
-  };
-  fetch(APPS_SCRIPT_URL + '?action=quoteOrder', {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(data)
-  })
-  .then(r => r.json())
-  .then(q => {
-    const display = document.getElementById('price-display');
-    document.getElementById('price-amount').textContent = 'GEL ' + Number(q.total).toFixed(2);
-    display.style.display = 'block';
-  })
-  .catch(() => {});
-}
-
-// ── SUBMIT ──
-document.getElementById('order-form').addEventListener('submit', async function(e) {
+// ── SUBMIT – uses no-cors POST so it reaches Apps Script ──
+document.getElementById('order-form').addEventListener('submit', function(e) {
   e.preventDefault();
   if (basket.length === 0) { alert(T[lang].basketEmpty); return; }
   const btn = document.getElementById('btn-submit');
   const msg = document.getElementById('msg-box');
   btn.disabled = true;
   btn.textContent = T[lang].loading;
+
   const data = {
     action: 'submitOrder',
     customerName: document.getElementById('customerName').value,
@@ -1165,28 +952,30 @@ document.getElementById('order-form').addEventListener('submit', async function(
     items: basket,
     language: lang
   };
-  try {
-    const res = await fetch(APPS_SCRIPT_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify(data)
-    });
-    const text = await res.text();
+
+  // Use no-cors POST to send to Apps Script (opaque response – cannot read result)
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
     msg.className = 'msg-box success';
     msg.textContent = T[lang].success;
     msg.style.display = 'block';
     basket = [];
     renderBasket();
     this.reset();
-    document.getElementById('btn-submit').disabled = true;
-    document.getElementById('price-display').style.display = 'none';
-  } catch(err) {
+    btn.disabled = true;
+  })
+  .catch(() => {
     msg.className = 'msg-box error';
     msg.textContent = T[lang].error;
     msg.style.display = 'block';
     btn.disabled = false;
     btn.textContent = T[lang].btnSubmit;
-  }
+  });
 });
 
 // ── INIT ──
