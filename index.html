@@ -31,7 +31,17 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes logoFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
 @keyframes dotPulse { 0%,100% { opacity:0.4; transform:scale(0.8); } 50% { opacity:1; transform:scale(1.2); } }
-@keyframes roastSpin { 0% { transform:rotate(0deg) scale(1); } 25% { transform:rotate(90deg) scale(1.15); } 50% { transform:rotate(180deg) scale(1.3); } 75% { transform:rotate(270deg) scale(1.15); } 100% { transform:rotate(360deg) scale(1); } }
+@keyframes roastSpin { 
+    0%   { transform: perspective(300px) rotateY(0deg)   rotateX(0deg)   scale(1); }
+    15%  { transform: perspective(300px) rotateY(54deg)  rotateX(8deg)   scale(1.04); }
+    30%  { transform: perspective(300px) rotateY(108deg) rotateX(4deg)   scale(1.08); }
+    45%  { transform: perspective(300px) rotateY(162deg) rotateX(-4deg)  scale(1.04); }
+    50%  { transform: perspective(300px) rotateY(180deg) rotateX(-8deg)  scale(1); }
+    65%  { transform: perspective(300px) rotateY(234deg) rotateX(-4deg)  scale(1.04); }
+    80%  { transform: perspective(300px) rotateY(288deg) rotateX(4deg)   scale(1.08); }
+    90%  { transform: perspective(300px) rotateY(324deg) rotateX(8deg)   scale(1.04); }
+    100% { transform: perspective(300px) rotateY(360deg) rotateX(0deg)   scale(1); }
+  } 25% { transform:rotate(90deg) scale(1.15); } 50% { transform:rotate(180deg) scale(1.3); } 75% { transform:rotate(270deg) scale(1.15); } 100% { transform:rotate(360deg) scale(1); } }
 @keyframes roastColor { 0%{fill:#5c6b1a} 12%{fill:#6b7a20} 28%{fill:#a08018} 45%{fill:#b05018} 60%{fill:#7b2408} 75%{fill:#4a1408} 88%{fill:#6b2408} 100%{fill:#5c6b1a} } 10%{fill:#9ab83a} 25%{fill:#b8a832} 40%{fill:#c87820} 55%{fill:#a04010} 70%{fill:#7b2408} 80%{fill:#5c1a05} 90%{fill:#7b2408} 100%{fill:#8aac3a} } 15% { fill:#7ab648; } 30% { fill:#c8a040; } 50% { fill:#8b4513; } 70% { fill:#5c2800; } 85% { fill:#3d1200; } 100% { fill:#5a9e3a; } }
 @keyframes roastColorStroke { 0%{stroke:#3a4a0a} 35%{stroke:#7a5010} 65%{stroke:#2a0c04} 100%{stroke:#3a4a0a} } 30%{stroke:#8a6010} 60%{stroke:#3a1005} 100%{stroke:#5a7a20} } 30% { stroke:#8b6820; } 60% { stroke:#3d1800; } 100% { stroke:#3d6e28; } }
 @keyframes roastGlow { 0%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))} 38%{filter:drop-shadow(0 0 20px rgba(190,130,20,0.7))} 68%{filter:drop-shadow(0 0 24px rgba(160,50,10,0.85))} 100%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))} } 35%{filter:drop-shadow(0 0 18px rgba(200,140,30,0.7))} 65%{filter:drop-shadow(0 0 22px rgba(180,60,10,0.8))} 100%{filter:drop-shadow(0 0 10px rgba(130,180,50,0.5))} } 30% { filter:drop-shadow(0 0 16px rgba(200,160,64,0.8)); } 65% { filter:drop-shadow(0 0 24px rgba(201,100,30,0.9)); } 100% { filter:drop-shadow(0 0 8px rgba(90,158,58,0.6)); } }
@@ -90,7 +100,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* ─── HERO ─── */
 .hero { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; overflow: hidden; } .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; transition: opacity 1.2s ease; }
+.hero-bg { position: absolute; inset: 0; overflow: hidden; } .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.4s ease; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(13,27,42,0.65) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 2rem; max-width: 680px; animation: fadeInUp 1s ease 0.3s both; }
 .hero-content h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 1rem; line-height: 1.1; }
@@ -175,7 +185,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 /* ─── ROAST ANIMATION OVERLAY ─── */
 .roast-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.92); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
 .roast-overlay.active { display: flex; animation: fadeIn 0.4s ease; }
-.roast-bean { display: block; margin-bottom: 1.5rem; width: 68px; height: 90px; animation: roastSpin 2.5s ease-in-out infinite, roastGlow 4s ease-in-out infinite; transform-origin: center center; overflow: visible; }
+.roast-bean { display: block; margin-bottom: 1.5rem; width: 68px; height: 90px; animation: roastSpin 3.2s cubic-bezier(0.45,0.05,0.55,0.95) infinite, roastGlow 4s ease-in-out infinite; transform-origin: center center; overflow: visible; transform-style: preserve-3d; }
 .roast-text { color: var(--secondary); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; }
 .roast-dots { display: flex; gap: 8px; margin-top: 1rem; }
 .roast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); animation: dotPulse 1s ease-in-out infinite; }
@@ -327,7 +337,10 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
 <!-- HERO -->
 <div class="hero page-load-anim-delay-1">
   <div class="hero-bg">
-    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+    <video class="hero-video" id="hero-vid-a" autoplay muted playsinline preload="auto" style="opacity:0.45;">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+    <video class="hero-video" id="hero-vid-b" muted playsinline preload="auto" style="opacity:0;">
       <source src="hero.mp4" type="video/mp4">
     </video>
   </div>
@@ -1432,22 +1445,39 @@ document.getElementById('customerEmail').addEventListener('blur', detectTierFrom
 setLang('en');
 fetchLiveInventory();
 fetchAccessData();
-// Smooth hero video loop
+// Hero video A/B crossfade loop
 (function() {
-  const vid = document.querySelector('.hero-video');
-  if (!vid) return;
-  vid.addEventListener('timeupdate', function() {
-    if (vid.duration && vid.currentTime > vid.duration - 1.5) {
-      vid.style.opacity = '0';
+  const vidA = document.getElementById('hero-vid-a');
+  const vidB = document.getElementById('hero-vid-b');
+  if (!vidA || !vidB) return;
+  let active = vidA, standby = vidB;
+  const FADE_START = 1.8; // seconds before end to start crossfade
+  const TARGET_OPACITY = 0.45;
+  active.style.opacity = TARGET_OPACITY;
+  standby.style.opacity = '0';
+  let crossfading = false;
+  active.addEventListener('timeupdate', function() {
+    if (!active.duration) return;
+    const remaining = active.duration - active.currentTime;
+    if (remaining <= FADE_START && !crossfading) {
+      crossfading = true;
+      // Pre-roll standby from beginning
+      standby.currentTime = 0;
+      standby.play().catch(()=>{});
+      // Crossfade
+      standby.style.opacity = TARGET_OPACITY;
+      active.style.opacity = '0';
+      setTimeout(() => {
+        active.pause();
+        active.currentTime = 0;
+        active.style.opacity = '0';
+        // Swap roles
+        const tmp = active; active = standby; standby = tmp;
+        // Listen on new active
+        active.addEventListener('timeupdate', arguments.callee, {once: false});
+        crossfading = false;
+      }, 1500);
     }
-  });
-  vid.addEventListener('seeked', function() {
-    if (vid.currentTime < 0.5) {
-      vid.style.opacity = '0.45';
-    }
-  });
-  vid.addEventListener('play', function() {
-    if (vid.currentTime < 0.5) vid.style.opacity = '0.45';
   });
 })();
 </script>
