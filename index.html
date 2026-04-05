@@ -67,7 +67,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 }
 .header-left { display: flex; align-items: center; }
 .header-center { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
-.header-logo-img { height: 52px; width: auto; object-fit: contain; animation: logoFloat 4s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(201,168,76,0.3)); }
+.header-logo-img { height: 52px; max-width: 260px; width: auto; object-fit: contain; animation: logoFloat 4s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(201,168,76,0.3)); }
 .header-right { display: flex; justify-content: flex-end; align-items: center; }
 
 /* Mobile header */
@@ -81,7 +81,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   }
   .header-left { display: none; }
   .header-center { width: 100%; justify-content: center; }
-  .header-logo-img { height: 44px; }
+  .header-logo-img { height: 40px; max-width: 200px; }
   .header-right { width: 100%; justify-content: center; }
   .lang-dropdown { right: auto; left: 50%; transform: translateX(-50%); }
 }
@@ -150,6 +150,15 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .basket-item { display: flex; justify-content: space-between; align-items: center; background: #faf7f3; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; font-size: 13px; }
 .remove-btn { color: #e74c3c; cursor: pointer; font-size: 18px; line-height: 1; font-weight: bold; flex-shrink: 0; }
 .basket-total { font-weight: 700; font-size: 1rem; color: var(--primary); text-align: right; padding: 8px 14px; border-top: 2px solid var(--border); margin-top: 4px; }
+.tier-detected-box {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  display: none;
+  font-weight: 600;
+}
+.tier-detected-box.visible { display: block; }
 .tier-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
 .tier-normal { background: #e8e0d5; color: #6b6b6b; }
 .tier-friend { background: #e8f5e9; color: #2e7d32; }
@@ -252,7 +261,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
 <header class="site-header page-load-anim">
   <div class="header-left"></div>
   <a href="#" class="header-center">
-    <img src="logo.png" alt="Seven Roast" class="header-logo-img" />
+    <img src="image.png" alt="Seven Roast" class="header-logo-img" />
   </a>
   <div class="header-right">
     <div class="lang-wrapper">
@@ -288,7 +297,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <div class="section-line"></div>
   <div class="coffee-grid">
     <div class="coffee-card" data-stock="3725">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" class="coffee-card-img" alt="Brazil" loading="lazy" />
+      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" onerror="this.style.background='linear-gradient(135deg,#5C3317,#8B5E3C)';this.src=''" class="coffee-card-img" alt="Brazil" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Brasil Cerrado</h3>
         <div class="coffee-id">BRA-01</div>
@@ -298,7 +307,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="4000">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRax7YIxcgD0iOvwBkE3UZKtJWgAERySQ-W4uBXn62fhTy1LWoNrf5wyH3e_-V62s6I2h1hupZDQLTIlCV0AalQs_N0NaSw8aQ-nojSKtNEE-hyiNBsC2Z0vSK5y-h8S6WEp2rZHmma5ke5oV-86dHKXsC-WMpO5M9NW4tteiakDlLMoSYnl5N80KY98Aj2zs4NYtvzPai3NIjhIvFyM9GxmAcdl8g2y-hY=w1280" class="coffee-card-img" alt="Colombia" loading="lazy" />
+      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRax7YIxcgD0iOvwBkE3UZKtJWgAERySQ-W4uBXn62fhTy1LWoNrf5wyH3e_-V62s6I2h1hupZDQLTIlCV0AalQs_N0NaSw8aQ-nojSKtNEE-hyiNBsC2Z0vSK5y-h8S6WEp2rZHmma5ke5oV-86dHKXsC-WMpO5M9NW4tteiakDlLMoSYnl5N80KY98Aj2zs4NYtvzPai3NIjhIvFyM9GxmAcdl8g2y-hY=w1280" onerror="this.style.background='linear-gradient(135deg,#4a7c59,#2d5a3d)';this.src=''" class="coffee-card-img" alt="Colombia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Colombia</h3>
         <div class="coffee-id">COL-01</div>
@@ -308,7 +317,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="375">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SS1XcAzCXHE2BYVCG7klpl79Ml5L0HTM02KkgkRQ-dbJXbor1ngKaQEM13C1yciKQGO183piOi3Aj8FAzZg9ny4I5D9oEOLvqMJpVGTwOGyxOjXzAPoRMmU6u7YDUFSQmUhlqoI78PoSPlBb7lsrd4wdxEikvukHr5iKiW214NzbrSQ-i6q9XssJuNGuGQeWD62kK51uwVIINHxWGHMNJ-NDo0b_Dha-AqqM5Q=w1280" class="coffee-card-img" alt="Rwanda" loading="lazy" />
+      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SS1XcAzCXHE2BYVCG7klpl79Ml5L0HTM02KkgkRQ-dbJXbor1ngKaQEM13C1yciKQGO183piOi3Aj8FAzZg9ny4I5D9oEOLvqMJpVGTwOGyxOjXzAPoRMmU6u7YDUFSQmUhlqoI78PoSPlBb7lsrd4wdxEikvukHr5iKiW214NzbrSQ-i6q9XssJuNGuGQeWD62kK51uwVIINHxWGHMNJ-NDo0b_Dha-AqqM5Q=w1280" onerror="this.style.background='linear-gradient(135deg,#7B3F00,#C68642)';this.src=''" class="coffee-card-img" alt="Rwanda" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Rwanda</h3>
         <div class="coffee-id">RWA-01</div>
@@ -318,7 +327,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="25">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQiu6WCwUf5NpcIUwLv_DDEXVl_WtkJyPpngcmWs7ctCUtydngJJNjVVvsEJuMFv8lcB1-_V0CTJGyFnyUvQCYu43cSBvJFXDSNfkm0dDKZo9n89hRephNsbyCiXIDAaYft8cRpnBa6LZ3Lnmu4wyFGBDCPYwp4og_uey_eFBx_O0Z69pwxfacr2pfbGv3VL8RWPMROgPVC2qj2sHYxf9lzZ9GSppLsURv-=w1280" class="coffee-card-img" alt="Ethiopia" loading="lazy" />
+      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQiu6WCwUf5NpcIUwLv_DDEXVl_WtkJyPpngcmWs7ctCUtydngJJNjVVvsEJuMFv8lcB1-_V0CTJGyFnyUvQCYu43cSBvJFXDSNfkm0dDKZo9n89hRephNsbyCiXIDAaYft8cRpnBa6LZ3Lnmu4wyFGBDCPYwp4og_uey_eFBx_O0Z69pwxfacr2pfbGv3VL8RWPMROgPVC2qj2sHYxf9lzZ9GSppLsURv-=w1280" onerror="this.style.background='linear-gradient(135deg,#8B6914,#C5A028)';this.src=''" class="coffee-card-img" alt="Ethiopia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Ethiopia Limmu</h3>
         <div class="coffee-id">Eth-01</div>
@@ -328,7 +337,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="500">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRAN6iWCkLM4mJMlRau7FdRopbjtc2QCROUimpsDYHjwLcG8QmzerXug-sVLfWVUghZyv2pfP1oqnEI3Qi8nSyF3olFY2sh-F0stYSzVedH_12RhFLl0FtaEsKxdMIcKv6Xal914oF0zz7MT1jCIWkt9PFJ-RoFPHKlrAIMQF-TDyzA3kZQ1VRrkudYq5IHJUgjwS8HURfMb5D8PQwSVG4eoRWPpPoz9FlqLIo=w1280" class="coffee-card-img" alt="Panama" loading="lazy" />
+      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRAN6iWCkLM4mJMlRau7FdRopbjtc2QCROUimpsDYHjwLcG8QmzerXug-sVLfWVUghZyv2pfP1oqnEI3Qi8nSyF3olFY2sh-F0stYSzVedH_12RhFLl0FtaEsKxdMIcKv6Xal914oF0zz7MT1jCIWkt9PFJ-RoFPHKlrAIMQF-TDyzA3kZQ1VRrkudYq5IHJUgjwS8HURfMb5D8PQwSVG4eoRWPpPoz9FlqLIo=w1280" onerror="this.style.background='linear-gradient(135deg,#1a3a5c,#2e5f8a)';this.src=''" class="coffee-card-img" alt="Panama" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Panama</h3>
         <div class="coffee-id">Pan-01</div>
@@ -364,16 +373,15 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <h2 class="section-title" id="title-order">Order</h2>
   <div class="section-line"></div>
   <div class="order-wrapper">
-    <!-- Customer Type -->
-    <div class="card-box">
-      <label class="form-label" id="lbl-customer-type">CUSTOMER TYPE:</label>
-      <select id="customer-type" class="form-input" onchange="onTierChange()">
-        <option value="normal" id="opt-tier-normal">Normal</option>
-        <option value="friend" id="opt-tier-friend">Friend</option>
-        <option value="cofounder" id="opt-tier-cofounder">Co-Founder</option>
-      </select>
-      <div id="tier-info-box" style="display:none; background:#faf6ee; border-radius:10px; padding:10px 14px; font-size:0.85rem; color: var(--text-light); margin-top:-8px; border: 1px solid var(--border);"></div>
-    </div>
+    <!-- Customer Type (auto-detected from name/email) -->
+    <div id="tier-detected-box" class="tier-detected-box"></div>
+    <!-- Hidden selectors kept for translation (used by setLang) -->
+    <select id="customer-type" style="display:none;" onchange="onTierChange()">
+      <option value="normal" id="opt-tier-normal">Normal</option>
+      <option value="friend" id="opt-tier-friend">Friend</option>
+      <option value="cofounder" id="opt-tier-cofounder">Co-Founder</option>
+    </select>
+    <span id="lbl-customer-type" style="display:none;"></span>
     <!-- Configurator -->
     <div class="card-box" id="configurator">
       <label class="form-label" id="lbl-product">VARIETY:</label>
@@ -549,7 +557,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <h2 class="section-title" id="title-about">About Us</h2>
   <div class="section-line"></div>
   <div class="about-grid">
-    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" class="about-img" alt="Coffee farm" loading="lazy" />
+    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" onerror="this.style.background='linear-gradient(135deg,#3d2b1a,#7a5c3c)';this.src=''" class="about-img" alt="Coffee farm" loading="lazy" />
     <div class="about-text">
       <h3 id="about-title">From friends, for friends.</h3>
       <p id="about-text">7roast is a small, passionate coffee project. We hand-select and roast specialty coffees from around the world and bring them directly to you. Quality, transparency and friendship are at the heart of everything we do.</p>
@@ -575,7 +583,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
 
 <!-- FOOTER -->
 <footer>
-  <img src="logo.png" alt="Seven Roast" class="footer-logo" />
+  <img src="image.png" alt="Seven Roast" class="footer-logo" />
   <p><a href="mailto:seven.farsi@gmail.com">seven.farsi@gmail.com</a> &nbsp;|&nbsp; 551 171 164</p>
   <p style="margin-top:0.5rem;opacity:0.5;font-size:0.8rem;">© 2026 7roast – Specialty Coffee</p>
 </footer><script>
@@ -671,6 +679,8 @@ const T = {
     notesPlaceholder: 'Special requests...',
     langFlag: '🇬🇧',
     langName: 'English',
+    tierDetectedFriend: 'Friend price applied: 9/18/35/70 GEL · Ground +1.50',
+    tierDetectedCofounder: 'Co-Founder price applied: 7.50/15/30/60 GEL · Ground +1.00',
   },
   de: {
     tagline: 'Specialty Coffee – von Freunden für Freunde',
@@ -748,6 +758,8 @@ const T = {
     notesPlaceholder: 'Besondere Wünsche...',
     langFlag: '🇩🇪',
     langName: 'Deutsch',
+    tierDetectedFriend: 'Freundespreis aktiv: 9/18/35/70 GEL · Gemahlen +1,50',
+    tierDetectedCofounder: 'Co-Gründer-Preis aktiv: 7,50/15/30/60 GEL · Gemahlen +1,00',
   },
   ru: {
     tagline: 'Specialty Coffee – от друзей для друзей',
@@ -825,6 +837,8 @@ const T = {
     notesPlaceholder: 'Особые пожелания...',
     langFlag: '🇷🇺',
     langName: 'Русский',
+    tierDetectedFriend: 'Цена для друзей: 9/18/35/70 GEL · Помол +1,50',
+    tierDetectedCofounder: 'Цена со-основателя: 7,50/15/30/60 GEL · Помол +1,00',
   },
   ka: {
     tagline: 'Specialty Coffee – მეგობრებისგან მეგობრებისთვის',
@@ -902,6 +916,8 @@ const T = {
     notesPlaceholder: 'სპეციალური სურვილები...',
     langFlag: '🇬🇪',
     langName: 'ქართული',
+    tierDetectedFriend: 'მეგობრის ფასი: 9/18/35/70 GEL',
+    tierDetectedCofounder: 'თანადამფუძნებლის ფასი: 7.50/15/30/60 GEL',
   },
   fa: {
     tagline: 'Specialty Coffee – از دوستان برای دوستان',
@@ -979,6 +995,8 @@ const T = {
     notesPlaceholder: 'درخواست‌های خاص...',
     langFlag: '🇮🇷',
     langName: 'فارسی',
+    tierDetectedFriend: 'قیمت دوستانه: 9/18/35/70 GEL',
+    tierDetectedCofounder: 'قیمت هم‌بنیان‌گذار: 7.50/15/30/60 GEL',
   }
 };
 // ─── LIVE STOCK DATA ───
@@ -1089,6 +1107,7 @@ function setLang(l) {
   });
   // Update tier info
   onTierChange();
+  showTierDetectedBox(currentTier);
   renderBasket();
 }
 
@@ -1317,9 +1336,64 @@ function fetchLiveInventory() {
     .catch(err => console.error('Fehler beim Laden der Bestaende:', err));
 }
 
+// ─── ACCESS DATA (auto-detect tier) ───
+let accessData = { friendEmails: [], cofounderNames: [] };
+
+function fetchAccessData() {
+  fetch(APPS_SCRIPT_URL + '?api=access')
+    .then(r => r.json())
+    .then(data => { accessData = data; })
+    .catch(err => console.warn('Access not loaded:', err));
+}
+
+function normStr(s) { return String(s || '').trim().toLowerCase(); }
+
+function detectTierFromInputs() {
+  const name = normStr(document.getElementById('customerName').value);
+  const email = normStr(document.getElementById('customerEmail').value);
+  let detected = 'normal';
+  if (name && accessData.cofounderNames && accessData.cofounderNames.includes(name)) {
+    detected = 'cofounder';
+  } else if (email && accessData.friendEmails && accessData.friendEmails.includes(email)) {
+    detected = 'friend';
+  }
+  const sel = document.getElementById('customer-type');
+  if (sel) sel.value = detected;
+  if (detected !== currentTier) {
+    currentTier = detected;
+    showTierDetectedBox(detected);
+    renderBasket();
+  }
+}
+
+function showTierDetectedBox(tier) {
+  const box = document.getElementById('tier-detected-box');
+  const t = T[lang];
+  if (!box) return;
+  if (tier === 'friend') {
+    box.innerHTML = '🤝 ' + (t.tierDetectedFriend || 'Friend price: 9/18/35/70 GEL');
+    box.className = 'tier-detected-box visible';
+    box.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; border:1px solid #c8e6c9;';
+  } else if (tier === 'cofounder') {
+    box.innerHTML = '⭐ ' + (t.tierDetectedCofounder || 'Co-Founder: 7.50/15/30/60 GEL');
+    box.className = 'tier-detected-box visible';
+    box.style.cssText = 'display:block; background:#fff3e0; color:#e65100; border:1px solid #ffe0b2;';
+  } else {
+    box.className = 'tier-detected-box';
+    box.style.cssText = '';
+    box.innerHTML = '';
+  }
+}
+
+// Auto-detect on name/email input
+document.getElementById('customerName').addEventListener('input', detectTierFromInputs);
+document.getElementById('customerEmail').addEventListener('input', detectTierFromInputs);
+document.getElementById('customerEmail').addEventListener('blur', detectTierFromInputs);
+
 // ─── INIT ───
 setLang('en');
 fetchLiveInventory();
+fetchAccessData();
 </script>
 </body>
 </html>
