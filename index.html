@@ -88,7 +88,7 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* ─── HERO ─── */
 .hero { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; background-image: url('https://github.com/sevenfarsi-007/7roast-test/blob/01835a4289244a8a8d0c1a7b67f933a909df4275/hero.mp4'); background-size: cover; background-position: center; }
+.hero-bg { position: absolute; inset: 0; overflow: hidden; } .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
 .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(13,27,42,0.65) 100%); }
 .hero-content { position: relative; z-index: 2; padding: 2rem; max-width: 680px; animation: fadeInUp 1s ease 0.3s both; }
 .hero-content h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 1rem; line-height: 1.1; }
@@ -282,7 +282,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
 
 <!-- HERO -->
 <div class="hero page-load-anim-delay-1">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source src="hero.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <h2 id="hero-title">Coffee, the way it should be.</h2>
@@ -297,7 +301,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <div class="section-line"></div>
   <div class="coffee-grid">
     <div class="coffee-card" data-stock="3725">
-      <img src="https://github.com/sevenfarsi-007/7roast-test/blob/fdcbffb9a3942343f914d710fb079f8ab898e94a/brazil.jpg" onerror="this.style.background='linear-gradient(135deg,#5C3317,#8B5E3C)';this.src=''" class="coffee-card-img" alt="Brazil" loading="lazy" />
+      <img src="brazil.jpg" onerror="this.style.background='linear-gradient(135deg,#5C3317,#8B5E3C)';this.src=''" class="coffee-card-img" alt="Brazil" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Brasil Cerrado</h3>
         <div class="coffee-id">BRA-01</div>
@@ -307,7 +311,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="4000">
-      <img src="https://github.com/sevenfarsi-007/7roast-test/blob/fdcbffb9a3942343f914d710fb079f8ab898e94a/colombia.jpg" onerror="this.style.background='linear-gradient(135deg,#4a7c59,#2d5a3d)';this.src=''" class="coffee-card-img" alt="Colombia" loading="lazy" />
+      <img src="colombia.jpg" onerror="this.style.background='linear-gradient(135deg,#4a7c59,#2d5a3d)';this.src=''" class="coffee-card-img" alt="Colombia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Colombia</h3>
         <div class="coffee-id">COL-01</div>
@@ -317,7 +321,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="375">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SS1XcAzCXHE2BYVCG7klpl79Ml5L0HTM02KkgkRQ-dbJXbor1ngKaQEM13C1yciKQGO183piOi3Aj8FAzZg9ny4I5D9oEOLvqMJpVGTwOGyxOjXzAPoRMmU6u7YDUFSQmUhlqoI78PoSPlBb7lsrd4wdxEikvukHr5iKiW214NzbrSQ-i6q9XssJuNGuGQeWD62kK51uwVIINHxWGHMNJ-NDo0b_Dha-AqqM5Q=w1280" onerror="this.style.background='linear-gradient(135deg,#7B3F00,#C68642)';this.src=''" class="coffee-card-img" alt="Rwanda" loading="lazy" />
+      <img src="rwanda.jpg" onerror="this.style.background='linear-gradient(135deg,#7B3F00,#C68642)';this.src=''" class="coffee-card-img" alt="Rwanda" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Rwanda</h3>
         <div class="coffee-id">RWA-01</div>
@@ -327,7 +331,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="25">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQiu6WCwUf5NpcIUwLv_DDEXVl_WtkJyPpngcmWs7ctCUtydngJJNjVVvsEJuMFv8lcB1-_V0CTJGyFnyUvQCYu43cSBvJFXDSNfkm0dDKZo9n89hRephNsbyCiXIDAaYft8cRpnBa6LZ3Lnmu4wyFGBDCPYwp4og_uey_eFBx_O0Z69pwxfacr2pfbGv3VL8RWPMROgPVC2qj2sHYxf9lzZ9GSppLsURv-=w1280" onerror="this.style.background='linear-gradient(135deg,#8B6914,#C5A028)';this.src=''" class="coffee-card-img" alt="Ethiopia" loading="lazy" />
+      <img src="ethiopia.jpg" onerror="this.style.background='linear-gradient(135deg,#8B6914,#C5A028)';this.src=''" class="coffee-card-img" alt="Ethiopia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Ethiopia Limmu</h3>
         <div class="coffee-id">Eth-01</div>
@@ -337,7 +341,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
       </div>
     </div>
     <div class="coffee-card" data-stock="500">
-      <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SRAN6iWCkLM4mJMlRau7FdRopbjtc2QCROUimpsDYHjwLcG8QmzerXug-sVLfWVUghZyv2pfP1oqnEI3Qi8nSyF3olFY2sh-F0stYSzVedH_12RhFLl0FtaEsKxdMIcKv6Xal914oF0zz7MT1jCIWkt9PFJ-RoFPHKlrAIMQF-TDyzA3kZQ1VRrkudYq5IHJUgjwS8HURfMb5D8PQwSVG4eoRWPpPoz9FlqLIo=w1280" onerror="this.style.background='linear-gradient(135deg,#1a3a5c,#2e5f8a)';this.src=''" class="coffee-card-img" alt="Panama" loading="lazy" />
+      <img src="panama.jpg" onerror="this.style.background='linear-gradient(135deg,#1a3a5c,#2e5f8a)';this.src=''" class="coffee-card-img" alt="Panama" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Panama</h3>
         <div class="coffee-id">Pan-01</div>
@@ -557,7 +561,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <h2 class="section-title" id="title-about">About Us</h2>
   <div class="section-line"></div>
   <div class="about-grid">
-    <img src="https://lh3.googleusercontent.com/sitesv/APaQ0SQJx8kQPRPBTvDsZKBmganG-77iA_q3MqfhZMZd9S3PyB3wp73OquqohOPNDdXofq2UAf7WGb1o_ALbKxD3LIjiZS5FD6Tqc38jTzXN54B2dBcVvWicRV9A-cSGO4y1M9Zyid6Hpwx9R1qszhJHExVtFlXfgb77cbe0ROve8YwEbHndUgnsMvI1zF-5MHfbNh-8OQpDVyKMaWrNQcqN4A2vN9G1mCi429njb7I=w1280" onerror="this.style.background='linear-gradient(135deg,#3d2b1a,#7a5c3c)';this.src=''" class="about-img" alt="Coffee farm" loading="lazy" />
+    <img src="About us.jpg" onerror="this.style.background='linear-gradient(135deg,#3d2b1a,#7a5c3c)';this.src=''" class="about-img" alt="Coffee farm" loading="lazy" />
     <div class="about-text">
       <h3 id="about-title">From friends, for friends.</h3>
       <p id="about-text">7roast is a small, passionate coffee project. We hand-select and roast specialty coffees from around the world and bring them directly to you. Quality, transparency and friendship are at the heart of everything we do.</p>
