@@ -1114,18 +1114,8 @@ function setLang(l) {
 // ─── TIER / CUSTOMER TYPE ───
 function onTierChange() {
   const sel = document.getElementById('customer-type');
-  currentTier = sel.value;
-  const infoBox = document.getElementById('tier-info-box');
-  const t = T[lang];
-  if (currentTier === 'friend') {
-    infoBox.style.display = 'block';
-    infoBox.innerHTML = t.tierInfoFriend;
-  } else if (currentTier === 'cofounder') {
-    infoBox.style.display = 'block';
-    infoBox.innerHTML = t.tierInfoCofounder;
-  } else {
-    infoBox.style.display = 'none';
-  }
+  if (sel) currentTier = sel.value;
+  showTierDetectedBox(currentTier);
   renderBasket();
 }
 
