@@ -27,20 +27,20 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
 /* SHIPPING BANNER */
 .shipping-banner {
-  background: linear-gradient(90deg, #1a3a1a 0%, #0d2b1a 50%, #1a3a1a 100%);
-  color: #7ec87e;
+  background: var(--primary);
+  color: var(--secondary);
   text-align: center;
-  padding: 10px 16px;
-  font-size: 0.88rem;
+  padding: 9px 16px;
+  font-size: 0.85rem;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   position: relative;
   z-index: 60;
-  border-bottom: 1px solid rgba(126,200,126,0.2);
+  border-bottom: 1px solid rgba(201,168,76,0.25);
 }
 .shipping-banner .banner-flag { font-size: 1.1rem; }
 .shipping-banner .banner-close {
@@ -50,10 +50,10 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: #7ec87e;
+  color: var(--secondary);
   cursor: pointer;
   font-size: 16px;
-  opacity: 0.7;
+  opacity: 0.6;
   line-height: 1;
   padding: 2px 6px;
 }
@@ -174,14 +174,37 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
 .section-line { width:50px;height:3px;background:var(--secondary);border-radius:2px;margin-bottom:2rem; }
 
 /* COFFEE CARDS */
-.coffee-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem; }
-.coffee-card { background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(13,27,42,0.09);transition:var(--transition);border:1px solid var(--border); }
+.coffee-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.3rem;
+}
+.coffee-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(13,27,42,0.09);
+  transition: var(--transition);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 300px;
+  min-width: 260px;
+  flex: 0 1 300px;
+  display: flex;
+  flex-direction: column;
+}
 .coffee-card:hover { transform:translateY(-3px);box-shadow:0 8px 30px rgba(13,27,42,0.15); }
-.coffee-card-img { width:100%;height:180px;object-fit:cover;background:#e8ddd0; }
-.coffee-card-body { padding:1.3rem; }
+.coffee-card-img { width:100%;height:180px;object-fit:cover;background:#e8ddd0;flex-shrink:0; }
+.coffee-card-body {
+  padding: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
 .coffee-card h3 { font-size:1.15rem;color:var(--primary);margin-bottom:0.2rem; }
 .coffee-card .coffee-id { font-size:0.72rem;color:#aaa;margin-bottom:0.7rem;letter-spacing:1px;text-transform:uppercase; }
-.coffee-card p { font-size:0.88rem;color:var(--text-light);line-height:1.6;margin-bottom:1rem; }
+.coffee-card p { font-size:0.88rem;color:var(--text-light);line-height:1.6;margin-bottom:1rem;flex:1; }
 .coffee-price { font-size:0.9rem;font-weight:600;color:var(--secondary);margin-bottom:0.6rem; }
 .stock-bar { display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-light);margin-bottom:1rem; }
 .stock-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
@@ -206,6 +229,8 @@ h1, h2, h3 { font-family: 'Playfair Display', serif; }
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-top: auto;
+  flex-shrink: 0;
 }
 .btn-card-cart:hover {
   background: var(--secondary);
@@ -922,7 +947,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         </div>
         <p id="about-contact-text" style="margin-top:0.7rem; font-size:0.85rem; color:var(--text-light);">If you have any questions, feel free to contact us!</p>
       </div>
-      <p class="about-signature" id="about-signature">Matt, Jürgen, Roland &amp; Sven</p>
+      <p class="about-signature" id="about-signature">7roast-Team</p>
       <div class="contact-info" id="contact-info">
         📧 <a href="mailto:seven.farsi@gmail.com">seven.farsi@gmail.com</a> &nbsp;|&nbsp; 📱 551 171 164
       </div>
@@ -1002,7 +1027,7 @@ const T = {
     aboutGoalTitle:'What is our goal?', aboutGoalText:'Our first goal is to offer our friends high-quality coffee at a fair price. The second goal, of course, is to cover our costs.',
     aboutPriceTitle:'How is the price calculated?',
     pbBeans:'☕ Coffee beans', pbTime:'⏱ Time (~1h/kg)', pbReserve:'💰 Reserves', pbEnergy:'⚡ Energy & packaging',
-    aboutContactText:'If you have any questions, feel free to contact us!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    aboutContactText:'If you have any questions, feel free to contact us!', aboutSignature:'7roast-Team',
     langFlag:'🇬🇧', langName:'English'
   },
   de: {
@@ -1048,7 +1073,7 @@ const T = {
     aboutGoalTitle:'Was ist unser Ziel?', aboutGoalText:'Unser erstes Ziel ist es, unseren Freunden hochwertigen Kaffee zu einem fairen Preis anzubieten.',
     aboutPriceTitle:'Wie berechnet sich der Preis?',
     pbBeans:'☕ Kaffeebohnen', pbTime:'⏱ Zeitaufwand (~1h/kg)', pbReserve:'💰 Rücklagen', pbEnergy:'⚡ Energie & Verpackung',
-    aboutContactText:'Bei Fragen stehen wir gerne zur Verfügung!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    aboutContactText:'Bei Fragen stehen wir gerne zur Verfügung!', aboutSignature:'7roast-Team',
     langFlag:'🇩🇪', langName:'Deutsch'
   },
   ru: {
@@ -1094,7 +1119,7 @@ const T = {
     aboutGoalTitle:'В чём наша цель?', aboutGoalText:'Предложить друзьям качественный кофе по честной цене.',
     aboutPriceTitle:'Как формируется цена?',
     pbBeans:'☕ Кофейные зёрна', pbTime:'⏱ Время (~1ч/кг)', pbReserve:'💰 Резервы', pbEnergy:'⚡ Энергия & упаковка',
-    aboutContactText:'Если есть вопросы – пишите нам!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    aboutContactText:'Если есть вопросы – пишите нам!', aboutSignature:'7roast-Team',
     langFlag:'🇷🇺', langName:'Русский'
   },
   ka: {
@@ -1140,7 +1165,7 @@ const T = {
     aboutGoalTitle:'რა არის ჩვენი მიზანი?', aboutGoalText:'მეგობრებს მაღალხარისხოვანი ყავა სამართლიან ფასად.',
     aboutPriceTitle:'როგორ ითვლება ფასი?',
     pbBeans:'☕ ყავის მარცვლები', pbTime:'⏱ დრო (~1სთ/კგ)', pbReserve:'💰 რეზერვი', pbEnergy:'⚡ ენერგია & შეფუთვა',
-    aboutContactText:'კითხვების შემთხვევაში, მოგვმართეთ!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    aboutContactText:'კითხვების შემთხვევაში, მოგვმართეთ!', aboutSignature:'7roast-Team',
     langFlag:'🇬🇪', langName:'ქართული'
   },
   fa: {
@@ -1186,7 +1211,7 @@ const T = {
     aboutGoalTitle:'هدف ما چیست؟', aboutGoalText:'ارائه قهوه باکیفیت به دوستان با قیمتی منصفانه.',
     aboutPriceTitle:'قیمت چگونه محاسبه می‌شود؟',
     pbBeans:'☕ دانه‌های قهوه', pbTime:'⏱ زمان (~۱ساعت/کیلو)', pbReserve:'💰 ذخیره', pbEnergy:'⚡ انرژی و بسته‌بندی',
-    aboutContactText:'اگر سوالی دارید، با ما تماس بگیرید!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    aboutContactText:'اگر سوالی دارید، با ما تماس بگیرید!', aboutSignature:'7roast-Team',
     langFlag:'🇮🇷', langName:'فارسی'
   }
 };
