@@ -25,280 +25,549 @@ html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-/* ─── PAGE LOAD ANIMATION ─── */
-@keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeInUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-@keyframes logoFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
-@keyframes dotPulse { 0%,100% { opacity:0.4; transform:scale(0.8); } 50% { opacity:1; transform:scale(1.2); } }
-@keyframes roastSpin { 
-    0%   { transform: perspective(300px) rotateY(0deg)   rotateX(0deg)   scale(1); }
-    15%  { transform: perspective(300px) rotateY(54deg)  rotateX(8deg)   scale(1.04); }
-    30%  { transform: perspective(300px) rotateY(108deg) rotateX(4deg)   scale(1.08); }
-    45%  { transform: perspective(300px) rotateY(162deg) rotateX(-4deg)  scale(1.04); }
-    50%  { transform: perspective(300px) rotateY(180deg) rotateX(-8deg)  scale(1); }
-    65%  { transform: perspective(300px) rotateY(234deg) rotateX(-4deg)  scale(1.04); }
-    80%  { transform: perspective(300px) rotateY(288deg) rotateX(4deg)   scale(1.08); }
-    90%  { transform: perspective(300px) rotateY(324deg) rotateX(8deg)   scale(1.04); }
-    100% { transform: perspective(300px) rotateY(360deg) rotateX(0deg)   scale(1); }
-  } 25% { transform:rotate(90deg) scale(1.15); } 50% { transform:rotate(180deg) scale(1.3); } 75% { transform:rotate(270deg) scale(1.15); } 100% { transform:rotate(360deg) scale(1); } }
-@keyframes roastColor { 0%{fill:#5c6b1a} 12%{fill:#6b7a20} 28%{fill:#a08018} 45%{fill:#b05018} 60%{fill:#7b2408} 75%{fill:#4a1408} 88%{fill:#6b2408} 100%{fill:#5c6b1a} } 10%{fill:#9ab83a} 25%{fill:#b8a832} 40%{fill:#c87820} 55%{fill:#a04010} 70%{fill:#7b2408} 80%{fill:#5c1a05} 90%{fill:#7b2408} 100%{fill:#8aac3a} } 15% { fill:#7ab648; } 30% { fill:#c8a040; } 50% { fill:#8b4513; } 70% { fill:#5c2800; } 85% { fill:#3d1200; } 100% { fill:#5a9e3a; } }
-@keyframes roastColorStroke { 0%{stroke:#3a4a0a} 35%{stroke:#7a5010} 65%{stroke:#2a0c04} 100%{stroke:#3a4a0a} } 30%{stroke:#8a6010} 60%{stroke:#3a1005} 100%{stroke:#5a7a20} } 30% { stroke:#8b6820; } 60% { stroke:#3d1800; } 100% { stroke:#3d6e28; } }
-@keyframes roastGlow { 0%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))} 38%{filter:drop-shadow(0 0 20px rgba(190,130,20,0.7))} 68%{filter:drop-shadow(0 0 24px rgba(160,50,10,0.85))} 100%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))} } 35%{filter:drop-shadow(0 0 18px rgba(200,140,30,0.7))} 65%{filter:drop-shadow(0 0 22px rgba(180,60,10,0.8))} 100%{filter:drop-shadow(0 0 10px rgba(130,180,50,0.5))} } 30% { filter:drop-shadow(0 0 16px rgba(200,160,64,0.8)); } 65% { filter:drop-shadow(0 0 24px rgba(201,100,30,0.9)); } 100% { filter:drop-shadow(0 0 8px rgba(90,158,58,0.6)); } }
-@keyframes successBounce { 0% { transform:scale(0.5); opacity:0; } 60% { transform:scale(1.1); } 80% { transform:scale(0.95); } 100% { transform:scale(1); opacity:1; } }
-@keyframes particleFloat { 0% { transform:translateY(0) translateX(0) rotate(0deg); opacity:1; } 100% { transform:translateY(-120px) translateX(var(--tx)) rotate(360deg); opacity:0; } }
+/* SHIPPING BANNER */
+.shipping-banner {
+  background: linear-gradient(90deg, #1a3a1a 0%, #0d2b1a 50%, #1a3a1a 100%);
+  color: #7ec87e;
+  text-align: center;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  z-index: 60;
+  border-bottom: 1px solid rgba(126,200,126,0.2);
+}
+.shipping-banner .banner-flag { font-size: 1.1rem; }
+.shipping-banner .banner-close {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #7ec87e;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.shipping-banner .banner-close:hover { opacity: 1; }
+
+/* ANIMATIONS */
+@keyframes fadeInDown { from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);} }
+@keyframes fadeInUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+@keyframes fadeIn { from{opacity:0;}to{opacity:1;} }
+@keyframes logoFloat { 0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);} }
+@keyframes dotPulse { 0%,100%{opacity:0.4;transform:scale(0.8);}50%{opacity:1;transform:scale(1.2);} }
+@keyframes roastSpin {
+  0%{transform:perspective(300px) rotateY(0deg) rotateX(0deg) scale(1);}
+  15%{transform:perspective(300px) rotateY(54deg) rotateX(8deg) scale(1.04);}
+  30%{transform:perspective(300px) rotateY(108deg) rotateX(4deg) scale(1.08);}
+  45%{transform:perspective(300px) rotateY(162deg) rotateX(-4deg) scale(1.04);}
+  50%{transform:perspective(300px) rotateY(180deg) rotateX(-8deg) scale(1);}
+  65%{transform:perspective(300px) rotateY(234deg) rotateX(-4deg) scale(1.04);}
+  80%{transform:perspective(300px) rotateY(288deg) rotateX(4deg) scale(1.08);}
+  90%{transform:perspective(300px) rotateY(324deg) rotateX(8deg) scale(1.04);}
+  100%{transform:perspective(300px) rotateY(360deg) rotateX(0deg) scale(1);}
+}
+@keyframes roastColor { 0%{fill:#5c6b1a}28%{fill:#a08018}60%{fill:#7b2408}100%{fill:#5c6b1a} }
+@keyframes roastGlow {
+  0%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))}
+  38%{filter:drop-shadow(0 0 20px rgba(190,130,20,0.7))}
+  68%{filter:drop-shadow(0 0 24px rgba(160,50,10,0.85))}
+  100%{filter:drop-shadow(0 0 12px rgba(90,110,20,0.6))}
+}
+@keyframes successBounce { 0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.1);}80%{transform:scale(0.95);}100%{transform:scale(1);opacity:1;} }
+@keyframes particleFloat {
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:1;}
+  100%{transform:translateY(-120px) translateX(var(--tx)) rotate(360deg);opacity:0;}
+}
+@keyframes slideInRight { from{transform:translateX(100%);}to{transform:translateX(0);} }
+@keyframes slideInUp { from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;} }
+@keyframes cartBump { 0%,100%{transform:scale(1);}40%{transform:scale(1.3);}70%{transform:scale(0.9);} }
 
 .page-load-anim { animation: fadeInUp 0.7s ease both; }
 .page-load-anim-delay-1 { animation: fadeInUp 0.7s ease 0.15s both; }
 .page-load-anim-delay-2 { animation: fadeInUp 0.7s ease 0.3s both; }
 .page-load-anim-delay-3 { animation: fadeInUp 0.7s ease 0.45s both; }
 
-/* ─── HEADER ─── */
+/* HEADER */
 .lang-wrapper { position: relative; }
-.lang-btn { background: rgba(255,255,255,0.15); border: 1.5px solid rgba(201,168,76,0.5); color: var(--secondary); padding: 7px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; display: flex; align-items: center; gap: 6px; transition: var(--transition); white-space: nowrap; }
-.lang-btn:hover { background: rgba(201,168,76,0.15); }
-.lang-btn::after { content: '▾'; font-size: 10px; }
-.lang-dropdown { display: none; position: absolute; top: calc(100% + 6px); right: 0; background: var(--card); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.18); min-width: 160px; overflow: hidden; z-index: 100; }
-.lang-dropdown.open { display: block; }
-.lang-option { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; color: var(--text); font-size: 14px; font-weight: 500; transition: var(--transition); }
-.lang-option:hover { background: #f5f0ea; }
-.lang-option.active { background: #f0e8dc; color: var(--primary); font-weight: 600; }
-.lang-flag { font-size: 18px; }
+.lang-btn { background:rgba(255,255,255,0.15);border:1.5px solid rgba(201,168,76,0.5);color:var(--secondary);padding:7px 14px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;font-family:'Inter',sans-serif;display:flex;align-items:center;gap:6px;transition:var(--transition);white-space:nowrap; }
+.lang-btn:hover { background:rgba(201,168,76,0.15); }
+.lang-btn::after { content:'▾';font-size:10px; }
+.lang-dropdown { display:none;position:absolute;top:calc(100% + 6px);right:0;background:var(--card);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,0.18);min-width:160px;overflow:hidden;z-index:100; }
+.lang-dropdown.open { display:block; }
+.lang-option { display:flex;align-items:center;gap:10px;padding:10px 16px;cursor:pointer;color:var(--text);font-size:14px;font-weight:500;transition:var(--transition); }
+.lang-option:hover { background:#f5f0ea; }
+.lang-option.active { background:#f0e8dc;color:var(--primary);font-weight:600; }
+.lang-flag { font-size:18px; }
+.site-header { background:var(--primary);color:var(--secondary);padding:0.75rem 2rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;position:sticky;top:0;z-index:50;box-shadow:0 2px 20px rgba(0,0,0,0.4); }
+.header-left { display:flex;align-items:center; }
+.header-center { display:flex;flex-direction:column;align-items:center;text-decoration:none; }
+.header-logo-img { height:52px;max-width:260px;width:auto;object-fit:contain;animation:logoFloat 4s ease-in-out infinite;filter:drop-shadow(0 2px 8px rgba(201,168,76,0.3)); }
+.header-right { display:flex;justify-content:flex-end;align-items:center;gap:12px; }
 
-.site-header {
+/* CART ICON in header */
+.cart-icon-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(201,168,76,0.5);
+  color: var(--secondary);
+  padding: 7px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  position: relative;
+  white-space: nowrap;
+}
+.cart-icon-btn:hover { background: rgba(201,168,76,0.2); }
+.cart-count-badge {
+  background: #e74c3c;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+.cart-count-badge.bump { animation: cartBump 0.4s ease; }
+
+@media (max-width: 700px) {
+  .site-header { display:flex;flex-direction:column;align-items:center;padding:0.6rem 1rem;gap:0.5rem; }
+  .header-left { display:none; }
+  .header-center { width:100%;justify-content:center; }
+  .header-logo-img { height:40px;max-width:200px; }
+  .header-right { width:100%;justify-content:center; }
+  .lang-dropdown { right:auto;left:50%;transform:translateX(-50%); }
+}
+
+/* HERO */
+.hero { position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;color:white;overflow:hidden; }
+.hero-bg { position:absolute;inset:0;overflow:hidden; }
+.hero-video { position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity 1.4s ease; }
+.hero-overlay { position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,27,42,0.88) 0%,rgba(13,27,42,0.65) 100%); }
+.hero-content { position:relative;z-index:2;padding:2rem;max-width:680px;animation:fadeInUp 1s ease 0.3s both; }
+.hero-content h2 { font-size:3rem;font-weight:900;letter-spacing:-0.5px;margin-bottom:1rem;line-height:1.1; }
+.hero-content p { font-size:1.1rem;opacity:0.9;margin-bottom:2rem;font-weight:300; }
+.btn-hero { display:inline-block;background:var(--secondary);color:var(--primary);padding:0.9rem 2.2rem;border-radius:50px;text-decoration:none;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:var(--transition);letter-spacing:0.3px; }
+.btn-hero:hover { background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(201,168,76,0.4); }
+
+/* SECTIONS */
+.section { padding:3rem 1.5rem;max-width:1100px;margin:0 auto; }
+.section-title { font-size:1.9rem;color:var(--primary);margin-bottom:0.3rem;font-weight:700; }
+.section-line { width:50px;height:3px;background:var(--secondary);border-radius:2px;margin-bottom:2rem; }
+
+/* COFFEE CARDS */
+.coffee-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem; }
+.coffee-card { background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(13,27,42,0.09);transition:var(--transition);border:1px solid var(--border); }
+.coffee-card:hover { transform:translateY(-3px);box-shadow:0 8px 30px rgba(13,27,42,0.15); }
+.coffee-card-img { width:100%;height:180px;object-fit:cover;background:#e8ddd0; }
+.coffee-card-body { padding:1.3rem; }
+.coffee-card h3 { font-size:1.15rem;color:var(--primary);margin-bottom:0.2rem; }
+.coffee-card .coffee-id { font-size:0.72rem;color:#aaa;margin-bottom:0.7rem;letter-spacing:1px;text-transform:uppercase; }
+.coffee-card p { font-size:0.88rem;color:var(--text-light);line-height:1.6;margin-bottom:1rem; }
+.coffee-price { font-size:0.9rem;font-weight:600;color:var(--secondary);margin-bottom:0.6rem; }
+.stock-bar { display:flex;align-items:center;gap:0.5rem;font-size:0.78rem;color:var(--text-light);margin-bottom:1rem; }
+.stock-dot { width:7px;height:7px;border-radius:50%;flex-shrink:0; }
+.dot-ok { background:#27ae60; }
+.dot-low { background:#e67e22; }
+.dot-out { background:#ccc; }
+
+/* ADD TO CART BUTTON on card */
+.btn-card-cart {
+  width: 100%;
   background: var(--primary);
   color: var(--secondary);
-  padding: 0.75rem 2rem;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  border: 2px solid var(--primary);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
   align-items: center;
-  position: sticky;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-card-cart:hover {
+  background: var(--secondary);
+  color: var(--primary);
+  border-color: var(--secondary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(201,168,76,0.35);
+}
+.btn-card-cart:disabled {
+  background: #ccc;
+  border-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* PRICE TABLE */
+.price-table-wrap { background:var(--card);border-radius:var(--radius);box-shadow:0 4px 20px rgba(13,27,42,0.08);overflow-x:auto;border:1px solid var(--border); }
+.price-table { width:100%;border-collapse:collapse; }
+.price-table th { background:var(--primary);color:var(--secondary);padding:12px 16px;text-align:center;font-family:'Inter',sans-serif;font-weight:600;font-size:0.85rem;letter-spacing:0.5px; }
+.price-table td { padding:11px 16px;border-bottom:1px solid #f0ebe4;text-align:center;font-size:0.9rem; }
+.price-table tr:last-child td { border-bottom:none; }
+.price-table tr:hover td { background:#fdfaf7; }
+.price-note { margin-top:0.8rem;font-size:0.82rem;color:var(--text-light); }
+@media (max-width:600px) {
+  .price-table-wrap { overflow-x:hidden; }
+  .price-table { font-size:0.82rem; }
+  .price-table th,.price-table td { padding:8px 10px; }
+  .price-col-ground { display:none; }
+  .price-ground-note { display:block;margin-top:0.6rem;font-size:0.82rem;color:var(--text-light);background:#faf6f0;border-radius:8px;padding:8px 14px;border:1px solid var(--border); }
+}
+@media (min-width:601px) { .price-ground-note { display:none; } }
+
+/* ─── ADD TO CART MODAL ─── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,27,42,0.6);
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; animation: fadeIn 0.25s ease; }
+.modal-box {
+  background: var(--card);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: 0 20px 60px rgba(13,27,42,0.25);
+  animation: slideInUp 0.3s ease;
+  overflow: hidden;
+}
+.modal-header {
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal-header h3 { font-size: 1.1rem; font-weight: 700; margin: 0; }
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--secondary);
+  font-size: 22px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
+  padding: 0 4px;
+}
+.modal-close:hover { opacity: 1; }
+.modal-body { padding: 1.5rem; }
+.modal-coffee-name { font-size: 1.3rem; color: var(--primary); font-family: 'Playfair Display',serif; margin-bottom: 0.3rem; }
+.modal-coffee-id { font-size: 0.72rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.2rem; }
+.modal-label { display:block;margin-bottom:5px;font-weight:600;font-size:11px;color:var(--primary);text-transform:uppercase;letter-spacing:1px; }
+.modal-select {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  background: #fdfaf7;
+  color: var(--text);
+  transition: var(--transition);
+  margin-bottom: 14px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+.modal-select:focus { outline:none;border-color:var(--secondary);box-shadow:0 0 0 3px rgba(201,168,76,0.15); }
+.modal-row { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.modal-price-preview {
+  background: #faf6ee;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+.modal-price-preview .price-amount {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--secondary);
+  font-family: 'Playfair Display', serif;
+}
+.modal-footer { padding: 0 1.5rem 1.5rem; display:flex; gap:10px; }
+.btn-modal-add {
+  flex: 1;
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-modal-add:hover { background: var(--accent); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
+.btn-modal-add-more {
+  flex: 1;
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  padding: 13px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.btn-modal-add-more:hover { background: var(--primary); color: white; }
+
+/* ─── CART DRAWER ─── */
+.cart-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13,27,42,0.5);
+  z-index: 300;
+  display: none;
+  backdrop-filter: blur(3px);
+}
+.cart-drawer-overlay.open { display: block; animation: fadeIn 0.25s ease; }
+.cart-drawer {
+  position: fixed;
   top: 0;
-  z-index: 50;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.4);
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 520px;
+  background: var(--bg);
+  z-index: 301;
+  display: none;
+  flex-direction: column;
+  box-shadow: -8px 0 40px rgba(13,27,42,0.2);
 }
-.header-left { display: flex; align-items: center; }
-.header-center { display: flex; flex-direction: column; align-items: center; text-decoration: none; }
-.header-logo-img { height: 52px; max-width: 260px; width: auto; object-fit: contain; animation: logoFloat 4s ease-in-out infinite; filter: drop-shadow(0 2px 8px rgba(201,168,76,0.3)); }
-.header-right { display: flex; justify-content: flex-end; align-items: center; }
-
-/* Mobile header */
-@media (max-width: 700px) {
-  .site-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0.6rem 1rem;
-    gap: 0.5rem;
-  }
-  .header-left { display: none; }
-  .header-center { width: 100%; justify-content: center; }
-  .header-logo-img { height: 40px; max-width: 200px; }
-  .header-right { width: 100%; justify-content: center; }
-  .lang-dropdown { right: auto; left: 50%; transform: translateX(-50%); }
+.cart-drawer.open { display: flex; animation: slideInRight 0.35s ease; }
+.cart-drawer-header {
+  background: var(--primary);
+  color: var(--secondary);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
-
-/* ─── HERO ─── */
-.hero { position: relative; min-height: 480px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; overflow: hidden; }
-.hero-bg { position: absolute; inset: 0; overflow: hidden; } .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 1.4s ease; }
-.hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,42,0.88) 0%, rgba(13,27,42,0.65) 100%); }
-.hero-content { position: relative; z-index: 2; padding: 2rem; max-width: 680px; animation: fadeInUp 1s ease 0.3s both; }
-.hero-content h2 { font-size: 3rem; font-weight: 900; letter-spacing: -0.5px; margin-bottom: 1rem; line-height: 1.1; }
-.hero-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; font-weight: 300; }
-.btn-hero { display: inline-block; background: var(--secondary); color: var(--primary); padding: 0.9rem 2.2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: var(--transition); letter-spacing: 0.3px; }
-.btn-hero:hover { background: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.4); }
-
-/* ─── SECTIONS ─── */
-.section { padding: 3rem 1.5rem; max-width: 1100px; margin: 0 auto; }
-.section-title { font-size: 1.9rem; color: var(--primary); margin-bottom: 0.3rem; font-weight: 700; }
-.section-line { width: 50px; height: 3px; background: var(--secondary); border-radius: 2px; margin-bottom: 2rem; }
-
-/* ─── COFFEE CARDS ─── */
-.coffee-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.3rem; }
-.coffee-card { background: var(--card); border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 20px rgba(13,27,42,0.09); transition: var(--transition); border: 1px solid var(--border); }
-.coffee-card:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(13,27,42,0.15); }
-.coffee-card-img { width: 100%; height: 180px; object-fit: cover; background: #e8ddd0; }
-.coffee-card-body { padding: 1.3rem; }
-.coffee-card h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 0.2rem; }
-.coffee-card .coffee-id { font-size: 0.72rem; color: #aaa; margin-bottom: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
-.coffee-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1rem; }
-.coffee-price { font-size: 0.9rem; font-weight: 600; color: var(--secondary); margin-bottom: 0.6rem; }
-.stock-bar { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--text-light); }
-.stock-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.dot-ok { background: #27ae60; }
-.dot-low { background: #e67e22; }
-.dot-out { background: #ccc; }
-
-/* ─── PRICE TABLE ─── */
-.price-table-wrap { background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(13,27,42,0.08); overflow-x: auto; border: 1px solid var(--border); }
-.price-table { width: 100%; border-collapse: collapse; }
-.price-table th { background: var(--primary); color: var(--secondary); padding: 12px 16px; text-align: center; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.5px; }
-.price-table td { padding: 11px 16px; border-bottom: 1px solid #f0ebe4; text-align: center; font-size: 0.9rem; }
-.price-table tr:last-child td { border-bottom: none; }
-.price-table tr:hover td { background: #fdfaf7; }
-.price-note { margin-top: 0.8rem; font-size: 0.82rem; color: var(--text-light); }
-
-/* Mobile price table: Ground column on separate row */
-@media (max-width: 600px) {
-  .price-table-wrap { overflow-x: hidden; }
-  .price-table { font-size: 0.82rem; }
-  .price-table th, .price-table td { padding: 8px 10px; }
-  .price-col-ground { display: none; }
-  .price-ground-note { display: block; margin-top: 0.6rem; font-size: 0.82rem; color: var(--text-light); background: #faf6f0; border-radius: 8px; padding: 8px 14px; border: 1px solid var(--border); }
+.cart-drawer-header h2 { font-size: 1.2rem; font-weight: 700; }
+.cart-drawer-close {
+  background: none;
+  border: none;
+  color: var(--secondary);
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.8;
 }
-@media (min-width: 601px) {
-  .price-ground-note { display: none; }
-}
+.cart-drawer-close:hover { opacity: 1; }
+.cart-drawer-body { flex: 1; overflow-y: auto; padding: 1.2rem 1.5rem; }
+.cart-drawer-footer { padding: 1rem 1.5rem; border-top: 2px solid var(--border); background: var(--card); flex-shrink: 0; }
 
-/* ─── ORDER ─── */
-.order-wrapper { max-width: 600px; margin: 0 auto; }
-.card-box { background: var(--card); border-radius: var(--radius); padding: 1.6rem; box-shadow: 0 6px 24px rgba(13,27,42,0.08); margin-bottom: 1rem; border: 1px solid var(--border); }
-.form-label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 11px; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
-.form-input { width: 100%; padding: 12px 14px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 15px; font-family: 'Inter', sans-serif; background: #fdfaf7; color: var(--text); transition: var(--transition); margin-bottom: 14px; appearance: none; }
-.form-input:focus { outline: none; border-color: var(--secondary); background: white; box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.btn-add { background: transparent; color: var(--primary); border: 2px solid var(--primary); padding: 12px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 700; font-size: 14px; font-family: 'Inter', sans-serif; transition: var(--transition); }
-.btn-add:hover { background: var(--primary); color: white; }
-.basket-item { display: flex; justify-content: space-between; align-items: center; background: #faf7f3; padding: 10px 14px; border-radius: 10px; margin-bottom: 8px; font-size: 13px; }
-.remove-btn { color: #e74c3c; cursor: pointer; font-size: 18px; line-height: 1; font-weight: bold; flex-shrink: 0; }
-.basket-total { font-weight: 700; font-size: 1rem; color: var(--primary); text-align: right; padding: 8px 14px; border-top: 2px solid var(--border); margin-top: 4px; }
-.tier-detected-box {
+/* Cart items */
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+}
+.cart-item-info { flex: 1; }
+.cart-item-name { font-weight: 700; font-size: 0.95rem; color: var(--primary); }
+.cart-item-details { font-size: 0.82rem; color: var(--text-light); margin-top: 3px; }
+.cart-item-price { font-weight: 700; color: var(--secondary); font-size: 0.95rem; white-space: nowrap; }
+.cart-item-remove { background:none;border:none;color:#e74c3c;cursor:pointer;font-size:18px;font-weight:bold;line-height:1;padding:2px 4px;flex-shrink:0; }
+
+.cart-empty-msg { text-align:center;padding:3rem 1rem;color:var(--text-light); }
+.cart-empty-msg .empty-icon { font-size:3rem;display:block;margin-bottom:1rem; }
+
+/* Tier box */
+.tier-info-box {
   border-radius: 10px;
   padding: 10px 14px;
   font-size: 0.85rem;
   margin-bottom: 14px;
-  display: none;
   font-weight: 600;
+  display: none;
 }
-.tier-detected-box.visible { display: block; }
-.tier-badge { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; text-transform: uppercase; margin-left: 8px; vertical-align: middle; }
-.tier-normal { background: #e8e0d5; color: #6b6b6b; }
-.tier-friend { background: #e8f5e9; color: #2e7d32; }
-.tier-cofounder { background: #fff3e0; color: #e65100; }
-.btn-submit { background: var(--secondary); color: var(--primary); padding: 15px; border: none; border-radius: 10px; cursor: pointer; width: 100%; font-size: 16px; font-weight: 700; font-family: 'Inter', sans-serif; transition: var(--transition); letter-spacing: 0.3px; }
-.btn-submit:hover:not(:disabled) { background: var(--accent); box-shadow: 0 4px 16px rgba(201,168,76,0.4); }
-.btn-submit:disabled { background: #ccc; cursor: not-allowed; }
-.msg-box { padding: 14px; border-radius: 10px; text-align: center; margin-top: 12px; font-weight: 600; display: none; }
-.msg-box.success { background: #e8f5e9; color: #2e7d32; animation: successBounce 0.6s ease; }
-.msg-box.error { background: #ffebee; color: #c62828; }
+.tier-info-box.visible { display: block; }
 
-/* ─── ROAST ANIMATION OVERLAY ─── */
-.roast-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.92); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
-.roast-overlay.active { display: flex; animation: fadeIn 0.4s ease; }
-.roast-bean { display: block; margin-bottom: 1.5rem; width: 68px; height: 90px; animation: roastSpin 3.2s cubic-bezier(0.45,0.05,0.55,0.95) infinite, roastGlow 4s ease-in-out infinite; transform-origin: center center; overflow: visible; transform-style: preserve-3d; }
-.roast-text { color: var(--secondary); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; }
-.roast-dots { display: flex; gap: 8px; margin-top: 1rem; }
-.roast-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--secondary); animation: dotPulse 1s ease-in-out infinite; }
-.roast-dot:nth-child(2) { animation-delay: 0.2s; }
-.roast-dot:nth-child(3) { animation-delay: 0.4s; }
-.success-overlay { position: fixed; inset: 0; background: rgba(13,27,42,0.95); z-index: 9999; display: none; flex-direction: column; align-items: center; justify-content: center; }
-.success-overlay.active { display: flex; animation: fadeIn 0.4s ease; }
-.success-bean { font-size: 5rem; animation: successBounce 0.8s ease; display: block; margin-bottom: 1.5rem; }
-.success-title { color: var(--secondary); font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; text-align: center; margin-bottom: 0.5rem; animation: fadeInUp 0.6s ease 0.3s both; }
-.success-sub { color: rgba(201,168,76,0.7); font-size: 0.95rem; text-align: center; animation: fadeInUp 0.6s ease 0.5s both; }
-.success-particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
-.particle { position: absolute; bottom: 20%; font-size: 1.2rem; animation: particleFloat 2s ease-out both; }
+/* Cart form */
+.cart-form-section { margin-top: 1.2rem; }
+.cart-section-title { font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+.cart-input {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  background: #fdfaf7;
+  color: var(--text);
+  transition: var(--transition);
+  margin-bottom: 12px;
+}
+.cart-input:focus { outline:none;border-color:var(--secondary);background:white;box-shadow:0 0 0 3px rgba(201,168,76,0.15); }
+.cart-label { display:block;margin-bottom:5px;font-weight:600;font-size:11px;color:var(--primary);text-transform:uppercase;letter-spacing:1px; }
+.cart-row { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
 
-/* ─── BREWING ─── */
-.brew-accordion { background: var(--card); border-radius: var(--radius); box-shadow: 0 4px 20px rgba(13,27,42,0.08); border: 1px solid var(--border); margin-bottom: 0.8rem; overflow: hidden; }
-.brew-acc-header { width: 100%; background: none; border: none; padding: 1.1rem 1.5rem; text-align: left; font-size: 0.95rem; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Inter', sans-serif; transition: var(--transition); }
-.brew-acc-header:hover { background: #faf6f0; }
-.brew-acc-icon { font-size: 0.75rem; transition: transform 0.3s; }
-.brew-acc-header.open .brew-acc-icon { transform: rotate(180deg); }
-.brew-acc-body { display: none; padding: 0 1.5rem 1.4rem; }
-.brew-acc-body.open { display: block; }
-.brew-method { margin-bottom: 1.2rem; }
-.brew-method:last-child { margin-bottom: 0; }
-.brew-method h4 { color: var(--secondary); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif; }
-.brew-method ul { list-style: none; padding: 0; }
-.brew-method ul li { font-size: 0.88rem; padding: 3px 0; color: var(--text-light); display: flex; gap: 8px; }
-.brew-method ul li::before { content: '·'; color: var(--secondary); font-weight: bold; flex-shrink: 0; }
+/* Total & submit */
+.cart-total-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+.cart-total-amount { color: var(--secondary); font-size: 1.3rem; font-family: 'Playfair Display', serif; }
+.btn-cart-submit {
+  width: 100%;
+  background: var(--secondary);
+  color: var(--primary);
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.3px;
+}
+.btn-cart-submit:hover:not(:disabled) { background:var(--accent);box-shadow:0 4px 16px rgba(201,168,76,0.4); }
+.btn-cart-submit:disabled { background:#ccc;cursor:not-allowed; }
+.cart-msg-box { padding:12px;border-radius:10px;text-align:center;margin-top:10px;font-weight:600;font-size:0.9rem;display:none; }
+.cart-msg-box.success { background:#e8f5e9;color:#2e7d32; }
+.cart-msg-box.error { background:#ffebee;color:#c62828; }
 
-/* ─── ABOUT ─── */
-.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
-.about-img { width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius); }
-.about-text h3 { font-size: 1.6rem; color: var(--primary); margin-bottom: 1rem; }
-.about-text p { color: var(--text-light); margin-bottom: 0.8rem; font-size: 0.95rem; }
-.about-goal { background: #faf6ee; border-left: 3px solid var(--secondary); border-radius: 0 10px 10px 0; padding: 1rem 1.2rem; margin-top: 1rem; }
-.about-goal h4 { color: var(--primary); font-family: 'Playfair Display', serif; font-size: 1rem; margin-bottom: 0.5rem; }
-.about-goal p { color: var(--text-light); font-size: 0.88rem; margin-bottom: 0.5rem; }
-.price-breakdown { margin-top: 0.8rem; }
-.price-breakdown-row { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 5px; font-size: 0.85rem; }
-.pb-bar { height: 6px; border-radius: 3px; background: var(--secondary); opacity: 0.8; }
-.pb-label { min-width: 90px; color: var(--text-light); font-size: 0.8rem; }
-.pb-pct { color: var(--primary); font-weight: 600; font-size: 0.8rem; }
-.contact-info { margin-top: 1.2rem; font-size: 0.9rem; color: var(--text-light); }
-.contact-info a { color: var(--secondary); text-decoration: none; }
-.about-signature { margin-top: 1rem; font-size: 0.9rem; color: var(--text-light); font-style: italic; }
+/* ROAST LOADING OVERLAY */
+.roast-overlay { position:fixed;inset:0;background:rgba(13,27,42,0.92);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center; }
+.roast-overlay.active { display:flex;animation:fadeIn 0.4s ease; }
+.roast-bean { display:block;margin-bottom:1.5rem;width:68px;height:90px;animation:roastSpin 3.2s cubic-bezier(0.45,0.05,0.55,0.95) infinite,roastGlow 4s ease-in-out infinite;transform-origin:center center;overflow:visible;transform-style:preserve-3d; }
+.roast-text { color:var(--secondary);font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;letter-spacing:2px; }
+.roast-dots { display:flex;gap:8px;margin-top:1rem; }
+.roast-dot { width:8px;height:8px;border-radius:50%;background:var(--secondary);animation:dotPulse 1s ease-in-out infinite; }
+.roast-dot:nth-child(2) { animation-delay:0.2s; }
+.roast-dot:nth-child(3) { animation-delay:0.4s; }
 
-/* ─── FOOTER ─── */
-footer { background: var(--primary); color: rgba(201,168,76,0.75); text-align: center; padding: 2rem 1.5rem; margin-top: 2rem; font-size: 0.88rem; }
-footer a { color: var(--secondary); text-decoration: none; }
-footer .footer-logo { height: 50px; width: auto; margin-bottom: 0.8rem; filter: brightness(0.9); }
+/* SUCCESS OVERLAY */
+.success-overlay { position:fixed;inset:0;background:rgba(13,27,42,0.95);z-index:9999;display:none;flex-direction:column;align-items:center;justify-content:center; }
+.success-overlay.active { display:flex;animation:fadeIn 0.4s ease; }
+.success-bean { font-size:5rem;animation:successBounce 0.8s ease;display:block;margin-bottom:1.5rem; }
+.success-title { color:var(--secondary);font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;text-align:center;margin-bottom:0.5rem;animation:fadeInUp 0.6s ease 0.3s both; }
+.success-sub { color:rgba(201,168,76,0.7);font-size:0.95rem;text-align:center;animation:fadeInUp 0.6s ease 0.5s both; }
+.success-particles { position:absolute;inset:0;pointer-events:none;overflow:hidden; }
+.particle { position:absolute;bottom:20%;font-size:1.2rem;animation:particleFloat 2s ease-out both; }
 
-/* ─── RTL ─── */
-body.rtl { direction: rtl; }
-body.rtl .lang-dropdown { right: auto; left: 0; }
-body.rtl .brew-acc-header { text-align: right; }
-body.rtl .brew-method ul li { flex-direction: row-reverse; }
-body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondary); border-radius: 10px 0 0 10px; }
+/* BREWING */
+.brew-accordion { background:var(--card);border-radius:var(--radius);box-shadow:0 4px 20px rgba(13,27,42,0.08);border:1px solid var(--border);margin-bottom:0.8rem;overflow:hidden; }
+.brew-acc-header { width:100%;background:none;border:none;padding:1.1rem 1.5rem;text-align:left;font-size:0.95rem;font-weight:600;color:var(--primary);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Inter',sans-serif;transition:var(--transition); }
+.brew-acc-header:hover { background:#faf6f0; }
+.brew-acc-icon { font-size:0.75rem;transition:transform 0.3s; }
+.brew-acc-header.open .brew-acc-icon { transform:rotate(180deg); }
+.brew-acc-body { display:none;padding:0 1.5rem 1.4rem; }
+.brew-acc-body.open { display:block; }
+.brew-method { margin-bottom:1.2rem; }
+.brew-method:last-child { margin-bottom:0; }
+.brew-method h4 { color:var(--secondary);font-size:0.95rem;font-weight:600;margin-bottom:0.5rem;font-family:'Playfair Display',serif; }
+.brew-method ul { list-style:none;padding:0; }
+.brew-method ul li { font-size:0.88rem;padding:3px 0;color:var(--text-light);display:flex;gap:8px; }
+.brew-method ul li::before { content:'·';color:var(--secondary);font-weight:bold;flex-shrink:0; }
 
-@media (max-width: 700px) {
-  .hero-content h2 { font-size: 2rem; }
-  .about-grid { grid-template-columns: 1fr; }
-  .about-img { height: 200px; }
-  .form-row { grid-template-columns: 1fr; }
-  .img-strip { grid-template-columns: 1fr; }
+/* ABOUT */
+.about-grid { display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start; }
+.about-img { width:100%;height:300px;object-fit:cover;border-radius:var(--radius); }
+.about-text h3 { font-size:1.6rem;color:var(--primary);margin-bottom:1rem; }
+.about-text p { color:var(--text-light);margin-bottom:0.8rem;font-size:0.95rem; }
+.about-goal { background:#faf6ee;border-left:3px solid var(--secondary);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin-top:1rem; }
+.about-goal h4 { color:var(--primary);font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.5rem; }
+.about-goal p { color:var(--text-light);font-size:0.88rem;margin-bottom:0.5rem; }
+.price-breakdown { margin-top:0.8rem; }
+.price-breakdown-row { display:flex;align-items:center;gap:0.5rem;margin-bottom:5px;font-size:0.85rem; }
+.pb-bar { height:6px;border-radius:3px;background:var(--secondary);opacity:0.8; }
+.pb-label { min-width:90px;color:var(--text-light);font-size:0.8rem; }
+.pb-pct { color:var(--primary);font-weight:600;font-size:0.8rem; }
+.contact-info { margin-top:1.2rem;font-size:0.9rem;color:var(--text-light); }
+.contact-info a { color:var(--secondary);text-decoration:none; }
+.about-signature { margin-top:1rem;font-size:0.9rem;color:var(--text-light);font-style:italic; }
+
+/* FOOTER */
+footer { background:var(--primary);color:rgba(201,168,76,0.75);text-align:center;padding:2rem 1.5rem;margin-top:2rem;font-size:0.88rem; }
+footer a { color:var(--secondary);text-decoration:none; }
+footer .footer-logo { height:50px;width:auto;margin-bottom:0.8rem;filter:brightness(0.9); }
+
+/* RTL */
+body.rtl { direction:rtl; }
+body.rtl .lang-dropdown { right:auto;left:0; }
+body.rtl .brew-acc-header { text-align:right; }
+body.rtl .brew-method ul li { flex-direction:row-reverse; }
+body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);border-radius:10px 0 0 10px; }
+
+@media (max-width:700px) {
+  .hero-content h2 { font-size:2rem; }
+  .about-grid { grid-template-columns:1fr; }
+  .about-img { height:200px; }
+  .cart-row { grid-template-columns:1fr; }
+  .modal-row { grid-template-columns:1fr; }
+  .modal-footer { flex-direction:column; }
+  .cart-drawer { max-width:100%; }
 }
 </style>
 </head>
 <body>
-
 <!-- ROAST LOADING OVERLAY -->
 <div class="roast-overlay" id="roast-overlay">
   <svg class="roast-bean" viewBox="0 0 100 130" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
-        <defs>
-          <radialGradient id="beanGrad" cx="55%" cy="38%" r="55%">
-            <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
-            <stop offset="100%" stop-color="rgba(0,0,0,0.15)"/>
-          </radialGradient>
-        </defs>
-        <!-- Bean outer body: almond/lens shape, pointed top & bottom, widest at middle -->
-        <path d="M 50 3
-                 C 72 3, 97 35, 97 65
-                 C 97 95, 72 127, 50 127
-                 C 28 127, 3 95, 3 65
-                 C 3 35, 28 3, 50 3 Z"
-              style="animation: roastColor 4s ease-in-out infinite, roastColorStroke 4s ease-in-out infinite;"
-              stroke-width="0" />
-        <!-- Subtle 3D highlight overlay -->
-        <path d="M 50 3
-                 C 72 3, 97 35, 97 65
-                 C 97 95, 72 127, 50 127
-                 C 28 127, 3 95, 3 65
-                 C 3 35, 28 3, 50 3 Z"
-              fill="url(#beanGrad)" stroke="none" />
-        <!-- Crease: the signature curved white slit of a coffee bean -->
-        <!-- Shaped like a thin elongated teardrop / leaf running tip to tip -->
-        <!-- Curves gently: starts at top near center, bows slightly left at middle, ends at bottom -->
-        <path d="M 51 10
-                 C 44 30, 42 50, 44 65
-                 C 46 80, 50 100, 51 120"
-              fill="none"
-              stroke="rgba(255,255,255,0.85)"
-              stroke-width="4.5"
-              stroke-linecap="round"
-              style="animation: none;" />
-        <!-- Crease shadow edge (left side of crease for depth) -->
-        <path d="M 49 10
-                 C 42 30, 40 50, 42 65
-                 C 44 80, 48 100, 49 120"
-              fill="none"
-              stroke="rgba(0,0,0,0.25)"
-              stroke-width="2"
-              stroke-linecap="round"
-              style="animation: none;" />
-      </svg>
+    <defs>
+      <radialGradient id="beanGrad" cx="55%" cy="38%" r="55%">
+        <stop offset="0%" stop-color="rgba(255,255,255,0.18)"/>
+        <stop offset="100%" stop-color="rgba(0,0,0,0.15)"/>
+      </radialGradient>
+    </defs>
+    <path d="M 50 3 C 72 3, 97 35, 97 65 C 97 95, 72 127, 50 127 C 28 127, 3 95, 3 65 C 3 35, 28 3, 50 3 Z" style="animation: roastColor 4s ease-in-out infinite;" stroke-width="0" />
+    <path d="M 50 3 C 72 3, 97 35, 97 65 C 97 95, 72 127, 50 127 C 28 127, 3 95, 3 65 C 3 35, 28 3, 50 3 Z" fill="url(#beanGrad)" stroke="none" />
+    <path d="M 51 10 C 44 30, 42 50, 44 65 C 46 80, 50 100, 51 120" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="4.5" stroke-linecap="round" />
+    <path d="M 49 10 C 42 30, 40 50, 42 65 C 44 80, 48 100, 49 120" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="2" stroke-linecap="round" />
+  </svg>
   <div class="roast-text" id="roast-overlay-text">Roasting your order...</div>
   <div class="roast-dots"><div class="roast-dot"></div><div class="roast-dot"></div><div class="roast-dot"></div></div>
 </div>
@@ -311,6 +580,14 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <div class="success-sub" id="success-sub">We will contact you shortly ☕</div>
 </div>
 
+<!-- SHIPPING BANNER -->
+<div class="shipping-banner" id="shipping-banner">
+  <span class="banner-flag">🇬🇪</span>
+  <span id="banner-text">We're shipping to Georgia and Armenia</span>
+  <span class="banner-flag">🇦🇲</span>
+  <button class="banner-close" onclick="document.getElementById('shipping-banner').style.display='none'" title="Close">✕</button>
+</div>
+
 <!-- HEADER -->
 <header class="site-header page-load-anim">
   <div class="header-left"></div>
@@ -318,6 +595,9 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
     <img src="image.png" alt="Seven Roast" class="header-logo-img" />
   </a>
   <div class="header-right">
+    <button class="cart-icon-btn" onclick="openCartDrawer()" id="cart-icon-btn" title="Cart">
+      🛒 <span id="cart-count-badge" class="cart-count-badge" style="display:none;">0</span>
+    </button>
     <div class="lang-wrapper">
       <button class="lang-btn" id="lang-btn" onclick="toggleLangMenu()">
         <span id="lang-current-flag">🇬🇧</span>
@@ -348,7 +628,7 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <div class="hero-content">
     <h2 id="hero-title">Coffee, the way it should be.</h2>
     <p id="hero-sub">Hand-roasted specialty coffees – delivered to your door.</p>
-    <a href="#order" class="btn-hero" id="hero-btn">Order now</a>
+    <a href="#coffees" class="btn-hero" id="hero-btn">Order now</a>
   </div>
 </div>
 
@@ -357,7 +637,8 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <h2 class="section-title" id="title-coffees">Our Coffees</h2>
   <div class="section-line"></div>
   <div class="coffee-grid">
-    <div class="coffee-card" data-stock="3725">
+
+    <div class="coffee-card" data-product-id="BRA-01" data-stock="3725" data-name="Brasil Cerrado">
       <img src="brazil.jpg" onerror="this.style.background='linear-gradient(135deg,#5C3317,#8B5E3C)';this.src=''" class="coffee-card-img" alt="Brazil" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Brasil Cerrado</h3>
@@ -365,9 +646,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
         <p id="desc-bra">Full-bodied with notes of hazelnut, dark chocolate and light sweetness. Ideal for espresso and milk-based drinks.</p>
         <div class="coffee-price" id="price-bra">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-bra">3725g available</span></div>
+        <button class="btn-card-cart" onclick="openAddToCartModal('BRA-01','Brasil Cerrado',3725)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
-    <div class="coffee-card" data-stock="4000">
+
+    <div class="coffee-card" data-product-id="COL-01" data-stock="4000" data-name="Colombia">
       <img src="colombia.jpg" onerror="this.style.background='linear-gradient(135deg,#4a7c59,#2d5a3d)';this.src=''" class="coffee-card-img" alt="Colombia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Colombia</h3>
@@ -375,9 +658,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
         <p id="desc-col">Balanced coffee with notes of caramel, red apple and mild acidity. Versatile for all brewing methods.</p>
         <div class="coffee-price" id="price-col">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-col">4000g available</span></div>
+        <button class="btn-card-cart" onclick="openAddToCartModal('COL-01','Colombia',4000)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
-    <div class="coffee-card" data-stock="375">
+
+    <div class="coffee-card" data-product-id="RWA-01" data-stock="375" data-name="Rwanda">
       <img src="rwanda.jpg" onerror="this.style.background='linear-gradient(135deg,#7B3F00,#C68642)';this.src=''" class="coffee-card-img" alt="Rwanda" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Rwanda</h3>
@@ -385,9 +670,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
         <p id="desc-rwa">Fruity and vibrant with notes of citrus, peach and brown sugar. Perfect as a filter coffee.</p>
         <div class="coffee-price" id="price-rwa">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-rwa">375g available – almost gone!</span></div>
+        <button class="btn-card-cart" onclick="openAddToCartModal('RWA-01','Rwanda',375)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
-    <div class="coffee-card" data-stock="25">
+
+    <div class="coffee-card" data-product-id="Eth-01" data-stock="25" data-name="Ethiopia Limmu">
       <img src="ethiopia.jpg" onerror="this.style.background='linear-gradient(135deg,#8B6914,#C5A028)';this.src=''" class="coffee-card-img" alt="Ethiopia" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Ethiopia Limmu</h3>
@@ -395,9 +682,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
         <p id="desc-eth">Floral aromas of jasmine and bergamot, delicate citrus note, silky finish. Only a few grams left!</p>
         <div class="coffee-price" id="price-eth">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-eth">25g available – last stock!</span></div>
+        <button class="btn-card-cart" onclick="openAddToCartModal('Eth-01','Ethiopia Limmu',25)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
-    <div class="coffee-card" data-stock="500">
+
+    <div class="coffee-card" data-product-id="Pan-01" data-stock="500" data-name="Panama">
       <img src="panama.jpg" onerror="this.style.background='linear-gradient(135deg,#1a3a5c,#2e5f8a)';this.src=''" class="coffee-card-img" alt="Panama" loading="lazy" />
       <div class="coffee-card-body">
         <h3>Panama</h3>
@@ -405,212 +694,211 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
         <p id="desc-pan">Elegant, complex coffee with floral notes and fine fruity sweetness. Premium quality.</p>
         <div class="coffee-price" id="price-pan">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-pan">500g available</span></div>
+        <button class="btn-card-cart" onclick="openAddToCartModal('Pan-01','Panama',500)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
+    </div>
+
+  </div>
+</div>
+<!-- PRICES -->
+<div style="background:#f5f0ea; padding:0.1px 0;">
+  <div class="section" id="prices">
+    <h2 class="section-title" id="title-prices">Prices (GEL)</h2>
+    <div class="section-line"></div>
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr><th>125g</th><th>250g</th><th>500g</th><th>1000g</th><th class="price-col-ground" id="th-ground">+ Ground</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>12</td><td>22</td><td>40</td><td>80</td><td class="price-col-ground">+2</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-ground-note" id="price-ground-note-mobile">+ Ground: +2 GEL</p>
+    <p class="price-note" id="price-note">Prices in GEL. Grinding surcharge applies only when "Ground" is selected.</p>
+  </div>
+</div>
+
+<!-- ADD TO CART MODAL -->
+<div class="modal-overlay" id="atc-modal" onclick="handleModalOverlayClick(event)">
+  <div class="modal-box" id="atc-modal-box">
+    <div class="modal-header">
+      <h3 id="modal-title">Add to Cart</h3>
+      <button class="modal-close" onclick="closeAddToCartModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-coffee-name" id="modal-coffee-name">Brasil Cerrado</div>
+      <div class="modal-coffee-id" id="modal-coffee-id">BRA-01</div>
+
+      <label class="modal-label" id="modal-lbl-qty">QUANTITY:</label>
+      <select id="modal-qty" class="modal-select" onchange="updateModalPrice()">
+        <option value="" disabled selected>Select quantity</option>
+        <option value="125">125g</option>
+        <option value="250">250g</option>
+        <option value="500">500g</option>
+        <option value="1000">1000g</option>
+      </select>
+
+      <div class="modal-row">
+        <div>
+          <label class="modal-label" id="modal-lbl-grind">TYPE:</label>
+          <select id="modal-grind" class="modal-select" onchange="updateModalPrice()">
+            <option value="Whole Bean" id="modal-opt-whole">Whole Bean</option>
+            <option value="Ground" id="modal-opt-ground">Ground</option>
+          </select>
+        </div>
+        <div>
+          <label class="modal-label" id="modal-lbl-style">METHOD:</label>
+          <select id="modal-style" class="modal-select">
+            <option value="" disabled selected>Select method</option>
+            <option value="Espresso" id="modal-opt-espresso">Espresso</option>
+            <option value="Filter Coffee" id="modal-opt-filter">Filter Coffee</option>
+            <option value="French Press" id="modal-opt-french">French Press</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="modal-price-preview" id="modal-price-preview" style="display:none;">
+        <span id="modal-price-label">Price:</span>
+        <span class="price-amount" id="modal-price-amount">GEL –</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-add-more" id="btn-modal-add-more" onclick="addToCartFromModal(true)">
+        + Add &amp; Continue
+      </button>
+      <button class="btn-modal-add" id="btn-modal-add" onclick="addToCartFromModal(false)">
+        🛒 Go to Cart
+      </button>
     </div>
   </div>
 </div>
 
-<!-- PRICES -->
-<div style="background:#f5f0ea; padding:0.1px 0;">
-<div class="section" id="prices">
-  <h2 class="section-title" id="title-prices">Prices (GEL)</h2>
-  <div class="section-line"></div>
-  <div class="price-table-wrap">
-    <table class="price-table">
-      <thead>
-        <tr><th>125g</th><th>250g</th><th>500g</th><th>1000g</th><th class="price-col-ground" id="th-ground">+ Ground</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>12</td><td>22</td><td>40</td><td>80</td><td class="price-col-ground">+2</td></tr>
-      </tbody>
-    </table>
+<!-- CART DRAWER -->
+<div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="closeCartDrawer()"></div>
+<div class="cart-drawer" id="cart-drawer">
+  <div class="cart-drawer-header">
+    <h2>🛒 <span id="cart-drawer-title">Your Cart</span></h2>
+    <button class="cart-drawer-close" onclick="closeCartDrawer()">✕</button>
   </div>
-  <p class="price-ground-note" id="price-ground-note-mobile">+ Ground: +2 GEL</p>
-  <p class="price-note" id="price-note">Prices in GEL. Grinding surcharge applies only when "Ground" is selected.</p>
-</div>
-</div>
-<!-- ORDER SECTION -->
-<div class="section" id="order">
-  <h2 class="section-title" id="title-order">Order</h2>
-  <div class="section-line"></div>
-  <div class="order-wrapper">
-    <!-- Customer Type (auto-detected from name/email) -->
-    <div id="tier-detected-box" class="tier-detected-box"></div>
-    <!-- Hidden selectors kept for translation (used by setLang) -->
-    <select id="customer-type" style="display:none;" onchange="onTierChange()">
-      <option value="normal" id="opt-tier-normal">Normal</option>
-      <option value="friend" id="opt-tier-friend">Friend</option>
-      <option value="cofounder" id="opt-tier-cofounder">Co-Founder</option>
-    </select>
-    <span id="lbl-customer-type" style="display:none;"></span>
-    <!-- Configurator -->
-    <div class="card-box" id="configurator">
-      <label class="form-label" id="lbl-product">VARIETY:</label>
-      <select id="product" class="form-input">
-        <option value="" disabled selected id="opt-select-coffee">Select coffee</option>
-        <option value="BRA-01" data-stock="3725">Brasil Cerrado (BRA-01)</option>
-        <option value="COL-01" data-stock="4000">Colombia (COL-01)</option>
-        <option value="RWA-01" data-stock="375">Rwanda (RWA-01)</option>
-        <option value="Eth-01" data-stock="25">Ethiopia Limmu (Eth-01)</option>
-        <option value="Pan-01" data-stock="500">Panama (Pan-01)</option>
-      </select>
-      <div class="form-row">
-        <div>
-          <label class="form-label" id="lbl-quantity">QUANTITY:</label>
-          <select id="quantity" class="form-input">
-            <option value="" disabled selected id="opt-select-qty">Select</option>
-            <option value="125">125g</option>
-            <option value="250">250g</option>
-            <option value="500">500g</option>
-            <option value="1000">1000g</option>
-          </select>
-        </div>
-        <div>
-          <label class="form-label" id="lbl-grind">TYPE:</label>
-          <select id="grind_type" class="form-input">
-            <option value="Ganze Bohne" id="opt-whole">Whole Bean</option>
-            <option value="Gemahlen" id="opt-ground">Ground</option>
-          </select>
-        </div>
-      </div>
-      <label class="form-label" id="lbl-style">METHOD:</label>
-      <select id="style" class="form-input">
-        <option value="" disabled selected id="opt-select-style">Select method</option>
-        <option value="Espresso" id="opt-espresso">Espresso</option>
-        <option value="Filterkaffee" id="opt-filter">Filter Coffee</option>
-        <option value="French Press" id="opt-french">French Press</option>
-      </select>
-      <button type="button" class="btn-add" id="btn-add">+ Add Coffee</button>
+  <div class="cart-drawer-body" id="cart-drawer-body">
+    <!-- filled by JS -->
+  </div>
+  <div class="cart-drawer-footer" id="cart-drawer-footer" style="display:none;">
+    <div id="cart-tier-box" class="tier-info-box"></div>
+    <div class="cart-total-line">
+      <span id="cart-total-label">Total:</span>
+      <span class="cart-total-amount" id="cart-total-amount">GEL 0.00</span>
     </div>
-    <!-- Basket -->
-    <div class="card-box" id="basket-box" style="display:none;">
-      <div id="basket-items"></div>
-      <div class="basket-total" id="basket-total-line"></div>
-    </div>
-    <!-- Contact Form -->
-    <form class="card-box" id="order-form">
-      <label class="form-label" id="lbl-name">YOUR NAME:</label>
-      <input type="text" id="customerName" name="customerName" class="form-input" id="input-name" required>
-      <label class="form-label" id="lbl-email">EMAIL:</label>
-      <input type="email" id="customerEmail" name="customerEmail" class="form-input" id="input-email" required>
-      <label class="form-label" id="lbl-notes">NOTES:</label>
-      <textarea id="notes" name="notes" class="form-input" rows="3" id="input-notes"></textarea>
-      <button type="submit" class="btn-submit" id="btn-submit" disabled id="submit-btn-text">Submit Order</button>
-      <div class="msg-box" id="msg-box"></div>
-    </form>
+    <button class="btn-cart-submit" id="btn-cart-submit" onclick="submitCartOrder()">
+      ☕ <span id="cart-submit-text">Submit Order</span>
+    </button>
+    <div class="cart-msg-box" id="cart-msg-box"></div>
   </div>
 </div>
+
 <!-- BREWING RECOMMENDATIONS -->
 <div style="background:#f5f0ea; padding:0.1px 0;">
-<div class="section" id="brewing">
-  <h2 class="section-title" id="title-info">Brewing Recommendations</h2>
-  <div class="section-line"></div>
-  <div class="brew-accordion" id="brew-de">
-    <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇩🇪 Zubereitungsempfehlungen</span><span class="brew-acc-icon">▾</span>
-    </button>
-    <div class="brew-acc-body">
-      <div class="brew-method"><h4>Espresso</h4><ul>
-        <li>Dosis: 18g (Doppelshot)</li><li>Ausbeute: 36g Espresso</li>
-        <li>Zeit: 25–30 Sekunden</li><li>Temperatur: 93–94°C</li>
-        <li>Tipp: Schmeckt zu sauer? Feiner mahlen.</li>
-      </ul></div>
-      <div class="brew-method"><h4>Filterkaffee (V60 / Chemex)</h4><ul>
-        <li>Verhältnis: 15g Kaffee auf 250ml Wasser</li><li>Mahlgrad: Mittel (wie Tafelsalz)</li>
-        <li>Brühzeit: ca. 3:00 Minuten</li><li>Temperatur: 92–96°C</li>
-      </ul></div>
-      <div class="brew-method"><h4>French Press</h4><ul>
-        <li>Verhältnis: 20g Kaffee auf 300ml Wasser</li><li>Mahlgrad: Grob (wie Meersalz)</li>
-        <li>Wichtig: Erst wenig Wasser zugeben und kurz rühren, dann den Rest auffüllen.</li>
-        <li>Ziehzeit: 4 Minuten.</li>
-      </ul></div>
+  <div class="section" id="brewing">
+    <h2 class="section-title" id="title-info">Brewing Recommendations</h2>
+    <div class="section-line"></div>
+    <div class="brew-accordion" id="brew-de">
+      <button class="brew-acc-header" onclick="toggleBrew(this)"><span>🇩🇪 Zubereitungsempfehlungen</span><span class="brew-acc-icon">▾</span></button>
+      <div class="brew-acc-body">
+        <div class="brew-method"><h4>Espresso</h4><ul>
+          <li>Dosis: 18g (Doppelshot)</li><li>Ausbeute: 36g Espresso</li>
+          <li>Zeit: 25–30 Sekunden</li><li>Temperatur: 93–94°C</li>
+          <li>Tipp: Schmeckt zu sauer? Feiner mahlen.</li>
+        </ul></div>
+        <div class="brew-method"><h4>Filterkaffee (V60 / Chemex)</h4><ul>
+          <li>Verhältnis: 15g Kaffee auf 250ml Wasser</li><li>Mahlgrad: Mittel (wie Tafelsalz)</li>
+          <li>Brühzeit: ca. 3:00 Minuten</li><li>Temperatur: 92–96°C</li>
+        </ul></div>
+        <div class="brew-method"><h4>French Press</h4><ul>
+          <li>Verhältnis: 20g Kaffee auf 300ml Wasser</li><li>Mahlgrad: Grob (wie Meersalz)</li>
+          <li>Wichtig: Erst wenig Wasser zugeben und kurz rühren, dann den Rest auffüllen.</li>
+          <li>Ziehzeit: 4 Minuten.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="brew-accordion" id="brew-en">
+      <button class="brew-acc-header" onclick="toggleBrew(this)"><span>🇬🇧 Brewing Recommendations</span><span class="brew-acc-icon">▾</span></button>
+      <div class="brew-acc-body">
+        <div class="brew-method"><h4>Espresso</h4><ul>
+          <li>Dose: 18g (Double Shot)</li><li>Yield: 36g Espresso</li>
+          <li>Time: 25–30 seconds</li><li>Temperature: 93–94°C</li>
+          <li>Pro Tip: If it tastes too sour, grind finer.</li>
+        </ul></div>
+        <div class="brew-method"><h4>Filter Coffee (V60 / Chemex)</h4><ul>
+          <li>Ratio: 15g coffee to 250ml water</li><li>Grind Size: Medium (like table salt)</li>
+          <li>Brew Time: ~3:00 minutes</li><li>Temperature: 92–96°C</li>
+        </ul></div>
+        <div class="brew-method"><h4>French Press</h4><ul>
+          <li>Ratio: 20g coffee to 300ml water</li><li>Grind Size: Coarse (like sea salt)</li>
+          <li>Important: First pour a small amount of water and stir briefly, then add the rest.</li>
+          <li>Steep Time: 4 minutes.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="brew-accordion" id="brew-ka">
+      <button class="brew-acc-header" onclick="toggleBrew(this)"><span>🇬🇪 მომზადების რეკომენდაციები</span><span class="brew-acc-icon">▾</span></button>
+      <div class="brew-acc-body">
+        <div class="brew-method"><h4>ესპრესო</h4><ul>
+          <li>დოზა: 18გ (ორმაგი შოტი)</li><li>გამოსავალი: 36გ ესპრესო</li>
+          <li>დრო: 25–30 წამი</li><li>ტემპერატურა: 93–94°C</li>
+          <li>რჩევა: ძალიან მჟავეა? დაფქვით უფრო წვრილად.</li>
+        </ul></div>
+        <div class="brew-method"><h4>ფილტრი (V60 / Chemex)</h4><ul>
+          <li>პროპორცია: 15გ ყავა 250მლ წყალზე</li><li>დაფქვა: საშუალო</li>
+          <li>დრო: დაახლოებით 3:00 წუთი</li><li>ტემპერატურა: 92–96°C</li>
+        </ul></div>
+        <div class="brew-method"><h4>ფრენჩ პრესი</h4><ul>
+          <li>პროპორცია: 20გ ყავა 300მლ წყალზე</li><li>დაფქვა: უხეში</li>
+          <li>მნიშვნელოვანია: ჯერ ცოტა წყალი დაასხით, შემდეგ დანარჩენი.</li>
+          <li>ინფუზიის დრო: 4 წუთი.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="brew-accordion" id="brew-ru">
+      <button class="brew-acc-header" onclick="toggleBrew(this)"><span>🇷🇺 Рекомендации по приготовлению</span><span class="brew-acc-icon">▾</span></button>
+      <div class="brew-acc-body">
+        <div class="brew-method"><h4>Эспрессо</h4><ul>
+          <li>Доза: 18г (двойной шот)</li><li>Выход: 36г эспрессо</li>
+          <li>Время: 25–30 секунд</li><li>Температура: 93–94°C</li>
+          <li>Совет: слишком кислый? Смелите мельче.</li>
+        </ul></div>
+        <div class="brew-method"><h4>Фильтр-кофе (V60 / Chemex)</h4><ul>
+          <li>Пропорция: 15г кофе на 250мл воды</li><li>Помол: средний</li>
+          <li>Время: ~3:00 минуты</li><li>Температура: 92–96°C</li>
+        </ul></div>
+        <div class="brew-method"><h4>Френч-пресс</h4><ul>
+          <li>Пропорция: 20г кофе на 300мл воды</li><li>Помол: крупный</li>
+          <li>Важно: сначала залейте немного воды и перемешайте, затем добавьте остаток.</li>
+          <li>Время: 4 минуты.</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="brew-accordion" id="brew-fa" dir="rtl">
+      <button class="brew-acc-header" onclick="toggleBrew(this)" style="direction:rtl;"><span>🇮🇷 توصیه‌های دم‌آوری</span><span class="brew-acc-icon">▾</span></button>
+      <div class="brew-acc-body" style="direction:rtl;">
+        <div class="brew-method"><h4>اسپرسو</h4><ul>
+          <li>دوز: ۱۸ گرم (دوبل شات)</li><li>خروجی: ۳۶ گرم اسپرسو</li>
+          <li>زمان: ۲۵–۳۰ ثانیه</li><li>دما: ۹۳–۹۴°C</li>
+          <li>نکته: طعم خیلی ترش؟ آسیاب را ریزتر کنید.</li>
+        </ul></div>
+        <div class="brew-method"><h4>فیلتر (V60 / Chemex)</h4><ul>
+          <li>نسبت: ۱۵ گرم قهوه به ۲۵۰ میلی‌لیتر آب</li><li>اندازه آسیاب: متوسط</li>
+          <li>زمان: حدود ۳ دقیقه</li><li>دما: ۹۲–۹۶°C</li>
+        </ul></div>
+        <div class="brew-method"><h4>فرنچ پرس</h4><ul>
+          <li>نسبت: ۲۰ گرم قهوه به ۳۰۰ میلی‌لیتر آب</li><li>آسیاب: درشت</li>
+          <li>مهم: ابتدا کمی آب بریزید و هم بزنید، سپس بقیه آب را اضافه کنید.</li>
+          <li>زمان دم: ۴ دقیقه.</li>
+        </ul></div>
+      </div>
     </div>
   </div>
-  <div class="brew-accordion" id="brew-en">
-    <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇬🇧 Brewing Recommendations</span><span class="brew-acc-icon">▾</span>
-    </button>
-    <div class="brew-acc-body">
-      <div class="brew-method"><h4>Espresso</h4><ul>
-        <li>Dose: 18g (Double Shot)</li><li>Yield: 36g Espresso</li>
-        <li>Time: 25–30 seconds</li><li>Temperature: 93–94°C</li>
-        <li>Pro Tip: If it tastes too sour, grind finer.</li>
-      </ul></div>
-      <div class="brew-method"><h4>Filter Coffee (V60 / Chemex)</h4><ul>
-        <li>Ratio: 15g coffee to 250ml water</li><li>Grind Size: Medium (like table salt)</li>
-        <li>Brew Time: ~3:00 minutes</li><li>Temperature: 92–96°C</li>
-      </ul></div>
-      <div class="brew-method"><h4>French Press</h4><ul>
-        <li>Ratio: 20g coffee to 300ml water</li><li>Grind Size: Coarse (like sea salt)</li>
-        <li>Important: First pour a small amount of water and stir briefly, then add the rest.</li>
-        <li>Steep Time: 4 minutes.</li>
-      </ul></div>
-    </div>
-  </div>
-  <div class="brew-accordion" id="brew-ka">
-    <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇬🇪 მომზადების რეკომენდაციები</span><span class="brew-acc-icon">▾</span>
-    </button>
-    <div class="brew-acc-body">
-      <div class="brew-method"><h4>ესპრესო</h4><ul>
-        <li>დოზა: 18გ (ორმაგი შოტი)</li><li>გამოსავალი: 36გ ესპრესო</li>
-        <li>დრო: 25–30 წამი</li><li>ტემპერატურა: 93–94°C</li>
-        <li>რჩევა: ძალიან მჟავეა? დაფქვით უფრო წვრილად.</li>
-      </ul></div>
-      <div class="brew-method"><h4>ფილტრი (V60 / Chemex)</h4><ul>
-        <li>პროპორცია: 15გ ყავა 250მლ წყალზე</li><li>დაფქვა: საშუალო</li>
-        <li>დრო: დაახლოებით 3:00 წუთი</li><li>ტემპერატურა: 92–96°C</li>
-      </ul></div>
-      <div class="brew-method"><h4>ფრენჩ პრესი</h4><ul>
-        <li>პროპორცია: 20გ ყავა 300მლ წყალზე</li><li>დაფქვა: უხეში</li>
-        <li>მნიშვნელოვანია: ჯერ ცოტა წყალი დაასხით, შემდეგ დანარჩენი.</li>
-        <li>ინფუზიის დრო: 4 წუთი.</li>
-      </ul></div>
-    </div>
-  </div>
-  <div class="brew-accordion" id="brew-ru">
-    <button class="brew-acc-header" onclick="toggleBrew(this)">
-      <span>🇷🇺 Рекомендации по приготовлению</span><span class="brew-acc-icon">▾</span>
-    </button>
-    <div class="brew-acc-body">
-      <div class="brew-method"><h4>Эспрессо</h4><ul>
-        <li>Доза: 18г (двойной шот)</li><li>Выход: 36г эспрессо</li>
-        <li>Время: 25–30 секунд</li><li>Температура: 93–94°C</li>
-        <li>Совет: слишком кислый? Смелите мельче.</li>
-      </ul></div>
-      <div class="brew-method"><h4>Фильтр-кофе (V60 / Chemex)</h4><ul>
-        <li>Пропорция: 15г кофе на 250мл воды</li><li>Помол: средний</li>
-        <li>Время: ~3:00 минуты</li><li>Температура: 92–96°C</li>
-      </ul></div>
-      <div class="brew-method"><h4>Френч-пресс</h4><ul>
-        <li>Пропорция: 20г кофе на 300мл воды</li><li>Помол: крупный</li>
-        <li>Важно: сначала залейте немного воды и перемешайте, затем добавьте остаток.</li>
-        <li>Время: 4 минуты.</li>
-      </ul></div>
-    </div>
-  </div>
-  <div class="brew-accordion" id="brew-fa" dir="rtl">
-    <button class="brew-acc-header" onclick="toggleBrew(this)" style="direction:rtl;">
-      <span>🇮🇷 توصیه‌های دم‌آوری</span><span class="brew-acc-icon">▾</span>
-    </button>
-    <div class="brew-acc-body" style="direction:rtl;">
-      <div class="brew-method"><h4>اسپرسو</h4><ul>
-        <li>دوز: ۱۸ گرم (دوبل شات)</li><li>خروجی: ۳۶ گرم اسپرسو</li>
-        <li>زمان: ۲۵–۳۰ ثانیه</li><li>دما: ۹۳–۹۴°C</li>
-        <li>نکته: طعم خیلی ترش؟ آسیاب را ریزتر کنید.</li>
-      </ul></div>
-      <div class="brew-method"><h4>فیلتر (V60 / Chemex)</h4><ul>
-        <li>نسبت: ۱۵ گرم قهوه به ۲۵۰ میلی‌لیتر آب</li><li>اندازه آسیاب: متوسط</li>
-        <li>زمان: حدود ۳ دقیقه</li><li>دما: ۹۲–۹۶°C</li>
-      </ul></div>
-      <div class="brew-method"><h4>فرنچ پرس</h4><ul>
-        <li>نسبت: ۲۰ گرم قهوه به ۳۰۰ میلی‌لیتر آب</li><li>آسیاب: درشت</li>
-        <li>مهم: ابتدا کمی آب بریزید و هم بزنید، سپس بقیه آب را اضافه کنید.</li>
-        <li>زمان دم: ۴ دقیقه.</li>
-      </ul></div>
-    </div>
-  </div>
-</div>
 </div>
 
 <!-- ABOUT US -->
@@ -647,11 +935,11 @@ body.rtl .about-goal { border-left: none; border-right: 3px solid var(--secondar
   <img src="image.png" alt="Seven Roast" class="footer-logo" />
   <p><a href="mailto:seven.farsi@gmail.com">seven.farsi@gmail.com</a> &nbsp;|&nbsp; 551 171 164</p>
   <p style="margin-top:0.5rem;opacity:0.5;font-size:0.8rem;">© 2026 7roast – Specialty Coffee</p>
-</footer><script>
+</footer>
+<script>
 // ─── CONSTANTS ───
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw60UseW-T1jRPmaLIax-mz6vPlk0XG77wUCa4u3CuetxIawCWoZr0r5kX1fE-Gp0e7/exec';
 
-// Tier pricing (from Pricing sheet)
 const PRICING = {
   normal:    { 125: 12,   250: 22,  500: 40,  1000: 80,  ground: 2   },
   friend:    { 125: 9,    250: 18,  500: 35,  1000: 70,  ground: 1.5 },
@@ -661,416 +949,252 @@ const PRICING = {
 let lang = 'en';
 let basket = [];
 let currentTier = 'normal';
+let liveStock = {};
+let accessData = { friendEmails: [], cofounderNames: [] };
+
+// Current modal state
+let modalProductId = '';
+let modalProductName = '';
+let modalProductStock = 0;
 
 // ─── TRANSLATIONS ───
 const T = {
   en: {
-    tagline: 'Specialty Coffee – from friends for friends',
     heroTitle: 'Coffee, the way it should be.',
     heroSub: 'Hand-roasted specialty coffees – delivered to your door.',
     heroBtn: 'Order now',
-    titleCoffees: 'Our Coffees',
-    titlePrices: 'Prices (GEL)',
-    titleOrder: 'Order',
-    titleInfo: 'Brewing Recommendations',
-    titleAbout: 'About Us',
+    titleCoffees: 'Our Coffees', titlePrices: 'Prices (GEL)',
+    titleInfo: 'Brewing Recommendations', titleAbout: 'About Us',
     thGround: '+ Ground',
     priceNote: 'Prices in GEL. Grinding surcharge applies only when "Ground" is selected.',
     priceGroundMobile: '+ Ground: +2 GEL',
-    lblCustomerType: 'CUSTOMER TYPE:',
-    optTierNormal: 'Normal',
-    optTierFriend: 'Friend',
-    optTierCofounder: 'Co-Founder',
-    tierInfoFriend: '🤝 Friend price: 9 / 18 / 35 / 70 GEL – Ground: +1.50',
-    tierInfoCofounder: '⭐ Co-Founder price: 7.50 / 15 / 30 / 60 GEL – Ground: +1.00',
-    lblProduct: 'VARIETY:',
-    lblQty: 'QUANTITY:',
-    lblGrind: 'TYPE:',
-    lblStyle: 'METHOD:',
-    lblName: 'YOUR NAME:',
-    lblEmail: 'EMAIL:',
-    lblNotes: 'NOTES:',
-    optCoffee: 'Select coffee',
-    optQty: 'Select',
-    optStyle: 'Select method',
-    optWhole: 'Whole Bean',
-    optGround: 'Ground',
-    optEspresso: 'Espresso',
-    optFilter: 'Filter Coffee',
-    optFrench: 'French Press',
-    btnAdd: '+ Add Coffee',
-    btnSubmit: 'Submit Order',
-    loading: 'Roasting...',
-    stockError: 'Not enough stock! Only {stock}g left.',
-    basketEmpty: 'Your basket is empty!',
-    success: '✓ Order submitted! We will contact you shortly.',
-    error: '✗ Error sending. Please email us: seven.farsi@gmail.com',
-    roastingText: 'Roasting your order...',
-    successTitle: 'Order received!',
-    successSub: 'We will contact you shortly ☕',
-    totalLabel: 'Total:',
+    btnAddCart: 'Add to Cart',
+    cartTitle: 'Your Cart',
+    cartSubmitText: 'Submit Order',
+    cartTotalLabel: 'Total:',
+    cartLoading: 'Roasting your order...',
+    cartSuccess: '✓ Order submitted! We will contact you shortly.',
+    cartError: '✗ Error sending. Please email us: seven.farsi@gmail.com',
+    cartEmpty: 'Your cart is empty. Add some coffees first!',
+    successTitle: 'Order received!', successSub: 'We will contact you shortly ☕',
+    tierDetectedFriend: '🤝 Friend price applied: 9/18/35/70 GEL · Ground +1.50',
+    tierDetectedCofounder: '⭐ Co-Founder price applied: 7.50/15/30/60 GEL · Ground +1.00',
+    modalTitle: 'Add to Cart',
+    modalLblQty: 'QUANTITY:', modalLblGrind: 'TYPE:', modalLblStyle: 'METHOD:',
+    modalOptWhole: 'Whole Bean', modalOptGround: 'Ground',
+    modalOptEspresso: 'Espresso', modalOptFilter: 'Filter Coffee', modalOptFrench: 'French Press',
+    modalOptQty: 'Select quantity', modalOptStyle: 'Select method',
+    modalAddMore: '+ Add & Continue', modalGoCart: '🛒 Go to Cart',
+    modalPriceLabel: 'Price:', modalStockError: 'Not enough stock! Only {stock}g left.',
+    cartLblName: 'YOUR NAME:', cartLblEmail: 'EMAIL:', cartLblNotes: 'NOTES (address / special requests):',
+    cartLblDrawerTitle: 'Your Cart', cartSectionContact: 'Contact & Delivery',
+    namePlaceholder: 'Enter your name...', emailPlaceholder: 'email@example.com',
+    notesPlaceholder: 'Address, special requests...',
+    bannerText: "We're shipping to Georgia and Armenia",
     descBra: 'Full-bodied with notes of hazelnut, dark chocolate and light sweetness. Ideal for espresso and milk-based drinks.',
     descCol: 'Balanced coffee with notes of caramel, red apple and mild acidity. Versatile for all brewing methods.',
     descRwa: 'Fruity and vibrant with notes of citrus, peach and brown sugar. Perfect as a filter coffee.',
     descEth: 'Floral aromas of jasmine and bergamot, delicate citrus note, silky finish. Only a few grams left!',
     descPan: 'Elegant, complex coffee with floral notes and fine fruity sweetness. Premium quality.',
-    priceBra: 'from GEL 12 / 125g',
-    priceCol: 'from GEL 12 / 125g',
-    priceRwa: 'from GEL 12 / 125g',
-    priceEth: 'from GEL 12 / 125g',
-    pricePan: 'from GEL 12 / 125g',
-    stockBra: '{stock}g available',
-    stockCol: '{stock}g available',
-    stockRwa: '{stock}g available – almost gone!',
-    stockEth: '{stock}g available – last stock!',
-    stockPan: '{stock}g available',
-    aboutTitle: 'From friends, for friends.',
-    aboutText: '7roast is a small, passionate coffee project. We hand-select and roast specialty coffees from around the world and bring them directly to you. Quality, transparency and friendship are at the heart of everything we do.',
-    aboutGoalTitle: 'What is our goal?',
-    aboutGoalText: 'Our first goal is to offer our friends high-quality coffee at a fair price. The second goal, of course, is to cover our costs.',
-    aboutPriceTitle: 'How is the price calculated?',
-    pbBeans: '☕ Coffee beans',
-    pbTime: '⏱ Time (~1h/kg)',
-    pbReserve: '💰 Reserves',
-    pbEnergy: '⚡ Energy & packaging',
-    aboutContactText: 'If you have any questions, feel free to contact us!',
-    aboutSignature: 'Matt, Jürgen, Roland & Sven',
-    namePlaceholder: 'Enter your name...',
-    emailPlaceholder: 'email@example.com',
-    notesPlaceholder: 'Special requests...',
-    langFlag: '🇬🇧',
-    langName: 'English',
-    tierDetectedFriend: 'Friend price applied: 9/18/35/70 GEL · Ground +1.50',
-    tierDetectedCofounder: 'Co-Founder price applied: 7.50/15/30/60 GEL · Ground +1.00',
+    priceBra:'from GEL 12 / 125g', priceCol:'from GEL 12 / 125g', priceRwa:'from GEL 12 / 125g', priceEth:'from GEL 12 / 125g', pricePan:'from GEL 12 / 125g',
+    stockBra:'{stock}g available', stockCol:'{stock}g available', stockRwa:'{stock}g available – almost gone!', stockEth:'{stock}g available – last stock!', stockPan:'{stock}g available',
+    aboutTitle:'From friends, for friends.', aboutText:'7roast is a small, passionate coffee project. We hand-select and roast specialty coffees from around the world and bring them directly to you. Quality, transparency and friendship are at the heart of everything we do.',
+    aboutGoalTitle:'What is our goal?', aboutGoalText:'Our first goal is to offer our friends high-quality coffee at a fair price. The second goal, of course, is to cover our costs.',
+    aboutPriceTitle:'How is the price calculated?',
+    pbBeans:'☕ Coffee beans', pbTime:'⏱ Time (~1h/kg)', pbReserve:'💰 Reserves', pbEnergy:'⚡ Energy & packaging',
+    aboutContactText:'If you have any questions, feel free to contact us!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    langFlag:'🇬🇧', langName:'English'
   },
   de: {
-    tagline: 'Specialty Coffee – von Freunden für Freunde',
     heroTitle: 'Kaffee, wie er sein sollte.',
     heroSub: 'Handgeröstete Specialty Coffees – direkt zu dir nach Hause.',
     heroBtn: 'Jetzt bestellen',
-    titleCoffees: 'Unsere Kaffees',
-    titlePrices: 'Preise (GEL)',
-    titleOrder: 'Bestellen',
-    titleInfo: 'Zubereitungsempfehlungen',
-    titleAbout: 'Über uns',
+    titleCoffees: 'Unsere Kaffees', titlePrices: 'Preise (GEL)',
+    titleInfo: 'Zubereitungsempfehlungen', titleAbout: 'Über uns',
     thGround: '+ Gemahlen',
     priceNote: 'Preise in GEL. Mahlzuschlag nur bei gewählter Option "Gemahlen".',
     priceGroundMobile: '+ Gemahlen: +2 GEL',
-    lblCustomerType: 'KUNDENTYP:',
-    optTierNormal: 'Normal',
-    optTierFriend: 'Freund',
-    optTierCofounder: 'Co-Gründer',
-    tierInfoFriend: '🤝 Freundespreis: 9 / 18 / 35 / 70 GEL – Gemahlen: +1,50',
-    tierInfoCofounder: '⭐ Co-Gründer-Preis: 7,50 / 15 / 30 / 60 GEL – Gemahlen: +1,00',
-    lblProduct: 'SORTE:',
-    lblQty: 'MENGE:',
-    lblGrind: 'ART:',
-    lblStyle: 'ZUBEREITUNG:',
-    lblName: 'DEIN NAME:',
-    lblEmail: 'E-MAIL:',
-    lblNotes: 'ANMERKUNGEN:',
-    optCoffee: 'Kaffee wählen',
-    optQty: 'Wählen',
-    optStyle: 'Zubereitung wählen',
-    optWhole: 'Ganze Bohne',
-    optGround: 'Gemahlen',
-    optEspresso: 'Espresso',
-    optFilter: 'Filterkaffee',
-    optFrench: 'French Press',
-    btnAdd: '+ Hinzufügen',
-    btnSubmit: 'Bestellung abschicken',
-    loading: 'Wird geröstet...',
-    stockError: 'Nicht genug Bestand! Nur noch {stock}g verfügbar.',
-    basketEmpty: 'Warenkorb ist leer!',
-    success: '✓ Bestellung erfolgreich! Wir melden uns bald.',
-    error: '✗ Fehler beim Senden. Schreib uns: seven.farsi@gmail.com',
-    roastingText: 'Deine Bestellung wird geröstet...',
-    successTitle: 'Bestellung eingegangen!',
-    successSub: 'Wir melden uns bald ☕',
-    totalLabel: 'Gesamt:',
-    descBra: 'Vollmundiger Körper, Noten von Haselnuss, dunkler Schokolade und leichter Süße. Ideal für Espresso und Milchgetränke.',
-    descCol: 'Ausgewogener Kaffee mit Noten von Karamell, rotem Apfel und milder Säurestruktur. Vielseitig für alle Zubereitungen.',
-    descRwa: 'Fruchtig und lebendig mit Noten von Zitrus, Pfirsich und braunem Zucker. Perfekt als Filterkaffee.',
-    descEth: 'Blumige Aromen von Jasmin und Bergamotte, feine Zitrusnote, seidiger Abgang. Nur noch wenige Gramm!',
-    descPan: 'Eleganter, komplexer Kaffee mit floralen Noten und feiner Fruchtsüße. Premium-Qualität.',
-    priceBra: 'ab GEL 12 / 125g',
-    priceCol: 'ab GEL 12 / 125g',
-    priceRwa: 'ab GEL 12 / 125g',
-    priceEth: 'ab GEL 12 / 125g',
-    pricePan: 'ab GEL 12 / 125g',
-    stockBra: '{stock}g verfügbar',
-    stockCol: '{stock}g verfügbar',
-    stockRwa: '{stock}g verfügbar – bald vergriffen!',
-    stockEth: '{stock}g verfügbar – letzte Reste!',
-    stockPan: '{stock}g verfügbar',
-    aboutTitle: 'Von Freunden, für Freunde.',
-    aboutText: '7roast ist ein kleines, leidenschaftliches Kaffeeprojekt. Wir wählen handverlesen Specialty Coffees aus aller Welt und bringen sie direkt zu euch. Qualität, Transparenz und Freundschaft stehen bei uns im Mittelpunkt.',
-    aboutGoalTitle: 'Was ist unser Ziel?',
-    aboutGoalText: 'Unser erstes Ziel ist es, unseren Freunden hochwertigen Kaffee zu einem fairen Preis anzubieten. Das zweite Ziel ist natürlich, unsere Kosten zu decken.',
-    aboutPriceTitle: 'Wie berechnet sich der Preis?',
-    pbBeans: '☕ Kaffeebohnen',
-    pbTime: '⏱ Zeitaufwand (~1h/kg)',
-    pbReserve: '💰 Rücklagen',
-    pbEnergy: '⚡ Energie & Verpackung',
-    aboutContactText: 'Bei Fragen stehen wir gerne zur Verfügung!',
-    aboutSignature: 'Matt, Jürgen, Roland & Sven',
-    namePlaceholder: 'Dein Name...',
-    emailPlaceholder: 'email@beispiel.com',
-    notesPlaceholder: 'Besondere Wünsche...',
-    langFlag: '🇩🇪',
-    langName: 'Deutsch',
-    tierDetectedFriend: 'Freundespreis aktiv: 9/18/35/70 GEL · Gemahlen +1,50',
-    tierDetectedCofounder: 'Co-Gründer-Preis aktiv: 7,50/15/30/60 GEL · Gemahlen +1,00',
+    btnAddCart: 'In den Warenkorb',
+    cartTitle: 'Warenkorb',
+    cartSubmitText: 'Bestellung abschicken',
+    cartTotalLabel: 'Gesamt:',
+    cartLoading: 'Deine Bestellung wird geröstet...',
+    cartSuccess: '✓ Bestellung erfolgreich! Wir melden uns bald.',
+    cartError: '✗ Fehler beim Senden. Schreib uns: seven.farsi@gmail.com',
+    cartEmpty: 'Dein Warenkorb ist leer. Füge zuerst Kaffees hinzu!',
+    successTitle: 'Bestellung eingegangen!', successSub: 'Wir melden uns bald ☕',
+    tierDetectedFriend: '🤝 Freundespreis aktiv: 9/18/35/70 GEL · Gemahlen +1,50',
+    tierDetectedCofounder: '⭐ Co-Gründer-Preis aktiv: 7,50/15/30/60 GEL · Gemahlen +1,00',
+    modalTitle: 'In den Warenkorb',
+    modalLblQty: 'MENGE:', modalLblGrind: 'ART:', modalLblStyle: 'ZUBEREITUNG:',
+    modalOptWhole: 'Ganze Bohne', modalOptGround: 'Gemahlen',
+    modalOptEspresso: 'Espresso', modalOptFilter: 'Filterkaffee', modalOptFrench: 'French Press',
+    modalOptQty: 'Menge wählen', modalOptStyle: 'Zubereitung wählen',
+    modalAddMore: '+ Hinzufügen & weiter', modalGoCart: '🛒 Zum Warenkorb',
+    modalPriceLabel: 'Preis:', modalStockError: 'Nicht genug Bestand! Nur noch {stock}g verfügbar.',
+    cartLblName: 'DEIN NAME:', cartLblEmail: 'E-MAIL:', cartLblNotes: 'ANMERKUNGEN (Adresse / Wünsche):',
+    cartLblDrawerTitle: 'Warenkorb', cartSectionContact: 'Kontakt & Lieferung',
+    namePlaceholder: 'Dein Name...', emailPlaceholder: 'email@beispiel.com',
+    notesPlaceholder: 'Adresse, besondere Wünsche...',
+    bannerText: 'Wir liefern nach Georgien und Armenien',
+    descBra:'Vollmundiger Körper, Noten von Haselnuss, dunkler Schokolade und leichter Süße.',
+    descCol:'Ausgewogener Kaffee mit Noten von Karamell, rotem Apfel und milder Säurestruktur.',
+    descRwa:'Fruchtig und lebendig mit Noten von Zitrus, Pfirsich und braunem Zucker.',
+    descEth:'Blumige Aromen von Jasmin und Bergamotte, feine Zitrusnote, seidiger Abgang.',
+    descPan:'Eleganter, komplexer Kaffee mit floralen Noten und feiner Fruchtsüße.',
+    priceBra:'ab GEL 12 / 125g', priceCol:'ab GEL 12 / 125g', priceRwa:'ab GEL 12 / 125g', priceEth:'ab GEL 12 / 125g', pricePan:'ab GEL 12 / 125g',
+    stockBra:'{stock}g verfügbar', stockCol:'{stock}g verfügbar', stockRwa:'{stock}g – bald vergriffen!', stockEth:'{stock}g – letzte Reste!', stockPan:'{stock}g verfügbar',
+    aboutTitle:'Von Freunden, für Freunde.', aboutText:'7roast ist ein kleines, leidenschaftliches Kaffeeprojekt. Wir wählen handverlesen Specialty Coffees aus aller Welt und bringen sie direkt zu euch.',
+    aboutGoalTitle:'Was ist unser Ziel?', aboutGoalText:'Unser erstes Ziel ist es, unseren Freunden hochwertigen Kaffee zu einem fairen Preis anzubieten.',
+    aboutPriceTitle:'Wie berechnet sich der Preis?',
+    pbBeans:'☕ Kaffeebohnen', pbTime:'⏱ Zeitaufwand (~1h/kg)', pbReserve:'💰 Rücklagen', pbEnergy:'⚡ Energie & Verpackung',
+    aboutContactText:'Bei Fragen stehen wir gerne zur Verfügung!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    langFlag:'🇩🇪', langName:'Deutsch'
   },
   ru: {
-    tagline: 'Specialty Coffee – от друзей для друзей',
     heroTitle: 'Кофе таким, каким он должен быть.',
     heroSub: 'Обжаренный вручную specialty кофе – прямо к вашей двери.',
     heroBtn: 'Заказать',
-    titleCoffees: 'Наш кофе',
-    titlePrices: 'Цены (GEL)',
-    titleOrder: 'Заказ',
-    titleInfo: 'Рекомендации по приготовлению',
-    titleAbout: 'О нас',
+    titleCoffees: 'Наш кофе', titlePrices: 'Цены (GEL)',
+    titleInfo: 'Рекомендации по приготовлению', titleAbout: 'О нас',
     thGround: '+ Молотый',
     priceNote: 'Цены в GEL. Доплата за помол только при выборе "Молотый".',
     priceGroundMobile: '+ Молотый: +2 GEL',
-    lblCustomerType: 'ТИП КЛИЕНТА:',
-    optTierNormal: 'Обычный',
-    optTierFriend: 'Друг',
-    optTierCofounder: 'Сооснователь',
-    tierInfoFriend: '🤝 Цена для друзей: 9 / 18 / 35 / 70 GEL – Помол: +1,50',
-    tierInfoCofounder: '⭐ Цена сооснователя: 7,50 / 15 / 30 / 60 GEL – Помол: +1,00',
-    lblProduct: 'СОРТ:',
-    lblQty: 'КОЛ-ВО:',
-    lblGrind: 'ТИП:',
-    lblStyle: 'СПОСОБ:',
-    lblName: 'ВАШЕ ИМЯ:',
-    lblEmail: 'E-MAIL:',
-    lblNotes: 'ЗАМЕТКИ:',
-    optCoffee: 'Выбрать кофе',
-    optQty: 'Выбрать',
-    optStyle: 'Выбрать способ',
-    optWhole: 'В зёрнах',
-    optGround: 'Молотый',
-    optEspresso: 'Эспрессо',
-    optFilter: 'Фильтр',
-    optFrench: 'Френч-пресс',
-    btnAdd: '+ Добавить',
-    btnSubmit: 'Отправить заказ',
-    loading: 'Обжариваем...',
-    stockError: 'Недостаточно запасов! Осталось {stock}г.',
-    basketEmpty: 'Корзина пуста!',
-    success: '✓ Заказ принят! Мы скоро свяжемся с вами.',
-    error: '✗ Ошибка отправки. Напишите нам: seven.farsi@gmail.com',
-    roastingText: 'Обжариваем ваш заказ...',
-    successTitle: 'Заказ принят!',
-    successSub: 'Мы скоро свяжемся с вами ☕',
-    totalLabel: 'Итого:',
-    descBra: 'Насыщенный кофе с нотами лесного ореха, тёмного шоколада и лёгкой сладости.',
-    descCol: 'Сбалансированный кофе с нотами карамели, красного яблока и мягкой кислинкой.',
-    descRwa: 'Фруктовый и яркий, с нотами цитруса, персика и коричневого сахара.',
-    descEth: 'Цветочные ароматы жасмина и бергамота, тонкий цитрус, шёлковое послевкусие.',
-    descPan: 'Элегантный, комплексный кофе с цветочными нотами и фруктовой сладостью.',
-    priceBra: 'от GEL 12 / 125г',
-    priceCol: 'от GEL 12 / 125г',
-    priceRwa: 'от GEL 12 / 125г',
-    priceEth: 'от GEL 12 / 125г',
-    pricePan: 'от GEL 12 / 125г',
-    stockBra: '{stock}г в наличии',
-    stockCol: '{stock}г в наличии',
-    stockRwa: '{stock}г – почти нет!',
-    stockEth: '{stock}г – последние остатки!',
-    stockPan: '{stock}г в наличии',
-    aboutTitle: 'От друзей, для друзей.',
-    aboutText: '7roast – небольшой проект о кофе с душой. Мы отбираем и обжариваем specialty кофе со всего мира.',
-    aboutGoalTitle: 'В чём наша цель?',
-    aboutGoalText: 'Первая цель – предложить друзьям качественный кофе по честной цене. Вторая цель – окупить расходы.',
-    aboutPriceTitle: 'Как формируется цена?',
-    pbBeans: '☕ Кофейные зёрна',
-    pbTime: '⏱ Время (~1ч/кг)',
-    pbReserve: '💰 Резервы',
-    pbEnergy: '⚡ Энергия & упаковка',
-    aboutContactText: 'Если есть вопросы – пишите нам!',
-    aboutSignature: 'Matt, Jürgen, Roland & Sven',
-    namePlaceholder: 'Ваше имя...',
-    emailPlaceholder: 'email@example.com',
-    notesPlaceholder: 'Особые пожелания...',
-    langFlag: '🇷🇺',
-    langName: 'Русский',
-    tierDetectedFriend: 'Цена для друзей: 9/18/35/70 GEL · Помол +1,50',
-    tierDetectedCofounder: 'Цена со-основателя: 7,50/15/30/60 GEL · Помол +1,00',
+    btnAddCart: 'В корзину',
+    cartTitle: 'Корзина',
+    cartSubmitText: 'Отправить заказ',
+    cartTotalLabel: 'Итого:',
+    cartLoading: 'Обжариваем ваш заказ...',
+    cartSuccess: '✓ Заказ принят! Мы скоро свяжемся с вами.',
+    cartError: '✗ Ошибка. Напишите нам: seven.farsi@gmail.com',
+    cartEmpty: 'Ваша корзина пуста. Сначала добавьте кофе!',
+    successTitle: 'Заказ принят!', successSub: 'Мы скоро свяжемся с вами ☕',
+    tierDetectedFriend: '🤝 Цена для друзей: 9/18/35/70 GEL · Помол +1,50',
+    tierDetectedCofounder: '⭐ Цена со-основателя: 7,50/15/30/60 GEL · Помол +1,00',
+    modalTitle: 'В корзину',
+    modalLblQty: 'КОЛ-ВО:', modalLblGrind: 'ТИП:', modalLblStyle: 'СПОСОБ:',
+    modalOptWhole: 'В зёрнах', modalOptGround: 'Молотый',
+    modalOptEspresso: 'Эспрессо', modalOptFilter: 'Фильтр', modalOptFrench: 'Френч-пресс',
+    modalOptQty: 'Выбрать', modalOptStyle: 'Выбрать способ',
+    modalAddMore: '+ Добавить & продолжить', modalGoCart: '🛒 К корзине',
+    modalPriceLabel: 'Цена:', modalStockError: 'Недостаточно запасов! Осталось {stock}г.',
+    cartLblName: 'ВАШЕ ИМЯ:', cartLblEmail: 'E-MAIL:', cartLblNotes: 'ЗАМЕТКИ:',
+    cartLblDrawerTitle: 'Корзина', cartSectionContact: 'Контакт & Доставка',
+    namePlaceholder: 'Ваше имя...', emailPlaceholder: 'email@example.com',
+    notesPlaceholder: 'Адрес, особые пожелания...',
+    bannerText: 'Доставляем в Грузию и Армению',
+    descBra:'Насыщенный кофе с нотами лесного ореха, тёмного шоколада.',
+    descCol:'Сбалансированный кофе с нотами карамели, красного яблока.',
+    descRwa:'Фруктовый, с нотами цитруса, персика и коричневого сахара.',
+    descEth:'Цветочные ароматы жасмина и бергамота, шёлковое послевкусие.',
+    descPan:'Элегантный, комплексный кофе с цветочными нотами.',
+    priceBra:'от GEL 12 / 125г', priceCol:'от GEL 12 / 125г', priceRwa:'от GEL 12 / 125г', priceEth:'от GEL 12 / 125г', pricePan:'от GEL 12 / 125г',
+    stockBra:'{stock}г в наличии', stockCol:'{stock}г в наличии', stockRwa:'{stock}г – почти нет!', stockEth:'{stock}г – последние остатки!', stockPan:'{stock}г в наличии',
+    aboutTitle:'От друзей, для друзей.', aboutText:'7roast – небольшой проект о кофе с душой.',
+    aboutGoalTitle:'В чём наша цель?', aboutGoalText:'Предложить друзьям качественный кофе по честной цене.',
+    aboutPriceTitle:'Как формируется цена?',
+    pbBeans:'☕ Кофейные зёрна', pbTime:'⏱ Время (~1ч/кг)', pbReserve:'💰 Резервы', pbEnergy:'⚡ Энергия & упаковка',
+    aboutContactText:'Если есть вопросы – пишите нам!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    langFlag:'🇷🇺', langName:'Русский'
   },
   ka: {
-    tagline: 'Specialty Coffee – მეგობრებისგან მეგობრებისთვის',
     heroTitle: 'ყავა, როგორი უნდა იყოს.',
     heroSub: 'ხელით შემწვარი specialty ყავა – პირდაპირ შენამდე.',
     heroBtn: 'შეკვეთა',
-    titleCoffees: 'ჩვენი ყავები',
-    titlePrices: 'ფასები (GEL)',
-    titleOrder: 'შეკვეთა',
-    titleInfo: 'მომზადების რეკომენდაციები',
-    titleAbout: 'ჩვენს შესახებ',
+    titleCoffees: 'ჩვენი ყავები', titlePrices: 'ფასები (GEL)',
+    titleInfo: 'მომზადების რეკომენდაციები', titleAbout: 'ჩვენს შესახებ',
     thGround: '+ დაფქვა',
     priceNote: 'ფასები GEL-ში. დაფქვის დანამატი მოქმედებს "დაფქვილი" ვარიანტისთვის.',
     priceGroundMobile: '+ დაფქვა: +2 GEL',
-    lblCustomerType: 'კლიენტის ტიპი:',
-    optTierNormal: 'ჩვეულებრივი',
-    optTierFriend: 'მეგობარი',
-    optTierCofounder: 'თანადამფუძნებელი',
-    tierInfoFriend: '🤝 მეგობრის ფასი: 9 / 18 / 35 / 70 GEL – დაფქვა: +1.50',
-    tierInfoCofounder: '⭐ თანადამფუძნებლის ფასი: 7.50 / 15 / 30 / 60 GEL – დაფქვა: +1.00',
-    lblProduct: 'ჯიში:',
-    lblQty: 'რაოდენობა:',
-    lblGrind: 'ტიპი:',
-    lblStyle: 'მომზადება:',
-    lblName: 'შენი სახელი:',
-    lblEmail: 'ელ.ფოსტა:',
-    lblNotes: 'შენიშვნა:',
-    optCoffee: 'ყავა აირჩიეთ',
-    optQty: 'აირჩიეთ',
-    optStyle: 'მომზადება აირჩიეთ',
-    optWhole: 'მარცვალი',
-    optGround: 'დაფქვილი',
-    optEspresso: 'ესპრესო',
-    optFilter: 'ფილტრი',
-    optFrench: 'ფრენჩ პრესი',
-    btnAdd: '+ დამატება',
-    btnSubmit: 'გაგზავნა',
-    loading: 'ვწვავთ...',
-    stockError: 'არ არის საკმარისი! დარჩა {stock}გ.',
-    basketEmpty: 'კალათა ცარიელია!',
-    success: '✓ შეკვეთა გაგზავნილია! მალე დაგიკავშირდებით.',
-    error: '✗ შეცდომა. გამოგვიგზავნეთ: seven.farsi@gmail.com',
-    roastingText: 'ვამზადებთ შეკვეთას...',
-    successTitle: 'შეკვეთა მიღებულია!',
-    successSub: 'მალე დაგიკავშირდებით ☕',
-    totalLabel: 'სულ:',
-    descBra: 'სრული სხეული, თხილის, მუქი შოკოლადის ნოტებით.',
-    descCol: 'დაბალანსებული ყავა კარამელის, წითელი ვაშლის ნოტებით.',
-    descRwa: 'ხილიანი, ციტრუსის, ატმის ნოტებით. იდეალური ფილტრ ყავისთვის.',
-    descEth: 'ჟასმინისა და ბერგამოტის ყვავილოვანი არომატი.',
-    descPan: 'ელეგანტური ყავა ყვავილოვანი ნოტებით.',
-    priceBra: 'GEL 12-დან / 125გ',
-    priceCol: 'GEL 12-დან / 125გ',
-    priceRwa: 'GEL 12-დან / 125გ',
-    priceEth: 'GEL 12-დან / 125გ',
-    pricePan: 'GEL 12-დან / 125გ',
-    stockBra: '{stock}გ ხელმისაწვდომია',
-    stockCol: '{stock}გ ხელმისაწვდომია',
-    stockRwa: '{stock}გ – თითქმის დამთავრდა!',
-    stockEth: '{stock}გ – ბოლო მარაგი!',
-    stockPan: '{stock}გ ხელმისაწვდომია',
-    aboutTitle: 'მეგობრებისგან, მეგობრებისთვის.',
-    aboutText: '7roast არის პატარა, ვნებიანი ყავის პროექტი. ჩვენ ვარჩევთ და ვწვავთ specialty ყავებს მთელი მსოფლიოდან.',
-    aboutGoalTitle: 'რა არის ჩვენი მიზანი?',
-    aboutGoalText: 'პირველი მიზანი – მეგობრებს მაღალხარისხოვანი ყავა სამართლიან ფასად შევთავაზოთ. მეორე მიზანი – ხარჯების დაფარვა.',
-    aboutPriceTitle: 'როგორ ითვლება ფასი?',
-    pbBeans: '☕ ყავის მარცვლები',
-    pbTime: '⏱ დრო (~1სთ/კგ)',
-    pbReserve: '💰 რეზერვი',
-    pbEnergy: '⚡ ენერგია & შეფუთვა',
-    aboutContactText: 'კითხვების შემთხვევაში, მოგვმართეთ!',
-    aboutSignature: 'Matt, Jürgen, Roland & Sven',
-    namePlaceholder: 'შენი სახელი...',
-    emailPlaceholder: 'email@example.com',
-    notesPlaceholder: 'სპეციალური სურვილები...',
-    langFlag: '🇬🇪',
-    langName: 'ქართული',
-    tierDetectedFriend: 'მეგობრის ფასი: 9/18/35/70 GEL',
-    tierDetectedCofounder: 'თანადამფუძნებლის ფასი: 7.50/15/30/60 GEL',
+    btnAddCart: 'კალათაში დამატება',
+    cartTitle: 'კალათა',
+    cartSubmitText: 'გაგზავნა',
+    cartTotalLabel: 'სულ:',
+    cartLoading: 'ვამზადებთ შეკვეთას...',
+    cartSuccess: '✓ შეკვეთა გაგზავნილია! მალე დაგიკავშირდებით.',
+    cartError: '✗ შეცდომა. გამოგვიგზავნეთ: seven.farsi@gmail.com',
+    cartEmpty: 'კალათა ცარიელია!',
+    successTitle: 'შეკვეთა მიღებულია!', successSub: 'მალე დაგიკავშირდებით ☕',
+    tierDetectedFriend: '🤝 მეგობრის ფასი: 9/18/35/70 GEL',
+    tierDetectedCofounder: '⭐ თანადამფუძნებლის ფასი: 7.50/15/30/60 GEL',
+    modalTitle: 'კალათაში დამატება',
+    modalLblQty: 'რაოდენობა:', modalLblGrind: 'ტიპი:', modalLblStyle: 'მომზადება:',
+    modalOptWhole: 'მარცვალი', modalOptGround: 'დაფქვილი',
+    modalOptEspresso: 'ესპრესო', modalOptFilter: 'ფილტრი', modalOptFrench: 'ფრენჩ პრესი',
+    modalOptQty: 'აირჩიეთ', modalOptStyle: 'მომზადება აირჩიეთ',
+    modalAddMore: '+ დამატება & გაგრძელება', modalGoCart: '🛒 კალათაზე გადასვლა',
+    modalPriceLabel: 'ფასი:', modalStockError: 'არ არის საკმარისი! დარჩა {stock}გ.',
+    cartLblName: 'შენი სახელი:', cartLblEmail: 'ელ.ფოსტა:', cartLblNotes: 'შენიშვნა:',
+    cartLblDrawerTitle: 'კალათა', cartSectionContact: 'კონტაქტი & მიტანა',
+    namePlaceholder: 'შენი სახელი...', emailPlaceholder: 'email@example.com',
+    notesPlaceholder: 'მისამართი, სპეციალური სურვილები...',
+    bannerText: 'ვაგზავნით საქართველოსა და სომხეთში',
+    descBra:'სრული სხეული, თხილის, მუქი შოკოლადის ნოტებით.',
+    descCol:'დაბალანსებული ყავა კარამელის, წითელი ვაშლის ნოტებით.',
+    descRwa:'ხილიანი, ციტრუსის, ატმის ნოტებით.',
+    descEth:'ჟასმინისა და ბერგამოტის ყვავილოვანი არომატი.',
+    descPan:'ელეგანტური ყავა ყვავილოვანი ნოტებით.',
+    priceBra:'GEL 12-დან / 125გ', priceCol:'GEL 12-დან / 125გ', priceRwa:'GEL 12-დან / 125გ', priceEth:'GEL 12-დან / 125გ', pricePan:'GEL 12-დან / 125გ',
+    stockBra:'{stock}გ ხელმისაწვდომია', stockCol:'{stock}გ ხელმისაწვდომია', stockRwa:'{stock}გ – თითქმის დამთავრდა!', stockEth:'{stock}გ – ბოლო მარაგი!', stockPan:'{stock}გ ხელმისაწვდომია',
+    aboutTitle:'მეგობრებისგან, მეგობრებისთვის.', aboutText:'7roast არის პატარა, ვნებიანი ყავის პროექტი.',
+    aboutGoalTitle:'რა არის ჩვენი მიზანი?', aboutGoalText:'მეგობრებს მაღალხარისხოვანი ყავა სამართლიან ფასად.',
+    aboutPriceTitle:'როგორ ითვლება ფასი?',
+    pbBeans:'☕ ყავის მარცვლები', pbTime:'⏱ დრო (~1სთ/კგ)', pbReserve:'💰 რეზერვი', pbEnergy:'⚡ ენერგია & შეფუთვა',
+    aboutContactText:'კითხვების შემთხვევაში, მოგვმართეთ!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    langFlag:'🇬🇪', langName:'ქართული'
   },
   fa: {
-    tagline: 'Specialty Coffee – از دوستان برای دوستان',
     heroTitle: 'قهوه، آن‌طور که باید باشد.',
     heroSub: 'قهوه‌های تخصصی برشته‌شده با دست – مستقیم به خانه شما.',
     heroBtn: 'سفارش دهید',
-    titleCoffees: 'قهوه‌های ما',
-    titlePrices: 'قیمت‌ها (GEL)',
-    titleOrder: 'سفارش',
-    titleInfo: 'توصیه‌های دم‌آوری',
-    titleAbout: 'درباره ما',
+    titleCoffees: 'قهوه‌های ما', titlePrices: 'قیمت‌ها (GEL)',
+    titleInfo: 'توصیه‌های دم‌آوری', titleAbout: 'درباره ما',
     thGround: '+ آسیاب',
     priceNote: 'قیمت‌ها به GEL. اضافه‌بهای آسیاب فقط برای گزینه "آسیاب شده".',
     priceGroundMobile: '+ آسیاب: +2 GEL',
-    lblCustomerType: 'نوع مشتری:',
-    optTierNormal: 'معمولی',
-    optTierFriend: 'دوست',
-    optTierCofounder: 'هم‌بنیان‌گذار',
-    tierInfoFriend: '🤝 قیمت دوستانه: 9 / 18 / 35 / 70 GEL – آسیاب: +1.50',
-    tierInfoCofounder: '⭐ قیمت هم‌بنیان‌گذار: 7.50 / 15 / 30 / 60 GEL – آسیاب: +1.00',
-    lblProduct: 'نوع:',
-    lblQty: 'مقدار:',
-    lblGrind: 'نوع:',
-    lblStyle: 'روش دم:',
-    lblName: 'نام شما:',
-    lblEmail: 'ایمیل:',
-    lblNotes: 'توضیحات:',
-    optCoffee: 'انتخاب قهوه',
-    optQty: 'انتخاب',
-    optStyle: 'انتخاب روش',
-    optWhole: 'دانه',
-    optGround: 'آسیاب شده',
-    optEspresso: 'اسپرسو',
-    optFilter: 'فیلتر',
-    optFrench: 'فرنچ پرس',
-    btnAdd: '+ افزودن',
-    btnSubmit: 'ارسال سفارش',
-    loading: 'در حال برشته‌کاری...',
-    stockError: 'موجودی کافی نیست! فقط {stock}گرم مانده.',
-    basketEmpty: 'سبد خرید خالی است!',
-    success: '✓ سفارش ثبت شد! به زودی با شما تماس می‌گیریم.',
-    error: '✗ خطا در ارسال. ایمیل بزنید: seven.farsi@gmail.com',
-    roastingText: 'سفارش شما در حال آماده‌سازی...',
-    successTitle: 'سفارش دریافت شد!',
-    successSub: 'به زودی با شما تماس می‌گیریم ☕',
-    totalLabel: 'مجموع:',
-    descBra: 'قهوه‌ای با بدنه کامل، نت‌های فندق، شکلات تلخ و شیرینی ملایم.',
-    descCol: 'قهوه‌ای متعادل با نت‌های کارامل، سیب قرمز و اسیدیته ملایم.',
-    descRwa: 'میوه‌ای و شاداب با نت‌های مرکبات، هلو و شکر قهوه‌ای.',
-    descEth: 'عطر گل‌های یاسمین و بِرگامو، نت ظریف مرکبات، پایانی ابریشمین.',
-    descPan: 'قهوه‌ای ظریف و پیچیده با نت‌های گل و شیرینی میوه‌ای.',
-    priceBra: 'از GEL 12 / 125گرم',
-    priceCol: 'از GEL 12 / 125گرم',
-    priceRwa: 'از GEL 12 / 125گرم',
-    priceEth: 'از GEL 12 / 125گرم',
-    pricePan: 'از GEL 12 / 125گرم',
-    stockBra: '{stock}گرم موجود',
-    stockCol: '{stock}گرم موجود',
-    stockRwa: '{stock}گرم – تقریباً تمام شد!',
-    stockEth: '{stock}گرم – آخرین موجودی!',
-    stockPan: '{stock}گرم موجود',
-    aboutTitle: 'از دوستان، برای دوستان.',
-    aboutText: '7roast یک پروژه قهوه کوچک و پرشور است. ما قهوه‌های تخصصی از سراسر جهان انتخاب و بو می‌دهیم.',
-    aboutGoalTitle: 'هدف ما چیست؟',
-    aboutGoalText: 'اول: ارائه قهوه باکیفیت به دوستان با قیمتی منصفانه. دوم: پوشش هزینه‌ها.',
-    aboutPriceTitle: 'قیمت چگونه محاسبه می‌شود؟',
-    pbBeans: '☕ دانه‌های قهوه',
-    pbTime: '⏱ زمان (~۱ساعت/کیلو)',
-    pbReserve: '💰 ذخیره',
-    pbEnergy: '⚡ انرژی و بسته‌بندی',
-    aboutContactText: 'اگر سوالی دارید، با ما تماس بگیرید!',
-    aboutSignature: 'Matt, Jürgen, Roland & Sven',
-    namePlaceholder: 'نام شما...',
-    emailPlaceholder: 'email@example.com',
-    notesPlaceholder: 'درخواست‌های خاص...',
-    langFlag: '🇮🇷',
-    langName: 'فارسی',
-    tierDetectedFriend: 'قیمت دوستانه: 9/18/35/70 GEL',
-    tierDetectedCofounder: 'قیمت هم‌بنیان‌گذار: 7.50/15/30/60 GEL',
+    btnAddCart: 'افزودن به سبد',
+    cartTitle: 'سبد خرید',
+    cartSubmitText: 'ارسال سفارش',
+    cartTotalLabel: 'مجموع:',
+    cartLoading: 'سفارش شما در حال آماده‌سازی...',
+    cartSuccess: '✓ سفارش ثبت شد! به زودی با شما تماس می‌گیریم.',
+    cartError: '✗ خطا در ارسال. ایمیل بزنید: seven.farsi@gmail.com',
+    cartEmpty: 'سبد خرید شما خالی است!',
+    successTitle: 'سفارش دریافت شد!', successSub: 'به زودی با شما تماس می‌گیریم ☕',
+    tierDetectedFriend: '🤝 قیمت دوستانه: 9/18/35/70 GEL',
+    tierDetectedCofounder: '⭐ قیمت هم‌بنیان‌گذار: 7.50/15/30/60 GEL',
+    modalTitle: 'افزودن به سبد',
+    modalLblQty: 'مقدار:', modalLblGrind: 'نوع:', modalLblStyle: 'روش دم:',
+    modalOptWhole: 'دانه', modalOptGround: 'آسیاب شده',
+    modalOptEspresso: 'اسپرسو', modalOptFilter: 'فیلتر', modalOptFrench: 'فرنچ پرس',
+    modalOptQty: 'انتخاب', modalOptStyle: 'انتخاب روش',
+    modalAddMore: '+ افزودن & ادامه', modalGoCart: '🛒 رفتن به سبد',
+    modalPriceLabel: 'قیمت:', modalStockError: 'موجودی کافی نیست! فقط {stock}گرم مانده.',
+    cartLblName: 'نام شما:', cartLblEmail: 'ایمیل:', cartLblNotes: 'توضیحات:',
+    cartLblDrawerTitle: 'سبد خرید', cartSectionContact: 'اطلاعات تماس',
+    namePlaceholder: 'نام شما...', emailPlaceholder: 'email@example.com',
+    notesPlaceholder: 'آدرس، درخواست‌های خاص...',
+    bannerText: 'ارسال به گرجستان و ارمنستان',
+    descBra:'قهوه‌ای با بدنه کامل، نت‌های فندق و شکلات تلخ.',
+    descCol:'قهوه‌ای متعادل با نت‌های کارامل و سیب قرمز.',
+    descRwa:'میوه‌ای با نت‌های مرکبات و هلو.',
+    descEth:'عطر گل‌های یاسمین و بِرگامو، پایانی ابریشمین.',
+    descPan:'قهوه‌ای ظریف و پیچیده با نت‌های گل.',
+    priceBra:'از GEL 12 / 125گرم', priceCol:'از GEL 12 / 125گرم', priceRwa:'از GEL 12 / 125گرم', priceEth:'از GEL 12 / 125گرم', pricePan:'از GEL 12 / 125گرم',
+    stockBra:'{stock}گرم موجود', stockCol:'{stock}گرم موجود', stockRwa:'{stock}گرم – تقریباً تمام شد!', stockEth:'{stock}گرم – آخرین موجودی!', stockPan:'{stock}گرم موجود',
+    aboutTitle:'از دوستان، برای دوستان.', aboutText:'7roast یک پروژه قهوه کوچک و پرشور است.',
+    aboutGoalTitle:'هدف ما چیست؟', aboutGoalText:'ارائه قهوه باکیفیت به دوستان با قیمتی منصفانه.',
+    aboutPriceTitle:'قیمت چگونه محاسبه می‌شود؟',
+    pbBeans:'☕ دانه‌های قهوه', pbTime:'⏱ زمان (~۱ساعت/کیلو)', pbReserve:'💰 ذخیره', pbEnergy:'⚡ انرژی و بسته‌بندی',
+    aboutContactText:'اگر سوالی دارید، با ما تماس بگیرید!', aboutSignature:'Matt, Jürgen, Roland & Sven',
+    langFlag:'🇮🇷', langName:'فارسی'
   }
 };
-// ─── LIVE STOCK DATA ───
-let liveStock = {};
 
 // ─── LANGUAGE ───
-function toggleLangMenu() {
-  document.getElementById('lang-dropdown').classList.toggle('open');
-}
+function toggleLangMenu() { document.getElementById('lang-dropdown').classList.toggle('open'); }
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.lang-wrapper')) {
-    document.getElementById('lang-dropdown').classList.remove('open');
-  }
+  if (!e.target.closest('.lang-wrapper')) document.getElementById('lang-dropdown').classList.remove('open');
 });
 
 function setLang(l) {
@@ -1085,53 +1209,30 @@ function setLang(l) {
     const langs = ['en','de','ru','ka','fa'];
     opt.classList.toggle('active', langs[i] === l);
   });
-  // Header & Hero
+  // Hero
   document.getElementById('hero-title').textContent = t.heroTitle;
   document.getElementById('hero-sub').textContent = t.heroSub;
   document.getElementById('hero-btn').textContent = t.heroBtn;
   // Sections
   document.getElementById('title-coffees').textContent = t.titleCoffees;
   document.getElementById('title-prices').textContent = t.titlePrices;
-  document.getElementById('title-order').textContent = t.titleOrder;
   document.getElementById('title-info').textContent = t.titleInfo;
   document.getElementById('title-about').textContent = t.titleAbout;
   document.getElementById('th-ground').textContent = t.thGround;
   document.getElementById('price-note').textContent = t.priceNote;
   document.getElementById('price-ground-note-mobile').textContent = t.priceGroundMobile;
-  // Order form labels
-  document.getElementById('lbl-customer-type').textContent = t.lblCustomerType;
-  document.getElementById('opt-tier-normal').textContent = t.optTierNormal;
-  document.getElementById('opt-tier-friend').textContent = t.optTierFriend;
-  document.getElementById('opt-tier-cofounder').textContent = t.optTierCofounder;
-  document.getElementById('lbl-product').textContent = t.lblProduct;
-  document.getElementById('lbl-quantity').textContent = t.lblQty;
-  document.getElementById('lbl-grind').textContent = t.lblGrind;
-  document.getElementById('lbl-style').textContent = t.lblStyle;
-  document.getElementById('lbl-name').textContent = t.lblName;
-  document.getElementById('lbl-email').textContent = t.lblEmail;
-  document.getElementById('lbl-notes').textContent = t.lblNotes;
-  document.getElementById('opt-select-coffee').textContent = t.optCoffee;
-  document.getElementById('opt-select-qty').textContent = t.optQty;
-  document.getElementById('opt-select-style').textContent = t.optStyle;
-  document.getElementById('opt-whole').textContent = t.optWhole;
-  document.getElementById('opt-ground').textContent = t.optGround;
-  document.getElementById('opt-espresso').textContent = t.optEspresso;
-  document.getElementById('opt-filter').textContent = t.optFilter;
-  document.getElementById('opt-french').textContent = t.optFrench;
-  document.getElementById('btn-add').textContent = t.btnAdd;
-  document.getElementById('btn-submit').textContent = t.btnSubmit;
+  // Banner
+  const bannerEl = document.getElementById('banner-text');
+  if (bannerEl) bannerEl.textContent = t.bannerText;
+  // Cart icon
+  document.getElementById('cart-drawer-title').textContent = t.cartLblDrawerTitle;
   // Coffee descriptions & prices & stock
-  document.getElementById('desc-bra').textContent = t.descBra;
-  document.getElementById('desc-col').textContent = t.descCol;
-  document.getElementById('desc-rwa').textContent = t.descRwa;
-  document.getElementById('desc-eth').textContent = t.descEth;
-  document.getElementById('desc-pan').textContent = t.descPan;
-  document.getElementById('price-bra').textContent = t.priceBra;
-  document.getElementById('price-col').textContent = t.priceCol;
-  document.getElementById('price-rwa').textContent = t.priceRwa;
-  document.getElementById('price-eth').textContent = t.priceEth;
-  document.getElementById('price-pan').textContent = t.pricePan;
-  // Stock with live values
+  const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  setEl('desc-bra', t.descBra); setEl('desc-col', t.descCol); setEl('desc-rwa', t.descRwa);
+  setEl('desc-eth', t.descEth); setEl('desc-pan', t.descPan);
+  setEl('price-bra', t.priceBra); setEl('price-col', t.priceCol); setEl('price-rwa', t.priceRwa);
+  setEl('price-eth', t.priceEth); setEl('price-pan', t.pricePan);
+  // Stock
   const stockMap = {
     'stock-bra': { key: 'BRA-01', tpl: t.stockBra },
     'stock-col': { key: 'COL-01', tpl: t.stockCol },
@@ -1144,47 +1245,32 @@ function setLang(l) {
     const el = document.getElementById(id);
     if (el) el.textContent = stock !== null ? tpl.replace('{stock}', stock) : tpl.replace('{stock}', '');
   }
+  // Update all Add to Cart button labels
+  document.querySelectorAll('[data-key="btnAddCart"]').forEach(el => el.textContent = t.btnAddCart);
   // About
-  document.getElementById('about-title').textContent = t.aboutTitle;
-  document.getElementById('about-text').textContent = t.aboutText;
-  document.getElementById('about-goal-title').textContent = t.aboutGoalTitle;
-  document.getElementById('about-goal-text').textContent = t.aboutGoalText;
-  document.getElementById('about-price-title').textContent = t.aboutPriceTitle;
-  document.getElementById('pb-beans').textContent = t.pbBeans;
-  document.getElementById('pb-time').textContent = t.pbTime;
-  document.getElementById('pb-reserve').textContent = t.pbReserve;
-  document.getElementById('pb-energy').textContent = t.pbEnergy;
-  document.getElementById('about-contact-text').textContent = t.aboutContactText;
-  document.getElementById('about-signature').textContent = t.aboutSignature;
-  // Placeholders
-  document.getElementById('customerName').placeholder = t.namePlaceholder;
-  document.getElementById('customerEmail').placeholder = t.emailPlaceholder;
-  document.getElementById('notes').placeholder = t.notesPlaceholder;
-  // Brewing sections visibility
-  const showMap = { en: ['brew-en'], de: ['brew-de'], ru: ['brew-ru'], ka: ['brew-ka'], fa: ['brew-fa'] };
+  setEl('about-title', t.aboutTitle); setEl('about-text', t.aboutText);
+  setEl('about-goal-title', t.aboutGoalTitle); setEl('about-goal-text', t.aboutGoalText);
+  setEl('about-price-title', t.aboutPriceTitle);
+  setEl('pb-beans', t.pbBeans); setEl('pb-time', t.pbTime); setEl('pb-reserve', t.pbReserve); setEl('pb-energy', t.pbEnergy);
+  setEl('about-contact-text', t.aboutContactText); setEl('about-signature', t.aboutSignature);
+  // Brewing sections
+  const showMap = { en:['brew-en'], de:['brew-de'], ru:['brew-ru'], ka:['brew-ka'], fa:['brew-fa'] };
   ['brew-de','brew-en','brew-ru','brew-ka','brew-fa'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.style.display = (showMap[l] || []).includes(id) ? 'block' : 'none';
+    if (el) el.style.display = (showMap[l]||[]).includes(id) ? 'block' : 'none';
   });
-  // Update tier info
-  onTierChange();
-  showTierDetectedBox(currentTier);
-  renderBasket();
+  // Re-render cart if open
+  renderCartDrawer();
+  // Update tier box
+  showCartTierBox(currentTier);
 }
 
-// ─── TIER / CUSTOMER TYPE ───
-function onTierChange() {
-  const sel = document.getElementById('customer-type');
-  if (sel) currentTier = sel.value;
-  showTierDetectedBox(currentTier);
-  renderBasket();
-}
-
+// ─── CALC PRICE ───
 function calcPrice(qty, grindType) {
   const p = PRICING[currentTier] || PRICING.normal;
-  let base = p[qty] || (qty / 1000 * p[1000]);
-  if (grindType === 'Gemahlen' || grindType === 'Ground') base += p.ground;
-  return base;
+  const base = p[qty] || 0;
+  const isGround = grindType === 'Ground' || grindType === 'Gemahlen' || grindType === 'Молотый' || grindType === 'Gemalen' || grindType === 'დაფქვილი' || grindType === 'آسیاب شده';
+  return base + (isGround ? p.ground : 0);
 }
 
 // ─── ACCORDION ───
@@ -1195,102 +1281,231 @@ function toggleBrew(btn) {
   btn.classList.toggle('open', !isOpen);
 }
 
-// ─── STOCK FILTER ───
-document.getElementById('product').addEventListener('change', function() {
-  const opt = this.options[this.selectedIndex];
-  const stock = parseFloat(opt.dataset.stock || 9999);
-  const qty = document.getElementById('quantity');
-  Array.from(qty.options).forEach(o => {
-    if (!o.value) return;
-    const v = parseInt(o.value);
-    o.disabled = v > stock;
-    o.textContent = v + 'g' + (v > stock ? ' ✗' : '');
+// ─── CART COUNT BADGE ───
+function updateCartBadge() {
+  const badge = document.getElementById('cart-count-badge');
+  if (!badge) return;
+  const count = basket.length;
+  badge.textContent = count;
+  badge.style.display = count > 0 ? 'flex' : 'none';
+  if (count > 0) {
+    badge.classList.remove('bump');
+    void badge.offsetWidth;
+    badge.classList.add('bump');
+  }
+}
+
+// ─── ADD TO CART MODAL ───
+function openAddToCartModal(productId, productName, stock) {
+  modalProductId = productId;
+  modalProductName = productName;
+  modalProductStock = stock;
+  const t = T[lang];
+  document.getElementById('modal-coffee-name').textContent = productName;
+  document.getElementById('modal-coffee-id').textContent = productId;
+  document.getElementById('modal-title').textContent = t.modalTitle;
+  document.getElementById('modal-lbl-qty').textContent = t.modalLblQty;
+  document.getElementById('modal-lbl-grind').textContent = t.modalLblGrind;
+  document.getElementById('modal-lbl-style').textContent = t.modalLblStyle;
+  document.getElementById('modal-opt-whole').textContent = t.modalOptWhole;
+  document.getElementById('modal-opt-ground').textContent = t.modalOptGround;
+  document.getElementById('modal-opt-espresso').textContent = t.modalOptEspresso;
+  document.getElementById('modal-opt-filter').textContent = t.modalOptFilter;
+  document.getElementById('modal-opt-french').textContent = t.modalOptFrench;
+  document.getElementById('btn-modal-add-more').textContent = t.modalAddMore;
+  document.getElementById('btn-modal-add').innerHTML = t.modalGoCart;
+  document.getElementById('modal-price-label').textContent = t.modalPriceLabel;
+  // Reset selects
+  const qtyEl = document.getElementById('modal-qty');
+  qtyEl.innerHTML = '<option value="" disabled selected>' + t.modalOptQty + '</option>';
+  const sizes = [125, 250, 500, 1000];
+  sizes.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = s + 'g' + (s > stock ? ' ✗' : '');
+    opt.disabled = s > stock;
+    qtyEl.appendChild(opt);
   });
-  if (qty.selectedOptions[0] && qty.selectedOptions[0].disabled) qty.selectedIndex = 0;
-});
+  document.getElementById('modal-grind').value = 'Whole Bean';
+  const styleEl = document.getElementById('modal-style');
+  styleEl.selectedIndex = 0;
+  document.getElementById('modal-price-preview').style.display = 'none';
+  document.getElementById('atc-modal').classList.add('open');
+}
 
-// ─── BASKET ───
-document.getElementById('btn-add').addEventListener('click', () => {
-  const p = document.getElementById('product');
-  const q = document.getElementById('quantity');
-  const s = document.getElementById('style');
-  const g = document.getElementById('grind_type');
-  if (!p.value || !q.value || !s.value) {
-    alert(T[lang].basketEmpty.replace('!','') + ' – please select all options');
+function handleModalOverlayClick(e) {
+  if (e.target === document.getElementById('atc-modal')) closeAddToCartModal();
+}
+
+function closeAddToCartModal() {
+  document.getElementById('atc-modal').classList.remove('open');
+}
+
+function updateModalPrice() {
+  const qty = parseInt(document.getElementById('modal-qty').value);
+  const grind = document.getElementById('modal-grind').value;
+  if (!qty) { document.getElementById('modal-price-preview').style.display = 'none'; return; }
+  const price = calcPrice(qty, grind);
+  document.getElementById('modal-price-preview').style.display = 'flex';
+  document.getElementById('modal-price-amount').textContent = 'GEL ' + price.toFixed(2);
+}
+
+function addToCartFromModal(continueAdding) {
+  const qtyEl = document.getElementById('modal-qty');
+  const grindEl = document.getElementById('modal-grind');
+  const styleEl = document.getElementById('modal-style');
+  const qty = parseInt(qtyEl.value);
+  const grind = grindEl.value;
+  const style = styleEl.value;
+  const t = T[lang];
+  if (!qty) { alert(t.modalOptQty); return; }
+  if (!style) { alert(t.modalLblStyle.replace(':','')); return; }
+  if (qty > modalProductStock) {
+    alert(t.modalStockError.replace('{stock}', modalProductStock));
     return;
   }
-  const opt = p.options[p.selectedIndex];
-  const stock = parseFloat(opt.dataset.stock || 0);
-  const qty = parseInt(q.value);
-  if (qty > stock) {
-    alert(T[lang].stockError.replace('{stock}', stock));
-    return;
+  const price = calcPrice(qty, grind);
+  basket.push({ id: modalProductId, name: modalProductName, quantity: qty, style, grindType: grind, price });
+  modalProductStock -= qty;
+  // Update card's stock data attribute
+  const card = document.querySelector('.coffee-card[data-product-id="' + modalProductId + '"]');
+  if (card) card.dataset.stock = modalProductStock;
+  updateCartBadge();
+  closeAddToCartModal();
+  if (continueAdding) {
+    // Just close, let user pick another coffee
+  } else {
+    openCartDrawer();
   }
-  const price = calcPrice(qty, g.value);
-  basket.push({ id: p.value, name: opt.text, quantity: qty, style: s.value, grindType: g.value, price });
-  opt.dataset.stock = stock - qty;
-  p.selectedIndex = 0;
-  q.selectedIndex = 0;
-  s.selectedIndex = 0;
-  renderBasket();
-  document.getElementById('btn-submit').disabled = false;
-});
+}
 
-function removeItem(i) {
-  const item = basket[i];
-  const p = document.getElementById('product');
-  for (let o of p.options) {
-    if (o.value === item.id) {
-      o.dataset.stock = (parseFloat(o.dataset.stock||0)) + item.quantity;
-      break;
-    }
+// ─── CART DRAWER ───
+function openCartDrawer() {
+  renderCartDrawer();
+  document.getElementById('cart-drawer-overlay').classList.add('open');
+  document.getElementById('cart-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCartDrawer() {
+  document.getElementById('cart-drawer-overlay').classList.remove('open');
+  document.getElementById('cart-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function removeFromCart(index) {
+  basket.splice(index, 1);
+  updateCartBadge();
+  renderCartDrawer();
+}
+
+function showCartTierBox(tier) {
+  const box = document.getElementById('cart-tier-box');
+  const t = T[lang];
+  if (!box) return;
+  if (tier === 'friend') {
+    box.innerHTML = t.tierDetectedFriend;
+    box.className = 'tier-info-box visible';
+    box.style.cssText = 'display:block;background:#e8f5e9;color:#2e7d32;border:1px solid #c8e6c9;';
+  } else if (tier === 'cofounder') {
+    box.innerHTML = t.tierDetectedCofounder;
+    box.className = 'tier-info-box visible';
+    box.style.cssText = 'display:block;background:#fff3e0;color:#e65100;border:1px solid #ffe0b2;';
+  } else {
+    box.className = 'tier-info-box';
+    box.style.cssText = '';
+    box.innerHTML = '';
   }
-  basket.splice(i, 1);
+}
+
+function renderCartDrawer() {
+  const body = document.getElementById('cart-drawer-body');
+  const footer = document.getElementById('cart-drawer-footer');
+  const t = T[lang];
+  if (!body) return;
   // Recalculate prices
   basket = basket.map(it => ({ ...it, price: calcPrice(it.quantity, it.grindType) }));
-  renderBasket();
-  if (basket.length === 0) document.getElementById('btn-submit').disabled = true;
-}
+  const total = basket.reduce((s, it) => s + it.price, 0);
 
-function renderBasket() {
-  const box = document.getElementById('basket-box');
-  const items = document.getElementById('basket-items');
-  const totalLine = document.getElementById('basket-total-line');
-  // Recalculate all prices on render (tier may have changed)
-  basket = basket.map(it => ({ ...it, price: calcPrice(it.quantity, it.grindType) }));
-  const total = basket.reduce((sum, it) => sum + it.price, 0);
-  const tierBadge = currentTier !== 'normal'
-    ? '<span class="tier-badge tier-' + currentTier + '">' + currentTier + '</span>'
-    : '';
-  box.style.display = basket.length ? 'block' : 'none';
-  items.innerHTML = basket.map((it, i) =>
-    '<div class="basket-item"><div><strong>' + it.name + '</strong>' + tierBadge +
-    '<br><small>' + it.quantity + 'g – ' + it.style + ' – ' + it.grindType +
-    ' <strong style="color:var(--secondary)">GEL ' + it.price.toFixed(2) + '</strong></small></div>' +
-    '<span class="remove-btn" onclick="removeItem(' + i + ')">✕</span></div>'
-  ).join('');
-  if (basket.length > 0) {
-    totalLine.textContent = (T[lang].totalLabel || 'Total:') + ' GEL ' + total.toFixed(2);
+  if (basket.length === 0) {
+    body.innerHTML = '<div class="cart-empty-msg"><span class="empty-icon">🛒</span><p>' + (t.cartEmpty || 'Your cart is empty') + '</p></div>';
+    if (footer) footer.style.display = 'none';
+    return;
+  }
+
+  // Items HTML
+  let html = '';
+  basket.forEach((it, i) => {
+    html += '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + it.name + '</div><div class="cart-item-details">' + it.quantity + 'g – ' + it.grindType + ' – ' + it.style + '</div></div><div class="cart-item-price">GEL ' + it.price.toFixed(2) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + i + ')">✕</button></div>';
+  });
+
+  // Contact form
+  const nameVal = document.getElementById('cart-name') ? document.getElementById('cart-name').value : '';
+  const emailVal = document.getElementById('cart-email') ? document.getElementById('cart-email').value : '';
+  const notesVal = document.getElementById('cart-notes') ? document.getElementById('cart-notes').value : '';
+
+  html += '<div class="cart-form-section"><div class="cart-section-title">' + (t.cartSectionContact || 'Contact & Delivery') + '</div>';
+  html += '<label class="cart-label">' + t.cartLblName + '</label><input type="text" id="cart-name" class="cart-input" placeholder="' + t.namePlaceholder + '" value="' + nameVal.replace(/"/g, '&quot;') + '" oninput="detectTierFromCart()"></input>';
+  html += '<label class="cart-label">' + t.cartLblEmail + '</label><input type="email" id="cart-email" class="cart-input" placeholder="' + t.emailPlaceholder + '" value="' + emailVal.replace(/"/g, '&quot;') + '" oninput="detectTierFromCart()" onblur="detectTierFromCart()"></input>';
+  html += '<label class="cart-label">' + t.cartLblNotes + '</label><textarea id="cart-notes" class="cart-input" rows="3" placeholder="' + t.notesPlaceholder + '">' + notesVal + '</textarea>';
+  html += '</div>';
+  body.innerHTML = html;
+
+  // Footer
+  if (footer) {
+    footer.style.display = 'block';
+    document.getElementById('cart-total-label').textContent = t.cartTotalLabel;
+    document.getElementById('cart-total-amount').textContent = 'GEL ' + total.toFixed(2);
+    document.getElementById('cart-submit-text').textContent = t.cartSubmitText;
+    showCartTierBox(currentTier);
   }
 }
 
-// ─── SUBMIT ───
-document.getElementById('order-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  if (basket.length === 0) { alert(T[lang].basketEmpty); return; }
-  const btn = document.getElementById('btn-submit');
-  const msg = document.getElementById('msg-box');
-  btn.disabled = true;
-  btn.textContent = T[lang].loading;
+// ─── AUTO-DETECT TIER ───
+function normStr(s) { return String(s||'').trim().toLowerCase(); }
+function detectTierFromCart() {
+  const nameEl = document.getElementById('cart-name');
+  const emailEl = document.getElementById('cart-email');
+  if (!nameEl || !emailEl) return;
+  const name = normStr(nameEl.value);
+  const email = normStr(emailEl.value);
+  let detected = 'normal';
+  if (name && accessData.cofounderNames && accessData.cofounderNames.includes(name)) {
+    detected = 'cofounder';
+  } else if (email && accessData.friendEmails && accessData.friendEmails.includes(email)) {
+    detected = 'friend';
+  }
+  if (detected !== currentTier) {
+    currentTier = detected;
+    basket = basket.map(it => ({ ...it, price: calcPrice(it.quantity, it.grindType) }));
+    const total = basket.reduce((s, it) => s + it.price, 0);
+    const totalEl = document.getElementById('cart-total-amount');
+    if (totalEl) totalEl.textContent = 'GEL ' + total.toFixed(2);
+    showCartTierBox(detected);
+  }
+}
+
+// ─── SUBMIT ORDER ───
+function submitCartOrder() {
+  const t = T[lang];
+  const nameEl = document.getElementById('cart-name');
+  const emailEl = document.getElementById('cart-email');
+  const notesEl = document.getElementById('cart-notes');
+  if (!nameEl || !nameEl.value.trim()) { alert(t.cartLblName.replace(':','')); nameEl && nameEl.focus(); return; }
+  if (!emailEl || !emailEl.value.trim()) { alert(t.cartLblEmail.replace(':','')); emailEl && emailEl.focus(); return; }
+  if (basket.length === 0) { alert(t.cartEmpty); return; }
+  const submitBtn = document.getElementById('btn-cart-submit');
+  const msgBox = document.getElementById('cart-msg-box');
+  submitBtn.disabled = true;
+  document.getElementById('cart-submit-text').textContent = t.cartLoading || 'Sending...';
   // Show roast animation
   const overlay = document.getElementById('roast-overlay');
-  document.getElementById('roast-overlay-text').textContent = T[lang].roastingText;
+  document.getElementById('roast-overlay-text').textContent = t.cartLoading;
   overlay.classList.add('active');
   const data = {
     action: 'submitOrder',
-    customerName: document.getElementById('customerName').value,
-    customerEmail: document.getElementById('customerEmail').value,
-    notes: document.getElementById('notes').value,
+    customerName: nameEl.value.trim(),
+    customerEmail: emailEl.value.trim(),
+    notes: notesEl ? notesEl.value.trim() : '',
     items: basket,
     tier: currentTier,
     language: lang
@@ -1300,33 +1515,29 @@ document.getElementById('order-form').addEventListener('submit', function(e) {
     headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
     body: JSON.stringify(data)
   })
-  .then(response => response.json())
+  .then(r => r.json())
   .then(result => {
     overlay.classList.remove('active');
     if (result.status === 'success') {
       showSuccessAnimation();
-      msg.className = 'msg-box success';
-      msg.textContent = T[lang].success;
-      msg.style.display = 'block';
+      msgBox.className = 'cart-msg-box success';
+      msgBox.textContent = t.cartSuccess;
+      msgBox.style.display = 'block';
       basket = [];
-      renderBasket();
-      this.reset();
-      btn.disabled = true;
-      btn.textContent = T[lang].btnSubmit;
-    } else {
-      throw new Error(result.message || 'Unknown error');
-    }
+      updateCartBadge();
+      setTimeout(() => closeCartDrawer(), 3600);
+    } else { throw new Error(result.message || 'Unknown error'); }
   })
-  .catch((err) => {
+  .catch(err => {
     overlay.classList.remove('active');
     console.error(err);
-    msg.className = 'msg-box error';
-    msg.textContent = T[lang].error;
-    msg.style.display = 'block';
-    btn.disabled = false;
-    btn.textContent = T[lang].btnSubmit;
+    msgBox.className = 'cart-msg-box error';
+    msgBox.textContent = t.cartError;
+    msgBox.style.display = 'block';
+    submitBtn.disabled = false;
+    document.getElementById('cart-submit-text').textContent = t.cartSubmitText;
   });
-});
+}
 
 // ─── SUCCESS ANIMATION ───
 function showSuccessAnimation() {
@@ -1352,44 +1563,19 @@ function showSuccessAnimation() {
 // ─── LIVE INVENTORY ───
 function fetchLiveInventory() {
   fetch(APPS_SCRIPT_URL + '?api=stock')
-    .then(response => response.json())
+    .then(r => r.json())
     .then(stockData => {
       liveStock = stockData;
-      // Update product select options
-      const p = document.getElementById('product');
-      Array.from(p.options).forEach(opt => {
-        if (opt.value && stockData[opt.value] !== undefined) {
-          opt.dataset.stock = stockData[opt.value];
-        }
-      });
-      // Update coffee card stocks
-      const cardMap = { 'BRA-01': 'stock-bra', 'COL-01': 'stock-col', 'RWA-01': 'stock-rwa', 'Eth-01': 'stock-eth', 'Pan-01': 'stock-pan' };
-      const cards = document.querySelectorAll('.coffee-card');
-      cards.forEach(card => {
-        // Find product id from the coffee-id element
-        const idEl = card.querySelector('.coffee-id');
-        if (!idEl) return;
-        const pid = idEl.textContent.trim();
+      document.querySelectorAll('.coffee-card[data-product-id]').forEach(card => {
+        const pid = card.dataset.productId;
         if (stockData[pid] !== undefined) card.dataset.stock = stockData[pid];
       });
-      // Update stock dots
-      const dotMap = {
-        'BRA-01': { dotEl: 'stock-bra', card: null },
-        'COL-01': { dotEl: 'stock-col', card: null },
-        'RWA-01': { dotEl: 'stock-rwa', card: null },
-        'Eth-01': { dotEl: 'stock-eth', card: null },
-        'Pan-01': { dotEl: 'stock-pan', card: null }
-      };
-      // Refresh stock text via setLang
       setLang(lang);
-      console.log('Live-Lagerbestand geladen!', stockData);
     })
-    .catch(err => console.error('Fehler beim Laden der Bestaende:', err));
+    .catch(err => console.error('Stock fetch error:', err));
 }
 
-// ─── ACCESS DATA (auto-detect tier) ───
-let accessData = { friendEmails: [], cofounderNames: [] };
-
+// ─── ACCESS DATA ───
 function fetchAccessData() {
   fetch(APPS_SCRIPT_URL + '?api=access')
     .then(r => r.json())
@@ -1397,88 +1583,41 @@ function fetchAccessData() {
     .catch(err => console.warn('Access not loaded:', err));
 }
 
-function normStr(s) { return String(s || '').trim().toLowerCase(); }
-
-function detectTierFromInputs() {
-  const name = normStr(document.getElementById('customerName').value);
-  const email = normStr(document.getElementById('customerEmail').value);
-  let detected = 'normal';
-  if (name && accessData.cofounderNames && accessData.cofounderNames.includes(name)) {
-    detected = 'cofounder';
-  } else if (email && accessData.friendEmails && accessData.friendEmails.includes(email)) {
-    detected = 'friend';
-  }
-  const sel = document.getElementById('customer-type');
-  if (sel) sel.value = detected;
-  if (detected !== currentTier) {
-    currentTier = detected;
-    showTierDetectedBox(detected);
-    renderBasket();
-  }
-}
-
-function showTierDetectedBox(tier) {
-  const box = document.getElementById('tier-detected-box');
-  const t = T[lang];
-  if (!box) return;
-  if (tier === 'friend') {
-    box.innerHTML = '🤝 ' + (t.tierDetectedFriend || 'Friend price: 9/18/35/70 GEL');
-    box.className = 'tier-detected-box visible';
-    box.style.cssText = 'display:block; background:#e8f5e9; color:#2e7d32; border:1px solid #c8e6c9;';
-  } else if (tier === 'cofounder') {
-    box.innerHTML = '⭐ ' + (t.tierDetectedCofounder || 'Co-Founder: 7.50/15/30/60 GEL');
-    box.className = 'tier-detected-box visible';
-    box.style.cssText = 'display:block; background:#fff3e0; color:#e65100; border:1px solid #ffe0b2;';
-  } else {
-    box.className = 'tier-detected-box';
-    box.style.cssText = '';
-    box.innerHTML = '';
-  }
-}
-
-// Auto-detect on name/email input
-document.getElementById('customerName').addEventListener('input', detectTierFromInputs);
-document.getElementById('customerEmail').addEventListener('input', detectTierFromInputs);
-document.getElementById('customerEmail').addEventListener('blur', detectTierFromInputs);
-
 // ─── INIT ───
 setLang('en');
 fetchLiveInventory();
 fetchAccessData();
-// Hero video A/B crossfade loop
+
+// Hero video crossfade
 (function() {
   const vidA = document.getElementById('hero-vid-a');
   const vidB = document.getElementById('hero-vid-b');
   if (!vidA || !vidB) return;
   let active = vidA, standby = vidB;
-  const FADE_START = 1.8; // seconds before end to start crossfade
+  const FADE_START = 1.8;
   const TARGET_OPACITY = 0.45;
   active.style.opacity = TARGET_OPACITY;
   standby.style.opacity = '0';
   let crossfading = false;
-  active.addEventListener('timeupdate', function() {
+  function onTimeUpdate() {
     if (!active.duration) return;
     const remaining = active.duration - active.currentTime;
     if (remaining <= FADE_START && !crossfading) {
       crossfading = true;
-      // Pre-roll standby from beginning
       standby.currentTime = 0;
       standby.play().catch(()=>{});
-      // Crossfade
       standby.style.opacity = TARGET_OPACITY;
       active.style.opacity = '0';
       setTimeout(() => {
-        active.pause();
-        active.currentTime = 0;
-        active.style.opacity = '0';
-        // Swap roles
+        active.pause(); active.currentTime = 0; active.style.opacity = '0';
         const tmp = active; active = standby; standby = tmp;
-        // Listen on new active
-        active.addEventListener('timeupdate', arguments.callee, {once: false});
+        active.removeEventListener('timeupdate', onTimeUpdate);
+        active.addEventListener('timeupdate', onTimeUpdate);
         crossfading = false;
       }, 1500);
     }
-  });
+  }
+  active.addEventListener('timeupdate', onTimeUpdate);
 })();
 </script>
 </body>
