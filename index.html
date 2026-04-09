@@ -671,7 +671,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         <p id="desc-bra">Full-bodied with notes of hazelnut, dark chocolate and light sweetness. Ideal for espresso and milk-based drinks.</p>
         <div class="coffee-price" id="price-bra">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-bra">3725g available</span></div>
-        <button class="btn-card-cart" onclick="openAddToCartModal('BRA-01','Brasil Cerrado',3725)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
+        <button class="btn-card-cart" onclick="openAddToCartModal('BRA-01','Brasil Cerrado',parseInt(this.closest('[data-product-id]').dataset.stock)||0)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
 
@@ -683,7 +683,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         <p id="desc-col">Balanced coffee with notes of caramel, red apple and mild acidity. Versatile for all brewing methods.</p>
         <div class="coffee-price" id="price-col">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-col">4000g available</span></div>
-        <button class="btn-card-cart" onclick="openAddToCartModal('COL-01','Colombia',4000)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
+        <button class="btn-card-cart" onclick="openAddToCartModal('COL-01','Colombia',parseInt(this.closest('[data-product-id]').dataset.stock)||0)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
 
@@ -695,7 +695,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         <p id="desc-rwa">Fruity and vibrant with notes of citrus, peach and brown sugar. Perfect as a filter coffee.</p>
         <div class="coffee-price" id="price-rwa">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-rwa">375g available – almost gone!</span></div>
-        <button class="btn-card-cart" onclick="openAddToCartModal('RWA-01','Rwanda',375)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
+        <button class="btn-card-cart" onclick="openAddToCartModal('RWA-01','Rwanda',parseInt(this.closest('[data-product-id]').dataset.stock)||0)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
 
@@ -707,7 +707,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         <p id="desc-eth">Floral aromas of jasmine and bergamot, delicate citrus note, silky finish. Only a few grams left!</p>
         <div class="coffee-price" id="price-eth">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-low"></span><span id="stock-eth">25g available – last stock!</span></div>
-        <button class="btn-card-cart" onclick="openAddToCartModal('Eth-01','Ethiopia Limmu',25)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
+        <button class="btn-card-cart" onclick="openAddToCartModal('Eth-01','Ethiopia Limmu',parseInt(this.closest('[data-product-id]').dataset.stock)||0)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
 
@@ -719,7 +719,7 @@ body.rtl .about-goal { border-left:none;border-right:3px solid var(--secondary);
         <p id="desc-pan">Elegant, complex coffee with floral notes and fine fruity sweetness. Premium quality.</p>
         <div class="coffee-price" id="price-pan">from GEL 12 / 125g</div>
         <div class="stock-bar"><span class="stock-dot dot-ok"></span><span id="stock-pan">500g available</span></div>
-        <button class="btn-card-cart" onclick="openAddToCartModal('Pan-01','Panama',500)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
+        <button class="btn-card-cart" onclick="openAddToCartModal('Pan-01','Panama',parseInt(this.closest('[data-product-id]').dataset.stock)||0)">🛒 <span data-key="btnAddCart">Add to Cart</span></button>
       </div>
     </div>
 
@@ -1342,15 +1342,32 @@ function openAddToCartModal(productId, productName, stock) {
   document.getElementById('modal-price-label').textContent = t.modalPriceLabel;
   // Reset selects
   const qtyEl = document.getElementById('modal-qty');
-  qtyEl.innerHTML = '<option value="" disabled selected>' + t.modalOptQty + '</option>';
+  qtyEl.innerHTML = '';
   const sizes = [125, 250, 500, 1000];
+  let hasAvailableSize = false;
   sizes.forEach(s => {
     const opt = document.createElement('option');
     opt.value = s;
-    opt.textContent = s + 'g' + (s > stock ? ' ✗' : '');
-    opt.disabled = s > stock;
+    if (s <= stock) {
+      opt.textContent = s + 'g';
+      opt.disabled = false;
+      hasAvailableSize = true;
+    } else {
+      opt.textContent = s + 'g ✗';
+      opt.disabled = true;
+    }
     qtyEl.appendChild(opt);
   });
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.textContent = hasAvailableSize ? t.modalOptQty : ('⚠ ' + t.modalStockError.replace('{stock}', stock));
+  qtyEl.insertBefore(placeholder, qtyEl.firstChild);
+  const addMoreBtn = document.getElementById('btn-modal-add-more');
+  const addBtn = document.getElementById('btn-modal-add');
+  if (addMoreBtn) addMoreBtn.style.display = hasAvailableSize ? '' : 'none';
+  if (addBtn) addBtn.style.display = hasAvailableSize ? '' : 'none';
   document.getElementById('modal-grind').value = 'Whole Bean';
   const styleEl = document.getElementById('modal-style');
   styleEl.selectedIndex = 0;
